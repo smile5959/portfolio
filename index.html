@@ -1,11 +1,632 @@
 <!doctype html>
-<html lang="ko">
+<html lang="ko" data-theme="dark">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김환희 · Hwanhee Kim — 포트폴리오 2026</title>
+<meta name="description" content="문제를 정의하고, AI로 풀고, 직접 운영하는 서비스 기획자 김환희의 포트폴리오">
 <meta name="robots" content="noindex">
-<title>김환희 포트폴리오</title>
-<style>body{margin:0;min-height:100vh;display:grid;place-items:center;font-family:-apple-system,"Apple SD Gothic Neo",sans-serif;color:#14181f;background:#f6f7f9}main{text-align:center;padding:24px}h1{font-size:28px;margin:0 0 8px}p{color:#4b5563;margin:0}</style>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#0e0f11; --bg2:#15171a; --card:#1a1c20; --ink:#f3f4f6; --ink2:#b4b9c2; --ink3:#7b8290;
+  --line:#2a2d33; --accent:#8fb4ff; --accent-ink:#0b1220; --accent-soft:rgba(143,180,255,.12);
+  --warn:#f5b66b; --maxw:1120px; --r:18px;
+}
+:root[data-theme="light"]{
+  --bg:#fafaf7; --bg2:#f1f1ec; --card:#ffffff; --ink:#14161a; --ink2:#4a505a; --ink3:#8a909b;
+  --line:#e3e3dc; --accent:#2f5bea; --accent-ink:#ffffff; --accent-soft:rgba(47,91,234,.09); --warn:#b45309;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;line-height:1.7;-webkit-font-smoothing:antialiased;transition:background .3s,color .3s}
+a{color:inherit;text-decoration:none}
+img{max-width:100%}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+html[lang="en"] .ko, html[lang="ko"] .en{display:none!important}
+
+/* header */
+header.top{position:fixed;top:0;left:0;right:0;z-index:30;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 78%,transparent);border-bottom:1px solid transparent;transition:border-color .3s}
+header.top.scrolled{border-color:var(--line)}
+header.top .wrap{display:flex;align-items:center;gap:22px;height:58px}
+.logo{font-weight:800;letter-spacing:-.02em;margin-right:auto}
+.menu{display:flex;gap:22px;font-size:14px;color:var(--ink2)}
+.menu a:hover{color:var(--ink)}
+.ctl{display:flex;gap:8px}
+.btn{border:1px solid var(--line);background:transparent;color:var(--ink);border-radius:99px;height:34px;padding:0 14px;font:600 13px Pretendard,sans-serif;cursor:pointer}
+.btn:hover{border-color:var(--ink3)}
+@media(max-width:760px){.menu{display:none}}
+
+/* hero */
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 0 70px;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;width:640px;height:640px;right:-180px;top:-120px;background:radial-gradient(closest-side,var(--accent-soft),transparent);pointer-events:none}
+.kicker{font-size:13px;letter-spacing:.18em;color:var(--accent);font-weight:700}
+.huge{font-size:clamp(54px,12vw,150px);line-height:.95;font-weight:900;letter-spacing:-.045em;margin:18px 0 28px}
+.huge span{display:block}
+.huge .o{color:transparent;-webkit-text-stroke:2px var(--ink)}
+.headline{font-size:clamp(22px,3.4vw,38px);line-height:1.35;font-weight:700;letter-spacing:-.03em;max-width:820px;margin:0 0 20px}
+.lead{font-size:clamp(15px,1.6vw,18px);color:var(--ink2);max-width:720px}
+.meta{display:flex;flex-wrap:wrap;gap:8px 26px;margin-top:32px;font-size:14px;color:var(--ink3)}
+.meta b{color:var(--ink);font-weight:600}
+.cta{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+.pill{display:inline-flex;align-items:center;gap:6px;height:44px;padding:0 22px;border-radius:99px;font-weight:700;font-size:15px;border:1px solid var(--line)}
+.pill.primary{background:var(--accent);color:var(--accent-ink);border-color:transparent}
+.pill:hover{transform:translateY(-1px)}
+
+/* marquee */
+.marq{border-block:1px solid var(--line);overflow:hidden;white-space:nowrap;padding:16px 0;background:var(--bg2)}
+.marq div{display:inline-block;animation:mq 38s linear infinite;font-weight:800;font-size:clamp(20px,3vw,34px);letter-spacing:-.02em;color:var(--ink3)}
+.marq i{font-style:normal;color:var(--accent);margin:0 28px}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* sections */
+section{padding:110px 0}
+.sec-label{font-size:13px;letter-spacing:.16em;color:var(--accent);font-weight:700;margin-bottom:12px}
+h2{font-size:clamp(28px,4.4vw,52px);line-height:1.2;letter-spacing:-.035em;margin:0 0 16px;font-weight:800}
+.sub{color:var(--ink2);max-width:680px;margin:0 0 46px}
+
+/* process */
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:30px 26px}
+.step .no{font-size:13px;color:var(--ink3);font-weight:700;letter-spacing:.1em}
+.step h3{font-size:24px;line-height:1.3;margin:10px 0 12px;letter-spacing:-.03em}
+.step p{color:var(--ink2);font-size:15px;margin:0 0 16px}
+.chips{display:flex;flex-wrap:wrap;gap:6px}
+.chip{font-size:12px;font-weight:700;padding:3px 11px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+@media(max-width:860px){.steps{grid-template-columns:1fr}}
+
+/* numbers */
+.nums{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:16px}
+.num{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:28px 26px}
+.num .big{font-size:clamp(44px,6vw,72px);font-weight:900;letter-spacing:-.045em;line-height:1;color:var(--ink)}
+.num .big small{font-size:.4em;color:var(--accent);margin-left:4px;letter-spacing:0}
+.num .t{margin-top:12px;font-weight:600}
+.num .d{font-size:13.5px;color:var(--ink3);margin-top:2px}
+.grp{font-size:12px;letter-spacing:.14em;color:var(--ink3);font-weight:700;margin:34px 0 12px}
+.note{font-size:13.5px;color:var(--ink3);margin-top:24px}
+@media(max-width:860px){.nums{grid-template-columns:1fr}}
+
+/* featured */
+.feat{display:grid;grid-template-columns:1.05fr 1fr;gap:0;background:var(--card);border:1px solid var(--line);border-radius:26px;overflow:hidden;margin-bottom:22px;cursor:pointer;transition:transform .25s,border-color .25s}
+.feat:hover{transform:translateY(-3px);border-color:var(--ink3)}
+.feat.rev .shot{order:2}
+.feat .shot{background:var(--bg2);display:flex;gap:12px;align-items:center;justify-content:center;padding:26px;min-height:340px}
+.feat .shot img{height:300px;width:auto;border-radius:16px;border:1px solid var(--line);object-fit:cover}
+.feat .shot.wide img{height:auto;width:100%;max-height:300px;object-fit:contain}
+.feat .body{padding:34px 34px 30px;display:flex;flex-direction:column}
+.badge{align-self:flex-start;font-size:11.5px;font-weight:800;letter-spacing:.1em;padding:3px 10px;border-radius:99px;border:1px solid var(--accent);color:var(--accent)}
+.feat h3{font-size:clamp(24px,3vw,34px);letter-spacing:-.035em;margin:14px 0 4px;line-height:1.2}
+.period{font-size:13.5px;color:var(--ink3);margin-bottom:14px}
+.feat p{color:var(--ink2);margin:0 0 18px;font-size:15.5px}
+.kv{display:flex;flex-wrap:wrap;gap:8px 26px;margin:auto 0 18px;padding-top:16px;border-top:1px solid var(--line)}
+.kv div{font-size:13px;color:var(--ink3)}
+.kv b{display:block;font-size:20px;color:var(--ink);letter-spacing:-.02em}
+.more{font-weight:700;color:var(--accent);font-size:14.5px}
+@media(max-width:860px){.feat{grid-template-columns:1fr}.feat.rev .shot{order:0}.feat .shot{min-height:0}.feat .shot img{height:230px}}
+
+.others{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.oc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
+.oc:hover{transform:translateY(-3px);border-color:var(--ink3)}
+.oc img{height:170px;width:100%;object-fit:cover;object-position:top;background:var(--bg2);border-bottom:1px solid var(--line)}
+.oc .b{padding:20px 22px 22px}
+.oc h4{margin:0 0 4px;font-size:19px;letter-spacing:-.02em}
+.oc p{margin:6px 0 12px;color:var(--ink2);font-size:14.5px}
+@media(max-width:860px){.others{grid-template-columns:1fr}}
+
+/* timeline / lists */
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+.item{padding:20px 0;border-top:1px solid var(--line)}
+.item .d{font-size:13px;color:var(--ink3)}
+.item h4{margin:2px 0 4px;font-size:18px;letter-spacing:-.02em}
+.item p{margin:0;color:var(--ink2);font-size:14.5px}
+@media(max-width:860px){.cols{grid-template-columns:1fr}}
+.skills{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
+.sk{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px}
+.sk h4{margin:0 0 10px;font-size:13px;letter-spacing:.12em;color:var(--ink3)}
+@media(max-width:860px){.skills{grid-template-columns:1fr}}
+
+/* contact */
+.contact{text-align:center;padding:130px 0 90px}
+.contact h2{font-size:clamp(40px,8vw,96px);font-weight:900;letter-spacing:-.045em}
+.clinks{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;margin-top:26px}
+.clinks a{font-size:clamp(16px,2vw,20px);font-weight:700;border-bottom:2px solid var(--accent);padding-bottom:2px}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--ink3);font-size:13px;text-align:center}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(22px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}.marq div{animation:none}html{scroll-behavior:auto}}
+
+/* modal */
+#modal{position:fixed;inset:0;z-index:60;background:var(--bg);overflow-y:auto;display:none}
+#modal.open{display:block}
+#modal .bar{position:sticky;top:0;z-index:2;background:color-mix(in srgb,var(--bg) 85%,transparent);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+#modal .bar .wrap{display:flex;align-items:center;height:58px;justify-content:space-between}
+#modal .pane{padding:50px 0 100px;max-width:880px;margin:0 auto;padding-inline:20px}
+#modal h2{font-size:clamp(28px,4.4vw,46px)}
+#modal h3{font-size:22px;margin:42px 0 10px;letter-spacing:-.02em}
+#modal h5{font-size:15.5px;margin:20px 0 4px}
+#modal p,#modal li{color:var(--ink2);font-size:16px}
+#modal ul,#modal ol{padding-left:20px}
+#modal b{color:var(--ink)}
+#modal code{background:var(--bg2);padding:1px 6px;border-radius:6px;font-size:.9em}
+.callout{background:var(--accent-soft);border-left:4px solid var(--accent);padding:16px 18px;border-radius:10px;margin:18px 0;font-size:15px;color:var(--ink2)}
+.callout.warn{background:color-mix(in srgb,var(--warn) 12%,transparent);border-color:var(--warn)}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.card h5{margin-top:0}
+@media(max-width:760px){.g2,.g3{grid-template-columns:1fr}}
+figure{margin:20px 0}
+figure img{width:100%;border:1px solid var(--line);border-radius:14px;background:#fff;cursor:zoom-in;display:block}
+figcaption{font-size:13.5px;color:var(--ink3);margin-top:8px;text-align:center}
+.phones{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:14px;align-items:start}
+.phones img{border-radius:20px}
+.flow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:18px 0}
+.node{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:8px 12px;font-size:13.5px;text-align:center;color:var(--ink2)}
+.node.hl{border-color:var(--accent);color:var(--ink)}
+.arr{color:var(--ink3)}
+#lb{position:fixed;inset:0;background:rgba(5,6,8,.9);display:none;align-items:center;justify-content:center;z-index:90;cursor:zoom-out;padding:20px}
+#lb img{max-width:100%;max-height:100%;border-radius:8px}
+</style>
 </head>
-<body><main><h1>김환희</h1><p>서경대학교 소프트웨어학과 · 포트폴리오</p></main></body>
+<body>
+
+<header class="top" id="top"><div class="wrap">
+  <a class="logo" href="#home">HWANHEE KIM</a>
+  <nav class="menu">
+    <a href="#how"><span class="ko">일하는 방식</span><span class="en">Approach</span></a>
+    <a href="#numbers"><span class="ko">숫자</span><span class="en">Numbers</span></a>
+    <a href="#work"><span class="ko">프로젝트</span><span class="en">Work</span></a>
+    <a href="#about"><span class="ko">경력·역량</span><span class="en">Profile</span></a>
+    <a href="#contact"><span class="ko">연락</span><span class="en">Contact</span></a>
+  </nav>
+  <div class="ctl">
+    <button class="btn" id="langBtn" aria-label="Language">EN</button>
+    <button class="btn" id="themeBtn" aria-label="Theme">☀︎</button>
+  </div>
+</div></header>
+
+<main id="home">
+<div class="hero"><div class="wrap">
+  <div class="kicker">PORTFOLIO 2026</div>
+  <h1 class="huge"><span>HWANHEE</span><span class="o">KIM</span></h1>
+  <p class="headline ko">문제를 정의하고, AI로 풀고,<br>직접 운영합니다.</p>
+  <p class="headline en">I define the problem, solve it with AI,<br>and run it myself.</p>
+  <p class="lead ko">교회 청년부 앱 JOYHILL을 직접 기획·개발해 등록 217명 규모로 운영하고 있고, 전교인(약 1,000명) 확장을 기획하고 있습니다. 생성형 AI를 서비스 구조 안에 설계해 넣은 경험(CAPD, SyncAI)과, 문제 정의와 수익 모델을 맡아 해커톤 대상을 받은 경험(Readle)이 있습니다.</p>
+  <p class="lead en">I built and run JOYHILL, a church youth-group app with 217 registered accounts, and I am now planning its expansion to the whole congregation (~1,000 people). I have designed generative AI into real service architectures (CAPD, SyncAI) and won a campus hackathon grand prize as PO, owning problem definition and the business model (Readle).</p>
+  <div class="meta">
+    <span><b class="ko">서경대학교 소프트웨어학과</b><b class="en">Seokyeong Univ. · Software</b> · <span class="ko">2027.02 졸업예정</span><span class="en">expected Feb 2027</span></span>
+    <span><b>SQLD</b> 2026.03</span>
+  </div>
+  <div class="cta">
+    <a class="pill primary" href="#work"><span class="ko">프로젝트 보기 ↓</span><span class="en">View work ↓</span></a>
+    <a class="pill" href="#contact"><span class="ko">연락하기</span><span class="en">Contact</span></a>
+  </div>
+</div></div>
+
+<div class="marq" aria-hidden="true"><div>
+  PRODUCT PLANNING<i>✦</i>AI SERVICE<i>✦</i>PROBLEM DEFINITION<i>✦</i>OPERATION<i>✦</i>BUSINESS MODEL<i>✦</i>
+  PRODUCT PLANNING<i>✦</i>AI SERVICE<i>✦</i>PROBLEM DEFINITION<i>✦</i>OPERATION<i>✦</i>BUSINESS MODEL<i>✦</i>
+</div></div>
+
+<section id="how"><div class="wrap">
+  <div class="sec-label">APPROACH</div>
+  <h2 class="ko rv">문제를 발견하고,<br>구조를 설계하고,<br>직접 운영합니다.</h2>
+  <h2 class="en rv">Find the problem.<br>Design the structure.<br>Run it myself.</h2>
+  <p class="sub ko rv">아래 세 단계는 구호가 아니라 제가 실제로 한 순서입니다. 각 단계마다 근거가 되는 프로젝트를 붙였습니다.</p>
+  <p class="sub en rv">These three steps are the order in which I actually worked. Each one points to the project that backs it.</p>
+  <div class="steps">
+    <div class="step rv"><div class="no">01 · DEFINE</div>
+      <h3 class="ko">현장에서<br>문제를 찾습니다</h3><h3 class="en">Find the problem<br>in the field</h3>
+      <p class="ko">앱시트·구글시트 스크립트로 출석을 취합하던 청년부, 카카오톡으로 QT 인증을 확인하던 모임, 팀플에서 AI 구현이 서로 어긋나던 경험. 반복되는 비효율을 해결할 문제로 정의합니다.</p>
+      <p class="en">Attendance collected through AppSheet scripts, QT check-ins confirmed by hand in chat, AI-generated code drifting apart in team projects. I turn repeated friction into a defined problem.</p>
+      <div class="chips"><span class="chip">JOYHILL</span><span class="chip">QTPot</span><span class="chip">SyncAI</span></div></div>
+    <div class="step rv"><div class="no">02 · DESIGN &amp; BUILD</div>
+      <h3 class="ko">구조로 바꾸고<br>직접 만듭니다</h3><h3 class="en">Turn it into a<br>working structure</h3>
+      <p class="ko">5단계 권한 체계, Supervisor–Worker 에이전트, 2-LLM + RAG 파이프라인처럼 문제에 맞는 구조를 설계하고 개발·배포까지 맡았습니다.</p>
+      <p class="en">A five-level permission model, a Supervisor–Worker agent, a 2-LLM + RAG pipeline: I design the structure the problem needs, then build and deploy it.</p>
+      <div class="chips"><span class="chip">JOYHILL</span><span class="chip">SyncAI</span><span class="chip">CAPD</span></div></div>
+    <div class="step rv"><div class="no">03 · OPERATE</div>
+      <h3 class="ko">운영하며<br>고쳐 갑니다</h3><h3 class="en">Operate it and<br>keep fixing</h3>
+      <p class="ko">만든 뒤에도 실제 사용자 앞에서 운영합니다. 키 유출로 DB를 잃은 사고를 겪고 백업을 이중화했고, 확장 요구는 교회 회의를 직접 진행해 정리했습니다.</p>
+      <p class="en">I keep running what I ship. After a leaked key cost us the database, I rebuilt it with redundant backups, and I ran the congregation meetings that shaped the expansion.</p>
+      <div class="chips"><span class="chip">JOYHILL</span><span class="chip">QTPot</span></div></div>
+  </div>
+</div></section>
+
+<section id="numbers" style="background:var(--bg2)"><div class="wrap">
+  <div class="sec-label">NUMBERS</div>
+  <h2 class="ko rv">운영한 규모와<br>만든 양을 숫자로.</h2>
+  <h2 class="en rv">Scale I run,<br>and volume I built.</h2>
+  <p class="sub ko rv">운영 서버의 관리자 화면, GitHub, 로컬 저장소에서 직접 확인한 값만 썼습니다. 확인하지 못한 값은 넣지 않았습니다.</p>
+  <p class="sub en rv">Every figure was checked in an admin screen, on GitHub, or in a local repository. Anything I could not verify is left out.</p>
+
+  <div class="grp">01 · <span class="ko">운영 현장</span><span class="en">IN OPERATION</span></div>
+  <div class="nums">
+    <div class="num rv"><div class="big"><span class="cnt" data-to="217">0</span></div><div class="t">JOYHILL</div><div class="d ko">청년부 등록 계정</div><div class="d en">registered accounts</div></div>
+    <div class="num rv"><div class="big"><span class="cnt" data-to="54">0</span><small>%</small></div><div class="t">JOYHILL</div><div class="d ko">2026년 평균 예배 출석률 · 앱으로 주차별 기록</div><div class="d en">2026 avg. service attendance, recorded weekly in-app</div></div>
+    <div class="num rv"><div class="big"><span class="cnt" data-to="956">0</span></div><div class="t">QTPot</div><div class="d ko">누적 QT 인증 · 가입 46명 중 32명 참여</div><div class="d en">QT check-ins · 32 of 46 members took part</div></div>
+  </div>
+  <div class="grp">02 · <span class="ko">만든 양</span><span class="en">BUILT</span></div>
+  <div class="nums">
+    <div class="num rv"><div class="big"><span class="cnt" data-to="52">0</span></div><div class="t">JOYHILL</div><div class="d ko">머지한 PR (FE 27 + BE 25) · 5개월</div><div class="d en">merged PRs (FE 27 + BE 25) · 5 months</div></div>
+    <div class="num rv"><div class="big"><span class="cnt" data-to="321">0</span></div><div class="t">SyncAI</div><div class="d ko">커밋 · 기획부터 배포까지 단독</div><div class="d en">commits · solo, planning to deploy</div></div>
+    <div class="num rv"><div class="big"><span class="cnt" data-to="16">0</span><small>/19</small></div><div class="t">JOYHILL <span class="ko">확장</span><span class="en">Expansion</span></div><div class="d ko">교회 회의 쟁점 반영 · 테스트 267개</div><div class="d en">meeting issues addressed · 267 tests</div></div>
+  </div>
+  <p class="note ko">출석률은 앱 사용률이 아니라 청년부 출석 기록 값입니다. 확장 16건 중 5건은 현행 앱이 이미 같은 방식이라 되돌림 방지 테스트만 추가했습니다.</p>
+  <p class="note en">Attendance is a recorded attendance rate, not an app-usage rate. Of the 16 items, 5 already matched the live app, so I only added regression tests for them.</p>
+</div></section>
+
+<section id="work"><div class="wrap">
+  <div class="sec-label">FEATURED PROJECTS</div>
+  <h2 class="ko rv">대표 프로젝트</h2><h2 class="en rv">Featured projects</h2>
+  <p class="sub ko rv">카드를 누르면 문제 정의, 구조, 화면, 한계까지 자세히 볼 수 있습니다.</p>
+  <p class="sub en rv">Open a card for the problem, structure, screens, and limits.</p>
+
+  <article class="feat rv" data-open="joyhill">
+    <div class="shot"><img src="assets/joyhill_attendance.jpg" alt=""><img src="assets/joyhill_my_admin.jpg" alt=""></div>
+    <div class="body">
+      <span class="badge">LIVE · EXPANDING</span>
+      <h3>JOYHILL</h3><div class="period">2026.03 — <span class="ko">운영 중 · 확장 기획 2026.09 —</span><span class="en">live · expansion planning since 2026.09</span></div>
+      <p class="ko">출석 동기화와 계정 오류가 반복되던 청년부 운영을 자체 서비스로 바꾸고, 전교인 확장까지 이어지는 앱.</p>
+      <p class="en">Replaced a fragile spreadsheet workflow for a church youth group with its own service, now being extended to the whole congregation.</p>
+      <div class="kv"><div><b>217</b><span class="ko">등록 계정</span><span class="en">accounts</span></div><div><b>52</b><span class="ko">머지 PR</span><span class="en">merged PRs</span></div><div><b>16/19</b><span class="ko">확장 쟁점 반영</span><span class="en">issues addressed</span></div></div>
+      <span class="more"><span class="ko">자세히 보기 →</span><span class="en">Read more →</span></span>
+    </div>
+  </article>
+
+  <article class="feat rev rv" data-open="syncai">
+    <div class="shot"><img src="assets/syncai_chat.jpg" alt="" style="height:auto;width:100%;max-height:300px;object-fit:contain"></div>
+    <div class="body">
+      <span class="badge">DEPLOYED · SOLO</span>
+      <h3>SyncAI</h3><div class="period">2026.05 — 2026.10</div>
+      <p class="ko">같은 AI를 써도 팀원마다 다르게 구현해 충돌이 나는 문제를, 계획(Supervisor)과 실행(Worker)을 나눈 멀티에이전트로 푼 협업 툴.</p>
+      <p class="en">A collaboration tool that fixes the "everyone prompts differently, everything conflicts" problem by splitting planning (Supervisor) from execution (Workers).</p>
+      <div class="kv"><div><b>321</b><span class="ko">커밋</span><span class="en">commits</span></div><div><b>7/7</b><span class="ko">보안 회귀 테스트</span><span class="en">security tests</span></div></div>
+      <span class="more"><span class="ko">자세히 보기 →</span><span class="en">Read more →</span></span>
+    </div>
+  </article>
+
+  <article class="feat rv" data-open="readle">
+    <div class="shot wide"><img src="assets/readle_cover.jpg" alt=""></div>
+    <div class="body">
+      <span class="badge">GRAND PRIZE · PO</span>
+      <h3>Readle</h3><div class="period">2026.09.10 — 12 · <span class="ko">교내 해커톤(GovTech)</span><span class="en">campus hackathon (GovTech)</span></div>
+      <p class="ko">학생 문해력 저하를 공공 데이터로 정의하고, 효과 근거와 B2G 수익 모델을 설계한 서비스. 6인 팀에서 PO를 맡았습니다.</p>
+      <p class="en">A reading-literacy service for students. I defined the problem with public data and designed the evidence and B2G model as PO of a six-person team.</p>
+      <div class="kv"><div><b class="ko">대상</b><b class="en">1st</b><span class="ko">교내 해커톤</span><span class="en">campus hackathon</span></div><div><b>PISA 501</b><span class="ko">역대 최저 읽기 점수</span><span class="en">lowest reading score</span></div></div>
+      <span class="more"><span class="ko">자세히 보기 →</span><span class="en">Read more →</span></span>
+    </div>
+  </article>
+
+  <div class="sec-label" style="margin-top:70px">OTHER WORKS</div>
+  <div class="others">
+    <div class="oc rv" data-open="capd"><img src="assets/capd_doctor.png" alt=""><div class="b"><h4>CAPD</h4><div class="period">2026.04 — 06</div><p class="ko">복막투석 환자 기록 검토·AI 후속 질문 시스템. 백엔드·AI·인프라 담당(2인 팀).</p><p class="en">AI follow-up question system for peritoneal dialysis records. I owned backend, AI and infra (2-person team).</p><span class="chip">2-LLM + RAG</span> <span class="chip">GCP</span></div></div>
+    <div class="oc rv" data-open="qtpot"><img src="assets/qtpot_dashboard.jpg" alt=""><div class="b"><h4>QTPot</h4><div class="period">2026.02 —</div><p class="ko">수동 QT 인증 확인을 앱으로 자동화. 누적 인증 956회.</p><p class="en">Automated manual QT check-in tracking. 956 check-ins so far.</p><span class="chip">Full-stack</span> <span class="chip">FCM</span></div></div>
+    <div class="oc rv" data-open="firespot"><img src="assets/firespot_map.png" alt=""><div class="b"><h4>FireSpot</h4><div class="period">2026.03 — 04</div><p class="ko">데이터랩 트렌드 기반 핫플레이스 서비스. 프런트엔드 전담(4인 팀).</p><p class="en">Trend-based hot-place service. Sole frontend developer in a team of four.</p><span class="chip">React</span> <span class="chip">CI/CD</span></div></div>
+  </div>
+</div></section>
+
+<section id="about" style="background:var(--bg2)"><div class="wrap">
+  <div class="sec-label">PROFILE</div>
+  <h2 class="ko rv">경력과 역량</h2><h2 class="en rv">Profile</h2>
+  <div class="cols">
+    <div class="rv">
+      <div class="item"><div class="d">2026.09</div><h4 class="ko">SKTHON · GovTech 대상</h4><h4 class="en">SKTHON · GovTech grand prize</h4><p class="ko">교내 해커톤, Readle PO</p><p class="en">Campus hackathon, PO of Readle</p></div>
+      <div class="item"><div class="d">2026.04 — 06</div><h4 class="ko">서경대 SW인재양성 프로그램</h4><h4 class="en">Seokyeong SW Talent Program</h4><p class="ko">산학협력 과제 CAPD, 10주</p><p class="en">Industry project CAPD, 10 weeks</p></div>
+      <div class="item"><div class="d">2026.03</div><h4>SQLD</h4><p class="ko">SQL 개발자 · 한국데이터산업진흥원</p><p class="en">SQL Developer · Korea Data Agency</p></div>
+      <div class="item"><div class="d">2023.03 — 2027.02</div><h4 class="ko">서경대학교 소프트웨어학과</h4><h4 class="en">Seokyeong University, Software</h4><p class="ko">졸업예정</p><p class="en">Expected graduation</p></div>
+    </div>
+    <div class="rv">
+      <div class="skills" style="grid-template-columns:1fr">
+        <div class="sk"><h4>PLANNING</h4><div class="chips"><span class="chip">Figma</span><span class="chip">Notion</span><span class="chip">SQL</span></div></div>
+        <div class="sk"><h4>BUILD</h4><div class="chips"><span class="chip">Spring Boot</span><span class="chip">React</span><span class="chip">Next.js</span><span class="chip">FastAPI</span><span class="chip">PostgreSQL</span><span class="chip">AWS</span><span class="chip">GCP</span></div></div>
+        <div class="sk"><h4>AI</h4><div class="chips"><span class="chip">Claude</span><span class="chip">Gemini</span><span class="chip">RAG</span><span class="chip">MCP</span><span class="chip ko">프롬프트 엔지니어링</span><span class="chip en">Prompt engineering</span></div></div>
+      </div>
+    </div>
+  </div>
+</div></section>
+</main>
+
+<section class="contact" id="contact"><div class="wrap">
+  <h2 class="ko rv">함께 이야기해요.</h2><h2 class="en rv">Let's talk.</h2>
+  <p class="sub ko" style="margin:0 auto">연락은 이메일로 주시면 가장 빠르게 확인하겠습니다.</p>
+  <p class="sub en" style="margin:0 auto">Email gets the fastest reply.</p>
+  <div class="clinks">
+    <a href="mailto:rlaghskgml@gmail.com">rlaghskgml@gmail.com</a>
+    <a href="https://github.com/smile5959" target="_blank" rel="noopener">GitHub · smile5959</a>
+  </div>
+</div></section>
+<footer>© 2026 Hwanhee Kim</footer>
+
+<!-- ===== modal ===== -->
+<div id="modal" role="dialog" aria-modal="true">
+  <div class="bar"><div class="wrap"><b id="mTitle"></b><button class="btn" id="mClose">✕ <span class="ko">닫기</span><span class="en">Close</span></button></div></div>
+  <div class="pane" id="mBody"></div>
+</div>
+<div id="lb"><img alt=""></div>
+
+<!-- ===== detail templates ===== -->
+<template id="t-joyhill">
+<div class="ko">
+  <h2>JOYHILL — 교회 청년부 커뮤니티 앱</h2>
+  <p>개인 프로젝트 · 2026.03 ~ 운영 중 · 확장 기획 2026.09 ~</p>
+  <h3>문제</h3>
+  <p>AppSheet와 구글 스프레드시트 스크립트 구조에서 출석 동기화와 계정 관리 오류가 반복됐습니다.</p>
+  <h3>해결</h3>
+  <p>자체 DB 기반 서비스로 바꾸고, 흩어져 있던 출석·공지·기도제목·새가족·설교노트를 한 앱에 통합했습니다. <b>5단계 역할 기반 권한 체계와 도메인 전체를 1인 기획·설계·구현</b>했습니다. 같은 앱이 로그인한 사람의 권한에 따라 메뉴와 탭이 달라집니다.</p>
+  <div class="callout"><b>숫자</b> · 등록 계정 217명, 2026년 평균 예배 출석률 54%(앱으로 주차별 기록), FE·BE 합쳐 커밋 331개·머지 PR 52개, 구글시트 자동 백업(매일 새벽).</div>
+  <p style="font-size:14px;color:var(--ink3)">아래 화면은 개발 환경(샘플 계정·가상 데이터)에서 캡처했습니다.</p>
+  <div class="phones">
+    <figure><img src="assets/joyhill_login.jpg" alt=""><figcaption>로그인 — 전화번호 + 생년월일 6자리</figcaption></figure>
+    <figure><img src="assets/joyhill_first_login.jpg" alt=""><figcaption>최초 로그인 시 비밀번호 변경 강제</figcaption></figure>
+    <figure><img src="assets/joyhill_attendance.jpg" alt=""><figcaption>팸 리더의 출석 체크</figcaption></figure>
+    <figure><img src="assets/joyhill_my_leader.jpg" alt=""><figcaption>리더의 MY</figcaption></figure>
+    <figure><img src="assets/joyhill_my_admin.jpg" alt=""><figcaption>관리자의 MY</figcaption></figure>
+    <figure><img src="assets/joyhill_home_admin.jpg" alt=""><figcaption>관리자 홈</figcaption></figure>
+  </div>
+  <h3>전교인 확장 기획 (2026.09 ~)</h3>
+  <p>장년층 분들의 요청으로 전교인(약 1,000명) 확장을 진행하고 있습니다. 권한·조직 구조 쟁점 <b>19개</b>를 정리해 교회 회의를 직접 기획·진행했고, 16건을 반영했습니다. 그중 <b>5건은 기존 결정을 뒤집었습니다.</b> 기존 2축(목양/사역)으로는 표현되지 않는 사례를 발견해 <b>돌봄(care) 축을 추가</b>하는 방향으로 데이터 모델을 다시 설계했습니다. 테스트는 267개입니다. 아직 서버에 배포하지 않은 개발 단계입니다.</p>
+  <h3>장애 대응</h3>
+  <p>2026-07-15, 공개 저장소에 EC2 접속 키가 유출되는 보안 사고가 있었습니다. 복구 과정에서 백업 없이 인스턴스가 삭제되어 DB 전체가 유실됐습니다. 같은 날 인스턴스 재구축과 데이터 복구, 비밀키 관리 정비를 마쳤습니다. 이후 백업을 이중화(EC2 + 별도 비공개 S3 버킷)하고, 낮 12시에 돌던 자동 백업 스케줄을 새벽으로 고쳤습니다.</p>
+  <h3>AI를 쓰는 방식</h3>
+  <p>개발 이슈와 주의 영역을 문서로 유지하고, 회의가 필요한 쟁점은 AI로 정리해 회의를 진행했습니다. 충분히 논의한 내용은 프롬프트로 만들어 새 세션에서 한 번에 작업했습니다. 결정 문서는 AI가 정리한 것이며, 회의 기획과 진행, 결정은 제가 했습니다.</p>
+</div>
+<div class="en">
+  <h2>JOYHILL — Church youth-group community app</h2>
+  <p>Solo · 2026.03 – live · expansion planning since 2026.09</p>
+  <h3>Problem</h3>
+  <p>Attendance sync and account management kept breaking in the AppSheet + Google Sheets script setup.</p>
+  <h3>Solution</h3>
+  <p>I moved it to its own DB-backed service and merged attendance, notices, prayer requests, newcomers and sermon notes into one app. <b>I planned, designed and built the five-level role-based permission model and the entire domain alone.</b> Menus and tabs change with the logged-in user's role.</p>
+  <div class="callout"><b>Numbers</b> · 217 registered accounts, 54% average 2026 service attendance (recorded weekly in-app), 331 commits and 52 merged PRs across FE and BE, automatic nightly Google Sheets backup.</div>
+  <p style="font-size:14px;color:var(--ink3)">Screens below were captured in a dev environment with sample accounts and fake data.</p>
+  <div class="phones">
+    <figure><img src="assets/joyhill_login.jpg" alt=""><figcaption>Login — phone + 6-digit birth date</figcaption></figure>
+    <figure><img src="assets/joyhill_first_login.jpg" alt=""><figcaption>Forced password change on first login</figcaption></figure>
+    <figure><img src="assets/joyhill_attendance.jpg" alt=""><figcaption>Attendance check by a group leader</figcaption></figure>
+    <figure><img src="assets/joyhill_my_leader.jpg" alt=""><figcaption>Leader's My page</figcaption></figure>
+    <figure><img src="assets/joyhill_my_admin.jpg" alt=""><figcaption>Admin's My page</figcaption></figure>
+    <figure><img src="assets/joyhill_home_admin.jpg" alt=""><figcaption>Admin home</figcaption></figure>
+  </div>
+  <h3>Whole-congregation expansion (2026.09 –)</h3>
+  <p>At the request of older members I am extending the app to the whole congregation (~1,000 people). I listed <b>19</b> permission and organization issues, planned and ran the church meeting myself, and have addressed 16. <b>5 of them reversed earlier decisions.</b> I found cases the old two-axis model (pastoral / ministry) could not express and redesigned the data model with a <b>care axis</b>. There are 267 tests; it is still a development build and not deployed.</p>
+  <h3>Incident response</h3>
+  <p>On 2026-07-15 an EC2 access key leaked through a public repository. During recovery the instance was deleted without a backup and the whole database was lost. The same day I rebuilt the instance, restored data and fixed secret handling. Afterwards I made backups redundant (EC2 plus a private S3 bucket) and moved the nightly job away from noon.</p>
+  <h3>How I use AI</h3>
+  <p>I keep issues and risk areas in documents, use AI to organize topics before meetings, and turn settled discussions into prompts for fresh sessions. The decision documents were organized by AI; planning and running the meetings and making the decisions was mine.</p>
+</div>
+</template>
+
+<template id="t-syncai">
+<div class="ko">
+  <h2>SyncAI — AI 팀 협업 툴</h2>
+  <p>개인 프로젝트 · 2026.05 ~ 2026.10 · 기획부터 설계·개발·배포까지 단독 수행</p>
+  <h3>문제 발견</h3>
+  <p>학교 팀 프로젝트에서 같은 AI를 써도 팀원마다 다르게 구현해 코드 구조와 변수 컨벤션이 어긋났고, GitHub 병합·배포 때 충돌이 반복됐습니다.</p>
+  <h3>해결 — 계획과 실행을 나눈 2단계 에이전트</h3>
+  <div class="flow"><div class="node">팀원 요청·명세</div><span class="arr">→</span><div class="node hl">Supervisor LLM 계획 통합</div><span class="arr">→</span><div class="node">Worker LLM #1…N</div><span class="arr">→</span><div class="node">로컬 PC 파일 수정 (MCP 역방향)</div><span class="arr">→</span><div class="node hl">사용자 승인</div><span class="arr">→</span><div class="node">Git 반영 · 결과 격리</div></div>
+  <div class="g2">
+    <figure><img src="assets/syncai_login.jpg" alt=""><figcaption>로그인</figcaption></figure>
+    <figure><img src="assets/syncai_chat.jpg" alt=""><figcaption>팀 채팅방에서 <code>/ai</code>로 요청 (데모 팀에서 캡처)</figcaption></figure>
+  </div>
+  <div class="g2">
+    <div class="card"><h5>구현</h5><ul><li>MCP로 서버와 로컬 PC를 역방향 연결해 채팅 명령만으로 로컬 파일 수정</li><li>Composio로 Notion 등 외부 앱 자동화</li><li>MCP 서버 자동 설치(Mac / Windows)</li></ul></div>
+    <div class="card"><h5>기획·BM</h5><ul><li>Supervisor 무료 · Worker 구독제</li><li>구독 플랜별 AI 할당량 시스템 설계</li><li>Fly.io 배포</li></ul></div>
+  </div>
+  <h3>직접 검증한 것</h3>
+  <ul><li>민감 작업은 실행 전 <b>사용자 승인</b>, 결과 파일은 <b>격리</b></li><li><b>보안 회귀 테스트 7/7</b>: 비멤버의 작업 취소 → 403, 비멤버 WebSocket → 4003, 소유자 아닌 팀원의 승인 시도 → 403, 같은 refresh token 재사용 → 401</li><li>프롬프트 인젝션 시나리오를 실제로 심어 방어 확인</li></ul>
+  <div class="callout warn"><b>한계</b> · 기술적으로 배포까지 마쳤지만 시장에 출시해 사용자를 확보하지는 않았습니다. 시장 검증의 증거가 아니라 제품 구조를 설계하고 만든 경험으로 봐 주세요.</div>
+</div>
+<div class="en">
+  <h2>SyncAI — AI team collaboration tool</h2>
+  <p>Solo · 2026.05 – 2026.10 · planning, design, build and deploy</p>
+  <h3>Problem</h3>
+  <p>In school team projects, everyone used AI differently, so code structure and naming drifted and every GitHub merge or deploy ended in conflicts.</p>
+  <h3>Solution — split planning from execution</h3>
+  <div class="flow"><div class="node">Team requests</div><span class="arr">→</span><div class="node hl">Supervisor LLM merges plans</div><span class="arr">→</span><div class="node">Worker LLMs #1…N</div><span class="arr">→</span><div class="node">Edit local files (reverse MCP)</div><span class="arr">→</span><div class="node hl">User approval</div><span class="arr">→</span><div class="node">Git · isolated results</div></div>
+  <div class="g2">
+    <figure><img src="assets/syncai_login.jpg" alt=""><figcaption>Login</figcaption></figure>
+    <figure><img src="assets/syncai_chat.jpg" alt=""><figcaption>Asking the AI with <code>/ai</code> in team chat (demo team)</figcaption></figure>
+  </div>
+  <div class="g2">
+    <div class="card"><h5>Build</h5><ul><li>Reverse MCP connection lets chat commands edit local files</li><li>Composio automation for Notion and others</li><li>Auto-installed MCP server (Mac / Windows)</li></ul></div>
+    <div class="card"><h5>Product &amp; business model</h5><ul><li>Free Supervisor, subscription Workers</li><li>Per-plan AI quota system</li><li>Deployed on Fly.io</li></ul></div>
+  </div>
+  <h3>What I verified</h3>
+  <ul><li>Sensitive actions need <b>user approval</b>; result files are <b>isolated</b></li><li><b>7/7 security regression tests</b>: non-member cancel → 403, non-member WebSocket → 4003, non-owner approval → 403, refresh-token reuse → 401</li><li>Planted real prompt-injection scenarios and confirmed the defense</li></ul>
+  <div class="callout warn"><b>Limit</b> · It is deployed and working, but I did not launch it to the market or acquire users. Treat it as evidence of product and architecture work, not market validation.</div>
+</div>
+</template>
+
+<template id="t-readle">
+<div class="ko">
+  <h2>Readle — 학생 문해력 향상 서비스</h2>
+  <p>2026 SKTHON · GovTech 창업경진대회(교내 해커톤, 교육 분야) <b>대상</b> · 2026.09.10 ~ 12 · 6인 팀(PO 1·DE 1·FE 2·BE 3) 중 PO</p>
+  <div class="callout"><b>제 역할 (PO)</b> · 문제정의, 자료조사, 효과 근거자료, BM 구축, 발표. 실사용자 인터뷰는 하지 못했습니다(해커톤 기간 내).</div>
+  <figure><img src="assets/readle_cover.jpg" alt=""></figure>
+  <h3>문제정의 — 데이터로 뒷받침한 프레임</h3>
+  <ul><li>OECD PISA 2025: 한국 읽기 <b>501점</b>, 참여 이래 역대 최저(2022년 515점 대비 14점 하락), 하위·상위권 양극화</li><li>한국언론진흥재단(2025): 10대 숏폼 이용 49.1%, 학생 연간 독서량 감소</li><li>법적 근거: 「기초학력 보장법」(2022.3.25 시행), 제1차 기초학력 보장 종합계획(2023~2027)</li></ul>
+  <figure><img src="assets/readle_pisa.jpg" alt=""></figure>
+  <h3>솔루션과 효과 근거</h3>
+  <p>매일 10문제(뉴스 지문, AI 즉시 피드백) · 약점 분석 5축 레이더 차트와 오답 복습 · 친구 실시간 배틀. 효과 근거는 Yang et al.(2021, <i>Psychological Bulletin</i>) 메타분석입니다(학생 48,478명, 퀴즈 학습 효과크기 g=0.499, 읽기·어휘 g=0.644). 즉시 피드백·반복·복습이 효과를 키운다는 결과를 설계에 반영했습니다.</p>
+  <figure><img src="assets/readle_effect.jpg" alt=""></figure>
+  <h3>BM — B2G 3단계</h3>
+  <ol><li>고등학생 파일럿(수능 국어 대비 도구)</li><li>초·중등 및 일반 학습자로 확장</li><li>파일럿 효과 데이터를 근거로 교육청·학교 단위 라이선스 도입</li></ol>
+  <figure><img src="assets/readle_bm.jpg" alt=""></figure>
+</div>
+<div class="en">
+  <h2>Readle — Reading-literacy service for students</h2>
+  <p><b>Grand prize</b> at the 2026 SKTHON · GovTech startup contest (campus hackathon, education track) · 2026.09.10–12 · PO in a six-person team (1 PO, 1 DE, 2 FE, 3 BE)</p>
+  <div class="callout"><b>My role (PO)</b> · problem definition, research, evidence, business model, presentation. I could not run user interviews within the hackathon window.</div>
+  <figure><img src="assets/readle_cover.jpg" alt=""></figure>
+  <h3>Problem — framed with data</h3>
+  <ul><li>OECD PISA 2025: Korea's reading score <b>501</b>, the lowest since joining (down 14 from 515 in 2022), with widening polarization</li><li>Korea Press Foundation (2025): 49.1% of teens use short-form video; annual reading declining</li><li>Legal basis: Basic Academic Skills Guarantee Act (in force 2022), first national plan (2023–2027)</li></ul>
+  <figure><img src="assets/readle_pisa.jpg" alt=""></figure>
+  <h3>Solution and evidence</h3>
+  <p>Ten daily questions from news passages with instant AI feedback, a five-axis weakness radar with wrong-answer review, and live friend battles. The evidence is Yang et al. (2021, <i>Psychological Bulletin</i>): 48,478 students, quiz-learning effect size g=0.499 (reading/vocabulary g=0.644). I built instant feedback, repetition and review into the design.</p>
+  <figure><img src="assets/readle_effect.jpg" alt=""></figure>
+  <h3>Business model — three-stage B2G</h3>
+  <ol><li>High-school pilot (positioned as CSAT Korean prep)</li><li>Expand to primary/middle school and general learners</li><li>Use pilot results to license to education offices and schools</li></ol>
+  <figure><img src="assets/readle_bm.jpg" alt=""></figure>
+</div>
+</template>
+
+<template id="t-capd">
+<div class="ko">
+  <h2>CAPD — 복막투석 환자 기록 검토 및 AI 후속 질문 지원 시스템</h2>
+  <p>서경대 SW인재양성 프로그램 산학협력 과제 · 2인 1조 · 2026.04 ~ 06 (10주)</p>
+  <div class="callout"><b>역할 분담</b> · 팀원(박차원): 프런트엔드 전체 UI·DB 스키마·UI/UX 설계. 본인(김환희): 백엔드 REST API 전체, AI 파이프라인(2-LLM + RAG + SSE), GCP 인프라(Cloud Run·Cloud SQL·CI/CD), 테스트 자동화, 데이터 분석 모듈. 문제 자체는 기업/멘토가 제시했고, 환자·의사 인터뷰는 하지 않았습니다.</div>
+  <h3>문제</h3>
+  <p>복막투석 환자는 하루 3~5회 스스로 투석액을 교환하지만, 이상 징후가 나타나도 다음 방문 전까지 의사에게 전달되지 않습니다. 수기 기록은 누락·오기가 잦습니다.</p>
+  <h3>해결 — 수치 계산과 임상 해석을 분리한 2-LLM 구조</h3>
+  <div class="flow"><div class="node">투석 기록</div><span class="arr">→</span><div class="node hl">Python 통계 분석</div><span class="arr">→</span><div class="node hl">LLM 1 임상 쿼리</div><span class="arr">→</span><div class="node hl">RAG 멀티쿼리</div><span class="arr">→</span><div class="node hl">LLM 2 맞춤 질문</div><span class="arr">→</span><div class="node">SSE 전달 · 의사 대시보드</div></div>
+  <figure><img src="assets/capd_pipeline.png" alt=""></figure>
+  <div class="callout warn"><b>실패에서 나온 설계</b> · 처음엔 LLM 하나에 계산과 해석을 모두 맡겼다가 수치 오류와 환각이 다수 발생했습니다. 그래서 Python이 계산을 전담하고 Gemini는 해석만 하도록 나누고, 의학 근거는 RAG로 주입했습니다.</div>
+  <ul><li>RAG: KDIGO(361청크) + ISPD(589청크) + MedlinePlus(62청크, 주간 자동 갱신) = <b>1,012청크</b>, pgvector</li><li>10주간 기능 구현 80건+, GCP 서비스 3개, 처음 폴링이던 방식을 SSE로 전환</li></ul>
+  <div class="g2"><figure><img src="assets/capd_patient.png" alt=""><figcaption>환자 화면</figcaption></figure><figure><img src="assets/capd_doctor.png" alt=""><figcaption>의사 대시보드(위험도 자동 분류)</figcaption></figure></div>
+  <figure><img src="assets/capd_review_soap.png" alt=""><figcaption>AI 질문 검토·승인과 EMR SOAP 요약 자동 생성</figcaption></figure>
+  <div class="g2"><figure><img src="assets/capd_architecture.png" alt=""><figcaption>시스템 아키텍처</figcaption></figure><figure><img src="assets/capd_infra.png" alt=""><figcaption>GCP 배포 · CI/CD</figcaption></figure></div>
+</div>
+<div class="en">
+  <h2>CAPD — Peritoneal dialysis record review &amp; AI follow-up questions</h2>
+  <p>Seokyeong SW Talent Program industry project · 2-person team · 2026.04–06 (10 weeks)</p>
+  <div class="callout"><b>Roles</b> · Teammate: entire frontend UI, DB schema, UI/UX. Me: whole backend REST API, AI pipeline (2-LLM + RAG + SSE), GCP infrastructure (Cloud Run, Cloud SQL, CI/CD), test automation, analytics module. The problem was provided by the company and mentor, and I did not interview patients or doctors.</div>
+  <h3>Problem</h3>
+  <p>Patients exchange dialysate 3–5 times a day, yet warning signs may not reach the doctor until the next visit, and handwritten records are error-prone.</p>
+  <h3>Solution — split calculation from clinical interpretation</h3>
+  <div class="flow"><div class="node">Dialysis log</div><span class="arr">→</span><div class="node hl">Python statistics</div><span class="arr">→</span><div class="node hl">LLM 1: clinical query</div><span class="arr">→</span><div class="node hl">RAG multi-query</div><span class="arr">→</span><div class="node hl">LLM 2: tailored questions</div><span class="arr">→</span><div class="node">SSE · doctor dashboard</div></div>
+  <figure><img src="assets/capd_pipeline.png" alt=""></figure>
+  <div class="callout warn"><b>A design born from failure</b> · I first gave one LLM both calculation and interpretation and got many numeric errors and hallucinations. So Python does the math, Gemini only interprets, and RAG supplies medical evidence.</div>
+  <ul><li>RAG: KDIGO (361 chunks) + ISPD (589) + MedlinePlus (62, refreshed weekly) = <b>1,012 chunks</b> in pgvector</li><li>80+ features in 10 weeks, 3 GCP services; replaced polling with SSE</li></ul>
+  <div class="g2"><figure><img src="assets/capd_patient.png" alt=""><figcaption>Patient view</figcaption></figure><figure><img src="assets/capd_doctor.png" alt=""><figcaption>Doctor dashboard (auto risk levels)</figcaption></figure></div>
+  <figure><img src="assets/capd_review_soap.png" alt=""><figcaption>Question review/approval and auto-generated EMR SOAP summary</figcaption></figure>
+  <div class="g2"><figure><img src="assets/capd_architecture.png" alt=""><figcaption>Architecture</figcaption></figure><figure><img src="assets/capd_infra.png" alt=""><figcaption>GCP deployment · CI/CD</figcaption></figure></div>
+</div>
+</template>
+
+<template id="t-qtpot">
+<div class="ko">
+  <h2>QTPot — QT 인증 관리 자동화</h2>
+  <p>개인 프로젝트 · 2026.02 ~ 운영 중</p>
+  <p>카카오톡으로 수동 확인하던 QT 인증을 앱으로 자동화했습니다. 사진 자동 최적화, 관리자용 인증 현황 대시보드, FCM 푸시를 구현했습니다. 가입자 46명 중 32명이 한 번 이상 인증했고, 누적 인증은 956회입니다. 올해 10회 이상 인증한 회원은 19명, 30회 이상은 7명입니다.</p>
+  <p style="font-size:14px;color:var(--ink3)">회원 개인정보 보호를 위해 이름과 이메일은 가명으로 바꿔 표시했습니다.</p>
+  <div class="phones">
+    <figure><img src="assets/qtpot_login.jpg" alt=""><figcaption>로그인</figcaption></figure>
+    <figure><img src="assets/qtpot_dashboard.jpg" alt=""><figcaption>오늘의 큐티 인증</figcaption></figure>
+    <figure><img src="assets/qtpot_ranking.jpg" alt=""><figcaption>월간 랭킹</figcaption></figure>
+    <figure><img src="assets/qtpot_admin.jpg" alt=""><figcaption>관리자 현황</figcaption></figure>
+  </div>
+  <div class="callout"><b>근본 원인 추적</b> · "오래 로그인하면 피드가 안 뜬다"는 제보의 진짜 원인은 백엔드가 인증 실패를 전부 403으로 응답해, 프런트의 401 기반 자동 로그아웃이 한 번도 동작하지 않은 것이었습니다. 401과 403 처리를 분리해 해결했습니다.</div>
+  <p style="font-size:14px;color:var(--ink3)">한계: PWA 특성상 지속적인 푸시가 어렵고, 정식 만족도 조사는 하지 않았습니다.</p>
+</div>
+<div class="en">
+  <h2>QTPot — Automating QT check-in tracking</h2>
+  <p>Solo · 2026.02 – live</p>
+  <p>I replaced manual QT check-ins in a chat group with an app: automatic photo optimization, an admin dashboard and FCM push. Of 46 sign-ups, 32 checked in at least once, with 956 check-ins in total. 19 members checked in 10+ times this year and 7 checked in 30+ times.</p>
+  <p style="font-size:14px;color:var(--ink3)">Names and emails are pseudonymized to protect members' privacy.</p>
+  <div class="phones">
+    <figure><img src="assets/qtpot_login.jpg" alt=""><figcaption>Login</figcaption></figure>
+    <figure><img src="assets/qtpot_dashboard.jpg" alt=""><figcaption>Today's check-in</figcaption></figure>
+    <figure><img src="assets/qtpot_ranking.jpg" alt=""><figcaption>Monthly ranking</figcaption></figure>
+    <figure><img src="assets/qtpot_admin.jpg" alt=""><figcaption>Admin overview</figcaption></figure>
+  </div>
+  <div class="callout"><b>Root-cause tracing</b> · The report "the feed stops loading after long logins" came from the backend returning 403 for every auth failure, so the frontend's 401-based auto-logout never fired. I separated 401 and 403 handling.</div>
+  <p style="font-size:14px;color:var(--ink3)">Limits: as a PWA it cannot keep push alive, and I did not run a formal satisfaction survey.</p>
+</div>
+</template>
+
+<template id="t-firespot">
+<div class="ko">
+  <h2>FireSpot — 트렌드 기반 핫플레이스 서비스</h2>
+  <p>4인 팀 · 2026.03 ~ 04 (약 5주) · 네이버 데이터랩 기반 트렌드 분석</p>
+  <p>프런트엔드를 79커밋 전담했고 백엔드 인프라·CI/CD를 맡았습니다. 티어링 알고리즘은 팀원이 설계했습니다. Figma 와이어프레임을 실제 React 화면으로 구현했습니다.</p>
+  <div class="phones">
+    <figure><img src="assets/firespot_map.png" alt=""><figcaption>지도</figcaption></figure>
+    <figure><img src="assets/firespot_detail.png" alt=""><figcaption>장소 상세</figcaption></figure>
+    <figure><img src="assets/firespot_feed.png" alt=""><figcaption>피드</figcaption></figure>
+    <figure><img src="assets/firespot_premium.png" alt=""><figcaption>마이페이지 Premium</figcaption></figure>
+  </div>
+  <p style="font-size:14px;color:var(--ink3)">화면은 Figma 와이어프레임 기준입니다.</p>
+</div>
+<div class="en">
+  <h2>FireSpot — Trend-based hot-place service</h2>
+  <p>Team of four · 2026.03–04 (~5 weeks) · trend analysis on Naver DataLab</p>
+  <p>I was the sole frontend developer (79 commits) and handled backend infrastructure and CI/CD. A teammate designed the tiering algorithm. I turned Figma wireframes into real React screens.</p>
+  <div class="phones">
+    <figure><img src="assets/firespot_map.png" alt=""><figcaption>Map</figcaption></figure>
+    <figure><img src="assets/firespot_detail.png" alt=""><figcaption>Place detail</figcaption></figure>
+    <figure><img src="assets/firespot_feed.png" alt=""><figcaption>Feed</figcaption></figure>
+    <figure><img src="assets/firespot_premium.png" alt=""><figcaption>My page · Premium</figcaption></figure>
+  </div>
+  <p style="font-size:14px;color:var(--ink3)">Screens are from the Figma wireframes.</p>
+</div>
+</template>
+
+<script>
+(function(){
+  var root=document.documentElement;
+  function get(k){try{return localStorage.getItem(k)}catch(e){return null}}
+  function set(k,v){try{localStorage.setItem(k,v)}catch(e){}}
+
+  /* theme + language */
+  var theme=get('hh-theme')||(matchMedia('(prefers-color-scheme: light)').matches?'light':'dark');
+  var lang=get('hh-lang')||((navigator.language||'ko').indexOf('ko')===0?'ko':'en');
+  var themeBtn=document.getElementById('themeBtn'), langBtn=document.getElementById('langBtn');
+  function apply(){
+    root.setAttribute('data-theme',theme); root.setAttribute('lang',lang);
+    themeBtn.textContent=theme==='dark'?'☀︎':'☾'; langBtn.textContent=lang==='ko'?'EN':'KO';
+    document.title=lang==='ko'?'김환희 · Hwanhee Kim — 포트폴리오 2026':'Hwanhee Kim — Portfolio 2026';
+  }
+  themeBtn.onclick=function(){theme=theme==='dark'?'light':'dark';set('hh-theme',theme);apply()};
+  langBtn.onclick=function(){lang=lang==='ko'?'en':'ko';set('hh-lang',lang);apply()};
+  apply();
+
+  /* header shadow */
+  var hd=document.getElementById('top');
+  addEventListener('scroll',function(){hd.classList.toggle('scrolled',scrollY>10)},{passive:true});
+
+  /* reveal + count-up */
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function count(el){
+    var to=+el.dataset.to; if(reduce){el.textContent=to;return}
+    var t0=performance.now(),dur=1400;
+    (function step(t){var p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(step)})(t0);
+  }
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return; e.target.classList.add('in');
+      e.target.querySelectorAll('.cnt').forEach(count); io.unobserve(e.target);
+    })},{threshold:.15});
+    document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+  }else{
+    document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
+    document.querySelectorAll('.cnt').forEach(function(el){el.textContent=el.dataset.to});
+  }
+
+  /* modal */
+  var modal=document.getElementById('modal'), body=document.getElementById('mBody'), title=document.getElementById('mTitle');
+  function open(id){
+    var t=document.getElementById('t-'+id); if(!t)return;
+    body.innerHTML=''; body.appendChild(t.content.cloneNode(true));
+    title.textContent=id.toUpperCase(); modal.classList.add('open'); modal.scrollTop=0;
+    document.body.style.overflow='hidden'; history.replaceState(null,'','#'+id);
+  }
+  function close(){modal.classList.remove('open');document.body.style.overflow='';history.replaceState(null,'',location.pathname+location.search)}
+  document.querySelectorAll('[data-open]').forEach(function(n){n.addEventListener('click',function(){open(n.dataset.open)})});
+  document.getElementById('mClose').onclick=close;
+
+  /* lightbox */
+  var lb=document.getElementById('lb'), im=lb.querySelector('img');
+  body.addEventListener('click',function(e){if(e.target.tagName==='IMG'){im.src=e.target.src;lb.style.display='flex'}});
+  lb.onclick=function(){lb.style.display='none'};
+  addEventListener('keydown',function(e){
+    if(e.key!=='Escape')return;
+    if(lb.style.display==='flex')lb.style.display='none'; else if(modal.classList.contains('open'))close();
+  });
+  var h=location.hash.slice(1); if(document.getElementById('t-'+h))open(h);
+})();
+</script>
+</body>
 </html>
