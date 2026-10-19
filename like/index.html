@@ -1,0 +1,315 @@
+<!doctype html>
+<html lang="ko">
+<script>document.documentElement.classList.add('js')</script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김환희 포트폴리오 · 라이크코퍼레이션 서비스·콘텐츠 기획자</title>
+<meta name="description" content="전문 분야를 빠르게 이해하고, AI로 결과물까지 만드는 기획자 김환희의 포트폴리오">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f6f7f9; --ink:#14181f; --ink2:#4b5563; --ink3:#8a93a1;
+  --line:#e5e8ee; --brand:#2f5bea; --brand-soft:#eef2ff; --ok:#0f9d6a; --warn:#b45309;
+  --radius:14px; --maxw:1040px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:18px;align-items:center;height:52px;overflow-x:auto;white-space:nowrap}
+nav b{margin-right:auto;font-size:15px}
+nav a{color:var(--ink2);font-size:14px}
+header.hero{padding:72px 0 48px;background:linear-gradient(180deg,var(--brand-soft),#fff)}
+.eyebrow{font-size:14px;color:var(--brand);font-weight:600;letter-spacing:.02em}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.25;margin:12px 0 18px;letter-spacing:-.02em}
+.lead{font-size:clamp(16px,2vw,19px);color:var(--ink2);max-width:780px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:34px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.stat .n{font-size:28px;font-weight:800;color:var(--brand);letter-spacing:-.02em}
+.stat .t{font-size:14px;color:var(--ink2);margin-top:2px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 8px;letter-spacing:-.02em}
+h2 small{display:block;font-size:14px;color:var(--brand);font-weight:600;margin-bottom:6px}
+h3{font-size:20px;margin:36px 0 10px;letter-spacing:-.01em}
+h4{font-size:16px;margin:22px 0 6px}
+p{margin:8px 0}
+.sub{color:var(--ink2);margin-bottom:26px}
+table{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg2);font-size:13px;color:var(--ink2);font-weight:600}
+tr:last-child td{border-bottom:none}
+.tbl{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--brand-soft);color:var(--brand);margin:0 4px 4px 0;white-space:nowrap}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin:16px 0}
+.card h4{margin-top:0}
+.grid2 .card,.grid3 .card{margin:0}
+.grid2,.grid3{margin:16px 0}
+.callout{background:var(--brand-soft);border-left:4px solid var(--brand);padding:16px 18px;border-radius:8px;margin:16px 0;font-size:15px}
+.callout.warn{background:#fff7ed;border-color:var(--warn)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+figure{margin:20px 0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:zoom-in}
+figcaption{font-size:13.5px;color:var(--ink2);margin-top:8px;text-align:center}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}
+.node{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;text-align:center}
+.node.hl{border-color:var(--brand);background:var(--brand-soft);font-weight:600}
+.arr{color:var(--ink3);font-weight:700}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+.k{font-weight:700}
+.note{font-size:14px;color:var(--ink3)}
+footer{padding:40px 0 70px;color:var(--ink3);font-size:14px;border-top:1px solid var(--line)}
+#lb{position:fixed;inset:0;background:rgba(10,12,16,.88);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:20px}
+#lb img{max-width:100%;max-height:100%;border-radius:8px}
+@media print{nav{display:none}section{break-inside:avoid-page}}
+
+/* ---- motion ---- */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--brand),#7c3aed);transform-origin:0 50%;transform:scaleX(0);z-index:20}
+nav a.on{color:var(--ink);font-weight:600}
+.grad{background:linear-gradient(90deg,var(--brand),#7c3aed 60%,#db2777);-webkit-background-clip:text;background-clip:text;color:transparent}
+html.js .hero .ln{display:inline-block;opacity:0;transform:translateY(28px);filter:blur(8px);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards}
+html.js .hero .ln:nth-of-type(2){animation-delay:.18s}
+html.js .hero .eyebrow,html.js .hero .lead{opacity:0;animation:fade .9s .45s ease forwards}
+html.js .hero .lead{animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none;filter:none}}
+@keyframes fade{to{opacity:1}}
+html.js .rv{opacity:0;transform:translateY(36px);filter:blur(6px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s;transition-delay:var(--d,0s)}
+html.js .rv.in{opacity:1;transform:none;filter:none}
+html.js .node{transition:background .5s,border-color .5s,transform .5s;transition-delay:var(--d,0s)}
+html.js .flow:not(.in) .node.hl{background:#fff;border-color:var(--line);transform:scale(.96)}
+figure.zm img{transform:scale(var(--s,1));transition:transform .1s linear;will-change:transform}
+.stat{transition:transform .4s,box-shadow .4s}
+.stat:hover,.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,24,31,.08)}
+.card{transition:transform .4s,box-shadow .4s}
+@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ln,html.js .hero .eyebrow,html.js .hero .lead{opacity:1;transform:none;filter:none;animation:none;transition:none}figure.zm img{transform:none}html{scroll-behavior:auto}}
+@media print{html.js .rv{opacity:1;transform:none;filter:none}#prog{display:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+
+<nav><div class="wrap">
+  <b>김환희</b>
+  <a href="#criteria">핵심 역량</a><a href="#roles">담당 영역</a><a href="#request">요구 구체화</a><a href="#meeting">회의 주도</a><a href="#collab">협업</a><a href="#scenario">시나리오</a><a href="#ai">AI 활용</a><a href="#gap">앞으로</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">라이크코퍼레이션 · AI 활용 서비스·콘텐츠 기획자 / Technical PM 지원</div>
+  <h1><span class="ln">낯선 전문 분야를 빠르게 이해하고,</span><br><span class="ln grad">AI로 결과물까지 만드는 기획자</span></h1>
+  <p class="lead">의학 가이드라인을 읽고 AI 시스템의 지식으로 만들었고(CAPD), 학습 효과 연구를 근거로 교육 콘텐츠의 흐름을 설계했고(Readle), 요청을 받아 회의를 직접 이끌며 서비스 구조를 다시 설계하고 있습니다(JOYHILL).</p>
+  <div class="stats">
+    <div class="stat"><div class="n">해커톤 대상</div><div class="t">Readle · 6인 팀 PO (교육 분야)</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="1012">1,012</span>청크</div><div class="t">CAPD · 의학 가이드라인 RAG 지식베이스</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="217">217</span>명</div><div class="t">JOYHILL 등록 계정 · 직접 운영 중</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="27">27</span>화면</div><div class="t">전교인 앱 Figma 와이어프레임 (AI 초안 → 직접 정리·검수)</div></div>
+  </div>
+  <p style="margin-top:26px;color:var(--ink2);font-size:15px">김환희 · 서경대학교 소프트웨어학과 (2027.02 졸업예정) · 바로 입사 가능</p>
+</div></header>
+
+<section id="criteria"><div class="wrap">
+  <h2><small>공고에서 강조한 네 가지 역량</small>네 가지 역량과 제 경험</h2>
+  <p class="sub">콘텐츠 기획력, 개발 이해도, 프로젝트 리딩, AI 활용. 각 역량을 보여 줄 수 있는 경험을 정리했습니다.</p>
+  <div class="tbl"><table>
+    <tr><th style="width:24%">역량</th><th>제 경험</th><th style="width:18%">사례</th></tr>
+    <tr><td class="k">1. 콘텐츠 기획력</td><td>문해력 통계와 퀴즈 학습 메타분석을 근거로 "매일 10문제 → 즉시 피드백 → 오답 복습" 학습 흐름을 설계. 의학 가이드라인을 AI가 쓸 수 있는 지식베이스로 구조화</td><td><span class="tag">Readle</span><span class="tag">CAPD</span></td></tr>
+    <tr><td class="k">2. 개발 이해도</td><td>프론트엔드·백엔드·인프라를 직접 구현해 봤습니다. 기획이 API·DB·서버 구조와 일정에 어떤 영향을 주는지 판단할 수 있습니다</td><td><span class="tag">CAPD</span><span class="tag">JOYHILL</span></td></tr>
+    <tr><td class="k">3. 프로젝트 리딩·커뮤니케이션</td><td>쟁점을 안건으로 정리해 회의를 기획·진행하고, 결론과 다음 할 일을 설계에 반영. 6인 해커톤 팀에서 PO로 문제정의와 발표를 맡음</td><td><span class="tag">JOYHILL</span><span class="tag">Readle</span></td></tr>
+    <tr><td class="k">4. AI 활용 능력</td><td>실패를 겪고 AI 구조를 다시 설계(2-LLM), Figma 화면을 AI로 초안 잡고 직접 검수, Claude를 개발 파트너로 써서 기획을 동작하는 서비스로 만듦</td><td><span class="tag">CAPD</span><span class="tag">JOYHILL</span><span class="tag">SyncAI</span></td></tr>
+  </table></div>
+</div></section>
+
+<section id="roles" class="alt"><div class="wrap">
+  <h2><small>① 직접 기획한 프로젝트와 담당 영역</small>프로젝트별 담당 영역</h2>
+  <p class="sub">팀 프로젝트는 제 몫과 팀원의 몫을 구분했습니다.</p>
+  <div class="tbl"><table>
+    <tr><th>프로젝트</th><th>분야</th><th>제가 맡은 부분</th><th>다른 사람이 맡은 부분</th><th>기간</th></tr>
+    <tr><td class="k">CAPD</td><td>의료 · 산학과제</td><td>백엔드, AI 파이프라인(2-LLM + RAG), GCP 인프라, 테스트·데이터 분석</td><td>팀원: 프론트엔드, DB 스키마, UI/UX 설계 (공식 기여도 50:50)</td><td>2026.04 ~ 06</td></tr>
+    <tr><td class="k">Readle</td><td>교육 · 공공</td><td>PO: 문제정의, 자료조사, 효과 근거, 사업모델, 발표</td><td>팀원 5명: 데이터·프론트엔드·백엔드 개발</td><td>2026.09</td></tr>
+    <tr><td class="k">JOYHILL</td><td>커뮤니티 운영</td><td>기획·설계·개발·운영 전부 (개인)</td><td>—</td><td>2026.03 ~ 운영 중</td></tr>
+    <tr><td class="k">JOYHILL 전교인 앱</td><td>커뮤니티 · 신규 앱</td><td>요청 정리, 회의 기획·진행, 설계·개발 (개인)</td><td>—</td><td>2026.09 ~ 개발 중</td></tr>
+    <tr><td class="k">SyncAI</td><td>AI 협업 도구</td><td>기획·설계·개발·배포 전부 (개인)</td><td>—</td><td>2026.05 ~ 10</td></tr>
+    <tr><td class="k">FireSpot</td><td>트렌드 서비스</td><td>프론트엔드 전담(79커밋), 백엔드 인프라·CI/CD</td><td>팀원: 티어링 알고리즘 설계 등</td><td>2026.03 ~ 04</td></tr>
+    <tr><td class="k">QTPot</td><td>습관 기록 · 커뮤니티</td><td>기획·개발·운영 전부 (개인). 가입 46명, 누적 인증 956회</td><td>—</td><td>2026.02 ~ 운영 중</td></tr>
+  </table></div>
+</div></section>
+
+<section id="request"><div class="wrap">
+  <h2><small>② 요구사항을 서비스로 구체화한 사례</small>JOYHILL — 청년부 앱에서 교인 전체가 쓸 앱으로</h2>
+  <p class="sub">개인 프로젝트 · 청년부 앱 2026.03 ~ 운영 중 · 전교인 앱은 2026.09 ~ 별도 저장소에서 개발 중(미배포)</p>
+
+  <h3>처음 요구: 청년부 출석·조직 관리</h3>
+  <p>AppSheet와 구글 스프레드시트 스크립트로 관리하던 출석에서 동기화와 계정 관리 오류가 반복됐습니다. 자체 DB 기반 웹앱으로 옮기면서 출석·공지·기도제목·새가족·설교노트를 한 앱에 모았고, 로그인한 사람의 역할(5단계)에 따라 메뉴와 탭이 달라지게 설계했습니다. 지금 등록 계정은 217명입니다.</p>
+
+  <h3>새 요구: "장년층도 쓰고 싶다"</h3>
+  <p>청년부 앱을 본 장년층의 요청으로, 교인 전체(약 1,000명)가 쓸 앱을 새로 만들고 있습니다. 요청은 "우리도 쓰게 해 달라"였지만, 실제로 풀어야 할 것은 <b>훨씬 크고 복잡한 조직을 권한 구조로 어떻게 표현할지</b>였습니다.</p>
+  <div class="flow">
+    <div class="node">장년층의 요청</div><span class="arr">→</span>
+    <div class="node hl">권한·조직 쟁점을<br>안건으로 정리</div><span class="arr">→</span>
+    <div class="node hl">교회 회의<br>기획·진행</div><span class="arr">→</span>
+    <div class="node hl">답을 설계에 반영<br><small>필요하면 이전 결정도 수정</small></div><span class="arr">→</span>
+    <div class="node">와이어프레임 · 데이터 모델 · 테스트</div>
+  </div>
+  <div class="grid2">
+    <figure><img src="../assets/figma_joyhill_mobile_home.png" alt="전교인 앱 모바일 와이어프레임 홈"><figcaption>전교인 앱 모바일 와이어프레임 — 홈 (Figma)</figcaption></figure>
+    <figure><img src="../assets/figma_joyhill_mobile_attendance.png" alt="전교인 앱 출석 체크 와이어프레임"><figcaption>출석 체크 화면 (이름은 가명 처리)</figcaption></figure>
+  </div>
+  <p class="note">모바일 14화면·데스크톱 13화면을 Figma로 정리했습니다. AI로 초안을 만든 뒤 화면 구성과 흐름을 제가 정리하고 검수했습니다.</p>
+</div></section>
+
+<section id="meeting" class="alt"><div class="wrap">
+  <h2><small>③ 회의를 주도해 방향을 정한 사례</small>안건을 만들고, 결론을 내고, 설계를 바꿨습니다</h2>
+  <p class="sub">전교인 앱을 쓸 교회 조직을 상대로, 요구를 듣고 방향을 정한 회의입니다.</p>
+  <div class="grid3">
+    <div class="card"><h4>회의 전</h4>권한·조직 구조에서 결정이 필요한 쟁점을 안건으로 정리하고, 선택지마다 앱에서 어떻게 달라지는지 설명할 수 있게 준비했습니다.</div>
+    <div class="card"><h4>회의 중</h4>회의를 직접 기획하고 진행했습니다. 쟁점마다 답을 받아 결론과 다음에 할 일을 정리했습니다.</div>
+    <div class="card"><h4>회의 후</h4>받은 답을 설계에 반영했습니다. 답이 이전 결정과 다르면 기존 설계를 다시 고쳤습니다.</div>
+  </div>
+  <h3>회의에서 나온 가장 큰 변화: 돌봄(care) 축</h3>
+  <p>처음 설계는 목양(소속 공동체)과 사역(봉사 부서) 두 축으로 사람을 나눴습니다. 회의에서 답을 받는 과정에서 이 두 축으로는 표현되지 않는 사례를 발견했고, <b>돌봄 축을 하나 더 두는 방향으로 데이터 모델을 다시 설계</b>했습니다. 사용자 조직의 말을 그대로 기능 목록으로 옮기지 않고, 구조로 다시 정리한 경험입니다.</p>
+  <p class="note">회의 결정을 정리한 문서는 AI가 작성했습니다. 회의 기획과 진행, 결정은 제가 했습니다.</p>
+</div></section>
+
+<section id="collab"><div class="wrap">
+  <h2><small>④ 개발자·디자이너와 협업한 사례</small>CAPD — 2인 팀, 역할을 나눠 10주 만에 배포까지</h2>
+  <p class="sub">서경대 SW인재양성 프로그램 산학협력 과제 · 복막투석 환자 기록 검토 및 AI 후속 질문 지원 시스템 · 2026.04 ~ 06</p>
+  <div class="callout"><b>역할 분담</b><br>
+  팀원(박차원): 프론트엔드(React + Vite 전체 UI), DB 스키마, UI/UX 설계(설문·대시보드·환자 목록).<br>
+  본인(김환희): 백엔드(FastAPI REST API), AI 파이프라인(2-LLM + RAG + SSE 스트리밍), GCP 인프라(Cloud Run·Cloud SQL·CI/CD), 테스트 자동화.</div>
+  <p>화면을 설계한 팀원과 API·AI 흐름을 맡은 제가 같은 기능을 양쪽에서 맞춰야 했습니다. 처음에는 AI 질문이 만들어졌는지 화면이 주기적으로 확인하는(폴링) 방식이었는데, 질문 생성 시간과 확인 간격이 맞지 않았습니다. 그래서 서버가 결과를 바로 보내는 SSE 스트리밍으로 바꿨고, 화면 쪽과 응답 형식을 다시 맞췄습니다.</p>
+  <div class="grid2">
+    <figure><img src="../assets/capd_architecture.png" alt="CAPD 시스템 아키텍처"><figcaption>시스템 구조 — Frontend(팀원) / Backend·AI Server(본인) / DB</figcaption></figure>
+    <figure><img src="../assets/capd_contribution.png" alt="CAPD 팀원별 기여도"><figcaption>최종 발표의 팀원별 기여도 슬라이드</figcaption></figure>
+  </div>
+  <h3>그 외: FireSpot (4인 팀)</h3>
+  <p>Figma 와이어프레임을 실제 React 화면으로 구현하는 프론트엔드를 맡았습니다(79커밋). 핵심 알고리즘은 팀원이 설계했고, 저는 그 결과를 화면으로 보여 주는 쪽을 맡았습니다.</p>
+</div></section>
+
+<section id="scenario" class="alt"><div class="wrap">
+  <h2><small>⑤ 콘텐츠·사용자 시나리오를 설계한 사례</small>Readle — 연구 근거로 학습 흐름을 설계</h2>
+  <p class="sub">2026 SKTHON · GovTech 창업경진대회(교내 해커톤, 교육 분야) <b>대상</b> · 6인 팀 중 PO</p>
+
+  <h3>문제를 정의한 방식</h3>
+  <p>"문해력은 글자를 읽는 능력이 아니라 이해·추론·비판까지 이어지는 능력"이라는 틀을 세우고 공공 자료로 뒷받침했습니다. OECD PISA 2025에서 한국 읽기 점수는 501점으로 참여 이래 가장 낮았고, 「기초학력 보장법」과 기초학력 보장 종합계획(2023~2027)이 공공 도입의 근거가 됩니다.</p>
+  <figure><img src="../assets/readle_pisa.jpg" alt="PISA 읽기 점수 슬라이드"></figure>
+
+  <h3>근거에서 학습 흐름으로</h3>
+  <p>퀴즈 학습에 관한 메타분석(Yang et al., 2021, <i>Psychological Bulletin</i>, 학생 48,478명)에서 <b>즉시 피드백·꾸준한 반복·복습</b>이 효과를 키운다는 결과를 찾았고, 이 세 조건을 그대로 사용자의 하루 흐름으로 옮겼습니다.</p>
+  <div class="flow">
+    <div class="node">매일 10문제<br><small>뉴스 지문</small></div><span class="arr">→</span>
+    <div class="node hl">AI 즉시 피드백<br><small>근거: 즉시 피드백</small></div><span class="arr">→</span>
+    <div class="node hl">약점 분석 · 오답 복습<br><small>근거: 복습</small></div><span class="arr">→</span>
+    <div class="node hl">다음 날 다시 10문제<br><small>근거: 꾸준한 반복</small></div>
+  </div>
+  <div class="grid2">
+    <figure><img src="../assets/readle_effect.jpg" alt="효과 근거 슬라이드"><figcaption>효과 근거 — 메타분석 결과를 설계에 반영</figcaption></figure>
+    <figure><img src="../assets/readle_bm.jpg" alt="B2G 사업모델 슬라이드"><figcaption>공공(B2G) 3단계 사업모델 — 고등학생 파일럿 → 확장 → 교육청·학교 도입</figcaption></figure>
+  </div>
+  <p class="note">해커톤 기간 안에 실제 학생 인터뷰는 하지 못했습니다.</p>
+
+  <h3>의료 시나리오: CAPD의 AI 흐름</h3>
+  <p>환자가 하루 기록을 올리면 의사가 다음 진료 전에 이상 징후를 놓치지 않도록, 기록에서 질문, 검토, 진료 요약까지 이어지는 흐름 중 AI 부분을 제가 설계했습니다.</p>
+  <div class="flow">
+    <div class="node">환자 투석 기록</div><span class="arr">→</span>
+    <div class="node hl">코드로 수치 분석<br><small>추세·이상값</small></div><span class="arr">→</span>
+    <div class="node hl">AI 맞춤 질문 3~5개<br><small>의학 근거 검색(RAG)</small></div><span class="arr">→</span>
+    <div class="node">의사 검토·승인</div><span class="arr">→</span>
+    <div class="node">진료 요약(SOAP) 자동 생성</div>
+  </div>
+  <figure><img src="../assets/capd_review_soap.png" alt="AI 질문 검토와 SOAP 요약"><figcaption>AI 질문 검토·승인과 진료 요약 자동 생성 화면</figcaption></figure>
+</div></section>
+
+<section id="ai"><div class="wrap">
+  <h2><small>⑥ AI를 실제 기획 업무에 활용한 사례</small>AI가 낸 결과를 그대로 쓰지 않고 검증합니다</h2>
+  <div class="grid2">
+    <div class="card"><h4>실패에서 다시 설계한 AI 구조 · CAPD</h4>처음에는 LLM 하나에 수치 계산과 해석을 모두 맡겼습니다. 계산 오류와 환각이 반복되자, <b>계산은 코드가 맡고 AI는 임상 해석만</b> 하도록 나누고 의학 근거는 RAG로 넣었습니다. KDIGO·ISPD 가이드라인과 MedlinePlus를 직접 읽고 1,012청크의 지식베이스로 만들었습니다.</div>
+    <div class="card"><h4>화면 설계 · JOYHILL 전교인 앱</h4>Figma에서 AI로 화면 초안을 만들고, 화면 구성과 흐름은 제가 정리하고 검수했습니다(27화면). 초안을 빨리 만들고 판단에 시간을 쓰는 방식입니다.</div>
+    <div class="card"><h4>회의 준비와 정리 · JOYHILL</h4>개발 이슈와 주의할 점을 문서로 유지하고, 회의가 필요한 쟁점은 AI로 정리해 안건으로 만들었습니다. 충분히 논의한 내용은 프롬프트로 만들어 한 번에 작업했습니다.</div>
+    <div class="card"><h4>기획을 동작하는 결과물로 · SyncAI 외</h4>Claude를 개발 파트너로 써서 기획한 내용을 직접 동작하는 서비스로 만들었습니다. SyncAI는 AI가 계획과 실행을 나눠 맡는 협업 도구로, 배포까지 했지만 시장 출시와 사용자 확보는 하지 못했습니다.</div>
+  </div>
+  <figure><img src="../assets/capd_pipeline.png" alt="CAPD 2-LLM 파이프라인"><figcaption>CAPD 맞춤 질문 생성 파이프라인 (발표 슬라이드)</figcaption></figure>
+</div></section>
+
+<section id="gap" class="alt"><div class="wrap">
+  <h2><small>앞으로</small>입사 후 먼저 채울 부분</h2>
+  <div class="grid3">
+    <div class="card"><h4>고객사 프로젝트와 산출물</h4>외부 고객사 납품과 회사 양식의 기능정의서·정책서·스토리보드는 아직 경험하지 못했습니다. 실제 산출물을 보며 양식부터 익히겠습니다.</div>
+    <div class="card"><h4>Unity·XR 콘텐츠</h4>Web/App 개발 과정은 직접 겪었지만 Unity 기반 콘텐츠는 처음입니다. 제작 과정을 먼저 배워 개발팀과 같은 언어로 이야기하겠습니다.</div>
+    <div class="card"><h4>고객·전문가 인터뷰</h4>지금까지는 자료와 연구로 문제를 정의했습니다. 고객 미팅과 분야 전문가 인터뷰에서 요구를 끌어내는 방법을 현장에서 익히겠습니다.</div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  김환희 · 서경대학교 소프트웨어학과 · <a href="mailto:rlaghskgml@gmail.com">rlaghskgml@gmail.com</a> · 전체 포트폴리오 <a href="../">smile5959.github.io/portfolio</a><br>
+  라이크코퍼레이션 AI 활용 서비스·콘텐츠 기획자 / Technical PM 지원용 포트폴리오
+</div></footer>
+
+<div id="lb"><img alt=""></div>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* reveal targets + stagger */
+  document.querySelectorAll('section h2, section .sub, section h3, section > .wrap > p, section .tbl, section .callout, section > .wrap > ul, section .flow, section figure').forEach(function(n){n.classList.add('rv')});
+  document.querySelectorAll('.stats, .grid2, .grid3').forEach(function(g){
+    [].forEach.call(g.children,function(c,i){c.classList.add('rv');c.style.setProperty('--d',(i*.12)+'s')});
+  });
+  document.querySelectorAll('.flow').forEach(function(f){
+    [].forEach.call(f.querySelectorAll('.node'),function(c,i){c.style.setProperty('--d',(.3+i*.15)+'s')});
+  });
+  document.querySelectorAll('.stats .rv').forEach(function(c,i){c.style.setProperty('--d',(.8+i*.12)+'s')});
+  document.querySelectorAll('section figure').forEach(function(f){f.classList.add('zm')});
+
+  function count(el){
+    var to=+el.dataset.to; if(reduce)return;
+    var t0=null,dur=1500;
+    function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('ko-KR');if(p<1)requestAnimationFrame(step)}
+    el.textContent='0';setTimeout(function(){requestAnimationFrame(step)},900);
+  }
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;e.target.classList.add('in');
+      e.target.querySelectorAll('.cnt').forEach(count);io.unobserve(e.target);
+    })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+  }else{
+    document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
+  }
+
+  /* scroll progress, image zoom, active nav */
+  var bar=document.getElementById('prog'),figs=[].slice.call(document.querySelectorAll('figure.zm img'));
+  var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var ticking=false;
+  function frame(){
+    ticking=false;
+    var h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?scrollY/h:0)+')';
+    if(!reduce)figs.forEach(function(im){
+      var r=im.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
+      var p=Math.min(1,Math.max(0,(innerHeight-r.top)/(innerHeight*.75)));
+      im.style.setProperty('--s',(.92+.08*p).toFixed(3));
+    });
+    var cur=-1;secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<innerHeight*.35)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+  addEventListener('resize',frame);frame();
+})();
+</script>
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=lb.querySelector('img');
+  document.querySelectorAll('figure img').forEach(function(i){
+    i.addEventListener('click',function(){im.src=i.src;lb.style.display='flex';});
+  });
+  lb.addEventListener('click',function(){lb.style.display='none';});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.style.display='none';});
+})();
+</script>
+</body>
+</html>
