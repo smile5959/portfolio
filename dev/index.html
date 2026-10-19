@@ -94,7 +94,7 @@ figure.zm img{transform:scale(var(--s,1));transition:transform .1s linear;will-c
 
 .stack{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;font-size:14.5px;margin:12px 0}
 .ts{border-left:4px solid var(--brand)}
-.ts .row{display:grid;grid-template-columns:44px 1fr;gap:4px 12px;font-size:15px;margin:6px 0}
+.ts .row{display:grid;grid-template-columns:58px 1fr;gap:4px 12px;font-size:15px;margin:6px 0}
 .ts .row b{color:var(--ink3);font-size:13px;padding-top:2px}
 .ts .row.fix b{color:var(--ok)}
 .ts h4 .tag{margin-left:6px;vertical-align:2px}
@@ -107,7 +107,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;bac
 <div id="prog"></div>
 <nav><div class="wrap">
   <b>김환희</b>
-  <a href="#stack">기술 스택</a><a href="#joyhill">JOYHILL</a><a href="#trouble">트러블슈팅</a><a href="#church">전교인 앱</a><a href="#qtpot">QTPot</a><a href="#capd">CAPD</a><a href="#etc">그 외</a><a href="#ai">AI 활용</a><a href="#next">앞으로</a>
+  <a href="#stack">기술 스택</a><a href="#joyhill">JOYHILL</a><a href="#trouble">트러블슈팅</a><a href="#church">전교인 앱</a><a href="#qtpot">QTPot</a><a href="#capd">CAPD</a><a href="#etc">그 외</a><a href="#ai">AI 활용</a><a href="#next">배우는 방식</a>
 </div></nav>
 
 <header class="hero"><div class="wrap">
@@ -171,45 +171,28 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;bac
 </div></section>
 
 <section id="trouble"><div class="wrap">
-  <h2><small>운영하며 고친 문제들</small>트러블슈팅 — 증상, 원인, 해결</h2>
-  <p class="sub">증상이 같아 보여도 원인은 다를 수 있어서, 추측보다 로그와 재현으로 확인했습니다.</p>
+  <h2><small>운영하며 고친 문제</small>증상이 아닌 원인을 찾아 해결했습니다</h2>
+  <p class="sub">가장 오래 붙잡았던 장애 하나를 자세히, 나머지는 짧게 정리했습니다.</p>
 
-  <div class="card ts"><h4>자동 로그인이 무작위로 풀림 <span class="tag">JOYHILL · 프런트엔드 인증</span></h4>
-    <div class="row"><b>증상</b><span>로그인 유지가 켜져 있는데도 사용자가 가끔 로그아웃됨</span></div>
-    <div class="row"><b>원인</b><span>토큰 갱신 코드가 화면마다 약 20곳에 복사돼 있었고, 갱신 때마다 새 리프레시 토큰이 발급되는데 인증 상태 동기화 로직이 오래된 토큰으로 새 토큰을 덮어씀</span></div>
-    <div class="row fix"><b>해결</b><span>토큰 갱신을 <code>session.js</code> 한 모듈로 통합해 갱신 경로를 하나로 만듦 (v0.2.1)</span></div>
+  <div class="card ts"><h4>자동 로그인이 예고 없이 풀리는 문제 <span class="tag">JOYHILL · 인증</span></h4>
+    <div class="row"><b>증상</b><span>로그인 유지를 켜 둔 사용자가 가끔, 규칙 없이 로그아웃됐습니다. 사용자 입장에서는 단순한 로그인 오류였고, 매번 재현되지도 않았습니다.</span></div>
+    <div class="row"><b>추적</b><span>로그인 → 토큰 만료 → 갱신 요청 → 새 토큰 저장까지 인증 흐름을 단계별로 따라갔습니다. 서버는 갱신할 때마다 새 리프레시 토큰을 발급하는데, 브라우저에 남은 토큰이 가끔 이전 값으로 되돌아가 있었습니다.</span></div>
+    <div class="row"><b>원인</b><span>토큰 갱신 코드가 화면마다 약 20곳에 복사돼 있었고, 서로 다른 시점에 실행되면서 인증 상태 동기화 로직이 새로 받은 토큰을 오래된 토큰으로 덮어쓰고 있었습니다.</span></div>
+    <div class="row fix"><b>해결</b><span>흩어진 갱신 로직을 <code>session.js</code> 한 모듈로 통합해 토큰을 읽고 쓰는 경로를 하나로 만들었습니다(v0.2.1). 이후 인증 관련 코드는 이 모듈만 거치도록 규칙을 정했습니다.</span></div>
+    <div class="row"><b>배운 점</b><span>같은 코드를 여러 곳에 두면 버그도 여러 곳에서 다른 모습으로 나타납니다. 증상을 보고 추측하기보다 실행 흐름을 따라가 원인을 검증하는 습관이 이때 생겼습니다.</span></div>
   </div>
 
-  <div class="card ts"><h4>사진 업로드 실패 — 413, 500, 502가 차례로 <span class="tag">JOYHILL · 인프라</span></h4>
-    <div class="row"><b>증상</b><span>업로드 기능 배포 후 사진이 올라가지 않음. 고칠 때마다 다른 에러 코드가 나옴</span></div>
-    <div class="row"><b>원인</b><span>413은 nginx <code>client_max_body_size</code> 기본값(1MB), 500은 EC2에 S3 접근 IAM Role이 연결되지 않음, 502는 재시작 직후 앱 기동 지연</span></div>
-    <div class="row fix"><b>해결</b><span>워크플로로 업로드 한도 32MB 설정 → IAM Role 연결 → 기동 대기. 원인 구분법을 백엔드 문서에 남김</span></div>
-  </div>
-
-  <div class="card ts"><h4>인증이 만료돼도 로그아웃되지 않고 에러 화면에 갇힘 <span class="tag">QTPot · Spring Security</span></h4>
-    <div class="row"><b>증상</b><span>세션이 만료된 사용자가 자동 로그아웃되지 않고 계속 에러 상태</span></div>
-    <div class="row"><b>원인</b><span>formLogin을 쓰지 않아 인증 실패 진입점이 Spring Security 기본값(403)으로 떨어짐. 프런트엔드는 401에서만 자동 로그아웃하도록 되어 있었음. 또 <code>sendError()</code>를 쓰면 <code>/error</code>로 forward되며 JWT 필터가 다시 돌지 않아 403이 401로 덮임</span></div>
-    <div class="row fix"><b>해결</b><span><code>authenticationEntryPoint</code>(401)와 <code>accessDeniedHandler</code>(403)를 분리 등록하고, <code>setStatus()</code> + JSON 본문으로 직접 응답</span></div>
-  </div>
-
-  <div class="grid2">
-    <div class="card ts"><h4>백업이 새벽이 아니라 낮에 돎 <span class="tag">JOYHILL · 스케줄러</span></h4>
-      <div class="row"><b>원인</b><span>서버 시간대가 UTC이고 <code>@Scheduled</code>에 zone이 없었음. 화면의 백업 시각도 9시간 어긋나 보임</span></div>
-      <div class="row fix"><b>해결</b><span><code>zone = "Asia/Seoul"</code> 지정, 시각은 +09:00 오프셋을 붙여 직렬화</span></div>
-    </div>
-    <div class="card ts"><h4>게시글 삭제 시 500 <span class="tag">QTPot · JPA</span></h4>
-      <div class="row"><b>원인</b><span>인증 글에 달린 댓글·좋아요에 cascade 매핑이 없어 FK 위반</span></div>
-      <div class="row fix"><b>해결</b><span>삭제 전에 자식 데이터를 명시적으로 지우도록 서비스 로직 수정</span></div>
-    </div>
-    <div class="card ts"><h4>앱 재실행 후 푸시가 끊김 <span class="tag">QTPot · PWA</span></h4>
-      <div class="row"><b>원인</b><span>FCM 서비스 워커와 PWA 서비스 워커가 같은 스코프를 놓고 서로 교체</span></div>
-      <div class="row fix"><b>해결</b><span>FCM은 SDK 기본 전용 스코프에 등록되게 바꿔 두 워커를 분리</span></div>
-    </div>
-    <div class="card ts"><h4>출석이 두 번 집계됨 <span class="tag">JOYHILL · 데이터</span></h4>
-      <div class="row"><b>원인</b><span>구글시트에서 옮겨 온 과거 출석과 앱에서 새로 쌓인 출석이 같은 기간에 함께 합산됨</span></div>
-      <div class="row fix"><b>해결</b><span>집계 로직을 추적해 중복 합산을 바로잡음</span></div>
-    </div>
-  </div>
+  <h3>그 밖에 해결한 문제</h3>
+  <div class="tbl"><table>
+    <tr><th style="width:28%">증상</th><th>원인과 해결</th><th style="width:14%">프로젝트</th></tr>
+    <tr><td class="k">사진 업로드 실패 (413 → 500 → 502)</td><td>nginx 업로드 한도 기본값(1MB), EC2에 S3 접근 IAM Role 미연결, 재시작 직후 기동 지연을 하나씩 구분해 해결</td><td>JOYHILL</td></tr>
+    <tr><td class="k">세션 만료 후 에러 화면에 갇힘</td><td>인증 실패가 기본값 403으로 떨어져 프런트의 401 자동 로그아웃이 동작하지 않음 → <code>authenticationEntryPoint</code>(401)와 <code>accessDeniedHandler</code>(403)를 분리</td><td>QTPot</td></tr>
+    <tr><td class="k">백업이 새벽이 아닌 낮에 실행</td><td>서버 시간대 UTC + <code>@Scheduled</code> zone 미지정 → <code>Asia/Seoul</code> 지정</td><td>JOYHILL</td></tr>
+    <tr><td class="k">출석이 두 번 집계됨</td><td>구글시트에서 옮긴 과거 출석과 앱 출석이 같은 기간에 함께 합산 → 집계 로직 수정</td><td>JOYHILL</td></tr>
+    <tr><td class="k">게시글 삭제 시 500</td><td>댓글·좋아요에 cascade가 없어 FK 위반 → 자식 데이터를 먼저 삭제</td><td>QTPot</td></tr>
+    <tr><td class="k">앱 재실행 후 푸시 끊김</td><td>FCM과 PWA 서비스 워커가 같은 스코프를 놓고 충돌 → FCM을 전용 스코프로 분리</td><td>QTPot</td></tr>
+  </table></div>
+  <p class="note">DB 백업은 서버 디스크와 S3 비공개 버킷에 이중으로 보관하도록 바꿨습니다.</p>
 </div></section>
 
 <section id="church" class="alt"><div class="wrap">
@@ -280,12 +263,14 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;bac
 </div></section>
 
 <section id="next"><div class="wrap">
-  <h2><small>정직하게</small>아직 해 보지 않은 것과 계획</h2>
-  <ul>
-    <li><b>전자정부 표준프레임워크, JSP·jQuery, Oracle</b>은 아직 써 보지 않았습니다. Spring 기반이라 지금까지의 구조와 비교하며 빠르게 익히겠습니다.</li>
-    <li><b>공공·금융 같은 대규모 프로젝트</b>와 고객사 환경에서의 개발 경험은 없습니다. 산출물 작성과 협업 방식부터 배우겠습니다.</li>
-    <li>SQLD를 취득했고(2026.03), 정보처리기사를 준비할 계획입니다.</li>
-  </ul>
+  <h2><small>배우는 방식</small>새로운 기술을 실제 서비스로 익혀 왔습니다</h2>
+  <p class="sub">처음 쓰는 기술도 학습에서 멈추지 않고, 실제로 돌아가는 서비스로 만들며 익혔습니다.</p>
+  <div class="grid3">
+    <div class="card"><h4>Spring Boot</h4>JOYHILL과 QTPot을 만들며 JPA, Spring Security, 스케줄러, 외부 API 연동까지 실제 운영 환경에서 익혔습니다.</div>
+    <div class="card"><h4>FastAPI · GCP</h4>CAPD에서 FastAPI와 GCP Cloud Run으로 10주 안에 서비스 3개를 배포했습니다.</div>
+    <div class="card"><h4>MCP · 에이전트</h4>SyncAI에서 멀티에이전트 구조와 MCP 연결을 직접 설계하고 배포까지 했습니다.</div>
+  </div>
+  <p>전자정부 표준프레임워크, JSP·jQuery, Oracle은 아직 실무에 적용해 보지 못했습니다. Java/Spring, JavaScript, RDBMS로 서비스를 만든 경험을 바탕으로 같은 방식으로 익히겠습니다. SQLD를 취득했고(2026.03) 정보처리기사도 준비하겠습니다.</p>
 </div></section>
 
 <footer><div class="wrap">
