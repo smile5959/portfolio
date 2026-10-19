@@ -1,0 +1,356 @@
+<!doctype html>
+<html lang="ko">
+<script>document.documentElement.classList.add('js')</script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김환희 · 풀스택 개발자 포트폴리오</title>
+<meta name="description" content="화면부터 API, DB, 배포와 운영까지 직접 개발해 온 풀스택 개발자 김환희의 포트폴리오">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f6f7f9; --ink:#14181f; --ink2:#4b5563; --ink3:#8a93a1;
+  --line:#e5e8ee; --brand:#2f5bea; --brand-soft:#eef2ff; --ok:#0f9d6a; --warn:#b45309;
+  --radius:14px; --maxw:1040px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:18px;align-items:center;height:52px;overflow-x:auto;white-space:nowrap}
+nav b{margin-right:auto;font-size:15px}
+nav a{color:var(--ink2);font-size:14px}
+header.hero{padding:72px 0 48px;background:linear-gradient(180deg,var(--brand-soft),#fff)}
+.eyebrow{font-size:14px;color:var(--brand);font-weight:600;letter-spacing:.02em}
+h1{font-size:clamp(30px,5vw,46px);line-height:1.25;margin:12px 0 18px;letter-spacing:-.02em}
+.lead{font-size:clamp(16px,2vw,19px);color:var(--ink2);max-width:780px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:14px;margin-top:34px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:20px}
+.stat .n{font-size:28px;font-weight:800;color:var(--brand);letter-spacing:-.02em}
+.stat .t{font-size:14px;color:var(--ink2);margin-top:2px}
+section{padding:64px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+h2{font-size:clamp(24px,3.4vw,32px);margin:0 0 8px;letter-spacing:-.02em}
+h2 small{display:block;font-size:14px;color:var(--brand);font-weight:600;margin-bottom:6px}
+h3{font-size:20px;margin:36px 0 10px;letter-spacing:-.01em}
+h4{font-size:16px;margin:22px 0 6px}
+p{margin:8px 0}
+.sub{color:var(--ink2);margin-bottom:26px}
+table{width:100%;border-collapse:collapse;font-size:15px;background:#fff;border:1px solid var(--line);border-radius:var(--radius);overflow:hidden}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg2);font-size:13px;color:var(--ink2);font-weight:600}
+tr:last-child td{border-bottom:none}
+.tbl{overflow-x:auto}
+.tag{display:inline-block;font-size:12px;font-weight:600;padding:2px 9px;border-radius:99px;background:var(--brand-soft);color:var(--brand);margin:0 4px 4px 0;white-space:nowrap}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px;margin:16px 0}
+.card h4{margin-top:0}
+.grid2 .card,.grid3 .card{margin:0}
+.grid2,.grid3{margin:16px 0}
+.callout{background:var(--brand-soft);border-left:4px solid var(--brand);padding:16px 18px;border-radius:8px;margin:16px 0;font-size:15px}
+.callout.warn{background:#fff7ed;border-color:var(--warn)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+figure{margin:20px 0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fff;cursor:zoom-in}
+figcaption{font-size:13.5px;color:var(--ink2);margin-top:8px;text-align:center}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}
+.node{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;text-align:center}
+.node.hl{border-color:var(--brand);background:var(--brand-soft);font-weight:600}
+.arr{color:var(--ink3);font-weight:700}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+.k{font-weight:700}
+.note{font-size:14px;color:var(--ink3)}
+footer{padding:40px 0 70px;color:var(--ink3);font-size:14px;border-top:1px solid var(--line)}
+#lb{position:fixed;inset:0;background:rgba(10,12,16,.88);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:20px}
+#lb img{max-width:100%;max-height:100%;border-radius:8px}
+@media print{nav{display:none}section{break-inside:avoid-page}}
+
+/* ---- motion ---- */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--brand),#7c3aed);transform-origin:0 50%;transform:scaleX(0);z-index:20}
+nav a.on{color:var(--ink);font-weight:600}
+.grad{background:linear-gradient(90deg,var(--brand),#7c3aed 60%,#db2777);-webkit-background-clip:text;background-clip:text;color:transparent}
+html.js .hero .ln{display:inline-block;opacity:0;transform:translateY(28px);filter:blur(8px);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards}
+html.js .hero .ln:nth-of-type(2){animation-delay:.18s}
+html.js .hero .eyebrow,html.js .hero .lead{opacity:0;animation:fade .9s .45s ease forwards}
+html.js .hero .lead{animation-delay:.6s}
+@keyframes rise{to{opacity:1;transform:none;filter:none}}
+@keyframes fade{to{opacity:1}}
+html.js .rv{opacity:0;transform:translateY(36px);filter:blur(6px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s;transition-delay:var(--d,0s)}
+html.js .rv.in{opacity:1;transform:none;filter:none}
+html.js .node{transition:background .5s,border-color .5s,transform .5s;transition-delay:var(--d,0s)}
+html.js .flow:not(.in) .node.hl{background:#fff;border-color:var(--line);transform:scale(.96)}
+figure.zm img{transform:scale(var(--s,1));transition:transform .1s linear;will-change:transform}
+.stat{transition:transform .4s,box-shadow .4s}
+.stat:hover,.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(20,24,31,.08)}
+.card{transition:transform .4s,box-shadow .4s}
+@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ln,html.js .hero .eyebrow,html.js .hero .lead{opacity:1;transform:none;filter:none;animation:none;transition:none}figure.zm img{transform:none}html{scroll-behavior:auto}}
+@media print{html.js .rv{opacity:1;transform:none;filter:none}#prog{display:none}}
+
+.stack{display:grid;grid-template-columns:110px 1fr;gap:6px 14px;font-size:14.5px;margin:12px 0}
+.ts{border-left:4px solid var(--brand)}
+.ts .row{display:grid;grid-template-columns:44px 1fr;gap:4px 12px;font-size:15px;margin:6px 0}
+.ts .row b{color:var(--ink3);font-size:13px;padding-top:2px}
+.ts .row.fix b{color:var(--ok)}
+.ts h4 .tag{margin-left:6px;vertical-align:2px}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--bg2);padding:1px 6px;border-radius:5px;word-break:break-all}
+.node code{background:transparent;padding:0}
+#joyhill .grid3 figure img{max-height:460px;object-fit:contain;background:var(--bg2)}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<nav><div class="wrap">
+  <b>김환희</b>
+  <a href="#stack">기술 스택</a><a href="#joyhill">JOYHILL</a><a href="#trouble">트러블슈팅</a><a href="#church">전교인 앱</a><a href="#qtpot">QTPot</a><a href="#capd">CAPD</a><a href="#etc">그 외</a><a href="#ai">AI 활용</a><a href="#next">앞으로</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">풀스택 개발자 포트폴리오 · 신입</div>
+  <h1><span class="ln">화면부터 API, DB, 배포와 운영까지</span><br><span class="ln grad">직접 개발해 온 풀스택 개발자</span></h1>
+  <p class="lead">React로 화면을, Spring Boot로 API와 권한을, PostgreSQL·MySQL로 데이터를 설계하고, AWS에 직접 배포해 운영합니다. 혼자 만든 서비스 두 개를 지금도 운영하며, 장애가 나면 로그와 재현으로 원인을 찾아 고쳐 왔습니다.</p>
+  <div class="stats">
+    <div class="stat"><div class="n"><span class="cnt" data-to="217">217</span>명</div><div class="t">JOYHILL 등록 계정 · 1인 개발·운영 중</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="956">956</span>회</div><div class="t">QTPot 누적 인증 · 1인 개발·운영 중</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="273">273</span>개</div><div class="t">전교인 앱 테스트 · 실제 PostgreSQL 위에서 실행</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="7">7</span>개</div><div class="t">2026년에 진행한 프로젝트</div></div>
+  </div>
+  <p style="margin-top:26px;color:var(--ink2);font-size:15px">김환희 · 서경대학교 소프트웨어학과 (2027.02 졸업예정) · SQLD · 바로 입사 가능</p>
+</div></header>
+
+<section id="stack"><div class="wrap">
+  <h2><small>한눈에 보기</small>프로젝트별 기술 스택과 담당 범위</h2>
+  <p class="sub">팀 프로젝트는 제가 맡은 부분만 적었습니다.</p>
+  <div class="tbl"><table>
+    <tr><th>프로젝트</th><th>프런트엔드</th><th>백엔드</th><th>DB</th><th>인프라</th><th>담당</th></tr>
+    <tr><td class="k">JOYHILL</td><td>React, Vite, Tailwind</td><td>Spring Boot, JPA, Spring Security(JWT)</td><td>PostgreSQL</td><td>EC2, S3, nginx, GitHub Actions</td><td>1인 전부 · 운영 중</td></tr>
+    <tr><td class="k">JOYHILL 전교인 앱</td><td>React</td><td>Spring Boot, JPA, Spring Security</td><td>PostgreSQL, Flyway</td><td>(미배포)</td><td>1인 전부 · 개발 중</td></tr>
+    <tr><td class="k">QTPot</td><td>React, TypeScript, Vite, PWA</td><td>Java 17, Spring Boot, JPA, Spring Security(JWT)</td><td>MySQL (Docker Compose)</td><td>EC2, S3, nginx, GitHub Actions, FCM</td><td>1인 전부 · 운영 중</td></tr>
+    <tr><td class="k">CAPD</td><td>— (팀원)</td><td>FastAPI, SQLAlchemy, JWT</td><td>PostgreSQL + pgvector</td><td>GCP Cloud Run ×3, Cloud SQL, Secret Manager, GitHub Actions</td><td>백엔드·AI·인프라 (2인 팀, 50:50)</td></tr>
+    <tr><td class="k">SyncAI</td><td>Next.js</td><td>FastAPI, MCP, Composio</td><td>PostgreSQL, Alembic</td><td>Docker, Fly.io</td><td>1인 전부 · 배포, 미출시</td></tr>
+    <tr><td class="k">FireSpot</td><td>React (79커밋)</td><td>인프라·CI/CD (21커밋)</td><td>PostgreSQL, Redis(팀)</td><td>CI/CD</td><td>프런트엔드 전담 (4인 팀)</td></tr>
+  </table></div>
+</div></section>
+
+<section id="joyhill" class="alt"><div class="wrap">
+  <h2><small>대표 프로젝트 ① · 1인 풀스택 · 2026.03 ~ 운영 중</small>JOYHILL — 교회 청년부 출석·커뮤니티 웹앱</h2>
+  <p class="sub">앱시트와 구글시트 스크립트로 관리하던 출석에서 동기화 오류가 반복돼, 자체 DB 기반 웹 서비스로 옮겼습니다. 화면 설계부터 API·DB·배포·운영까지 혼자 했습니다.</p>
+  <div class="flow">
+    <div class="node">React SPA<br><small>Vite · Tailwind</small></div><span class="arr">→</span>
+    <div class="node">nginx<br><small>EC2</small></div><span class="arr">→</span>
+    <div class="node hl">Spring Boot API<br><small>컨트롤러 14개 · 엔티티 23개</small></div><span class="arr">→</span>
+    <div class="node">PostgreSQL</div><span class="arr">+</span>
+    <div class="node">S3<br><small>사진 · DB 백업</small></div><span class="arr">+</span>
+    <div class="node">Google Sheets API<br><small>매일 자동 백업</small></div>
+  </div>
+  <div class="grid2">
+    <div class="card"><h4>구현한 것</h4><ul>
+      <li>5단계 역할 기반 권한: 로그인한 사람의 역할에 따라 메뉴·탭·API 접근이 달라짐 (Spring Security + JWT)</li>
+      <li>출석·조직(마을/팸)·공지·기도제목·새가족·설교노트 도메인</li>
+      <li>로그인 무차별 대입 방지: Bucket4j로 IP당 1분 10회 제한 필터</li>
+      <li>S3 사진 업로드와 썸네일 생성(Thumbnailator)</li>
+      <li>DB → 구글시트 단방향 백업: 서비스 계정, 매일 새벽 자동 + 관리자 수동 실행, 성공 시에만 마지막 백업 시각 기록</li>
+    </ul></div>
+    <div class="card"><h4>배포와 운영</h4><ul>
+      <li><code>main</code> 머지 → GitHub Actions → SSH로 EC2 재배포</li>
+      <li>로그 확인, 디스크·메모리 점검, 백엔드 재시작, nginx 업로드 한도 설정, 시크릿 교체 같은 서버 작업을 GitHub Actions 워크플로로 만들어 버튼 한 번으로 실행</li>
+      <li>DB 백업을 서버 디스크와 S3 비공개 버킷에 이중으로 보관</li>
+      <li>FE·BE 커밋 331개, 머지 PR 52개</li>
+    </ul></div>
+  </div>
+  <div class="grid3">
+    <figure><img src="../assets/joyhill_login.jpg" alt="JOYHILL 로그인"><figcaption>로그인</figcaption></figure>
+    <figure><img src="../assets/joyhill_attendance.jpg" alt="JOYHILL 출석 체크"><figcaption>리더의 출석 체크</figcaption></figure>
+    <figure><img src="../assets/joyhill_home_admin.jpg" alt="JOYHILL 관리자 홈"><figcaption>관리자 홈 (역할별로 다른 화면)</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="trouble"><div class="wrap">
+  <h2><small>운영하며 고친 문제들</small>트러블슈팅 — 증상, 원인, 해결</h2>
+  <p class="sub">증상이 같아 보여도 원인은 다를 수 있어서, 추측보다 로그와 재현으로 확인했습니다.</p>
+
+  <div class="card ts"><h4>자동 로그인이 무작위로 풀림 <span class="tag">JOYHILL · 프런트엔드 인증</span></h4>
+    <div class="row"><b>증상</b><span>로그인 유지가 켜져 있는데도 사용자가 가끔 로그아웃됨</span></div>
+    <div class="row"><b>원인</b><span>토큰 갱신 코드가 화면마다 약 20곳에 복사돼 있었고, 갱신 때마다 새 리프레시 토큰이 발급되는데 인증 상태 동기화 로직이 오래된 토큰으로 새 토큰을 덮어씀</span></div>
+    <div class="row fix"><b>해결</b><span>토큰 갱신을 <code>session.js</code> 한 모듈로 통합해 갱신 경로를 하나로 만듦 (v0.2.1)</span></div>
+  </div>
+
+  <div class="card ts"><h4>사진 업로드 실패 — 413, 500, 502가 차례로 <span class="tag">JOYHILL · 인프라</span></h4>
+    <div class="row"><b>증상</b><span>업로드 기능 배포 후 사진이 올라가지 않음. 고칠 때마다 다른 에러 코드가 나옴</span></div>
+    <div class="row"><b>원인</b><span>413은 nginx <code>client_max_body_size</code> 기본값(1MB), 500은 EC2에 S3 접근 IAM Role이 연결되지 않음, 502는 재시작 직후 앱 기동 지연</span></div>
+    <div class="row fix"><b>해결</b><span>워크플로로 업로드 한도 32MB 설정 → IAM Role 연결 → 기동 대기. 원인 구분법을 백엔드 문서에 남김</span></div>
+  </div>
+
+  <div class="card ts"><h4>인증이 만료돼도 로그아웃되지 않고 에러 화면에 갇힘 <span class="tag">QTPot · Spring Security</span></h4>
+    <div class="row"><b>증상</b><span>세션이 만료된 사용자가 자동 로그아웃되지 않고 계속 에러 상태</span></div>
+    <div class="row"><b>원인</b><span>formLogin을 쓰지 않아 인증 실패 진입점이 Spring Security 기본값(403)으로 떨어짐. 프런트엔드는 401에서만 자동 로그아웃하도록 되어 있었음. 또 <code>sendError()</code>를 쓰면 <code>/error</code>로 forward되며 JWT 필터가 다시 돌지 않아 403이 401로 덮임</span></div>
+    <div class="row fix"><b>해결</b><span><code>authenticationEntryPoint</code>(401)와 <code>accessDeniedHandler</code>(403)를 분리 등록하고, <code>setStatus()</code> + JSON 본문으로 직접 응답</span></div>
+  </div>
+
+  <div class="grid2">
+    <div class="card ts"><h4>백업이 새벽이 아니라 낮에 돎 <span class="tag">JOYHILL · 스케줄러</span></h4>
+      <div class="row"><b>원인</b><span>서버 시간대가 UTC이고 <code>@Scheduled</code>에 zone이 없었음. 화면의 백업 시각도 9시간 어긋나 보임</span></div>
+      <div class="row fix"><b>해결</b><span><code>zone = "Asia/Seoul"</code> 지정, 시각은 +09:00 오프셋을 붙여 직렬화</span></div>
+    </div>
+    <div class="card ts"><h4>게시글 삭제 시 500 <span class="tag">QTPot · JPA</span></h4>
+      <div class="row"><b>원인</b><span>인증 글에 달린 댓글·좋아요에 cascade 매핑이 없어 FK 위반</span></div>
+      <div class="row fix"><b>해결</b><span>삭제 전에 자식 데이터를 명시적으로 지우도록 서비스 로직 수정</span></div>
+    </div>
+    <div class="card ts"><h4>앱 재실행 후 푸시가 끊김 <span class="tag">QTPot · PWA</span></h4>
+      <div class="row"><b>원인</b><span>FCM 서비스 워커와 PWA 서비스 워커가 같은 스코프를 놓고 서로 교체</span></div>
+      <div class="row fix"><b>해결</b><span>FCM은 SDK 기본 전용 스코프에 등록되게 바꿔 두 워커를 분리</span></div>
+    </div>
+    <div class="card ts"><h4>출석이 두 번 집계됨 <span class="tag">JOYHILL · 데이터</span></h4>
+      <div class="row"><b>원인</b><span>구글시트에서 옮겨 온 과거 출석과 앱에서 새로 쌓인 출석이 같은 기간에 함께 합산됨</span></div>
+      <div class="row fix"><b>해결</b><span>집계 로직을 추적해 중복 합산을 바로잡음</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="church" class="alt"><div class="wrap">
+  <h2><small>대표 프로젝트 ② · 1인 풀스택 · 2026.09 ~ 개발 중(미배포)</small>JOYHILL 전교인 앱 — 1,000명 규모로 다시 설계</h2>
+  <p class="sub">청년부 앱을 본 장년층의 요청으로 시작한 별도 저장소의 신규 앱입니다. 운영 중인 청년부 앱은 그대로 두고 새로 만들고 있습니다.</p>
+  <div class="grid3">
+    <div class="card"><h4>권한 모델 재설계</h4>교구·부서까지 담기 위해 고정된 역할 등급을 없애고, 실제로 속한 조직 트리에서 권한이 나오도록 데이터 모델과 권한을 다시 설계했습니다. 사용자 회의에서 받은 답을 반영해 돌봄(care) 축도 추가했습니다.</div>
+    <div class="card"><h4>Flyway 마이그레이션</h4>프로젝트 시작부터 스키마 변경을 V1~V23 마이그레이션으로 관리합니다. V1은 기존 스키마 기준선이고, <code>baseline-on-migrate</code>로 기존 운영 DB에는 V2부터 적용되게 했습니다.</div>
+    <div class="card"><h4>테스트 273개</h4>테스트 실행 시 Flyway가 로컬 PostgreSQL 테스트 DB에 스키마를 먼저 만들고, 그 위에서 <code>@SpringBootTest</code> 등 테스트 273개가 돌아갑니다. 회의에서 정한 정책이 깨지지 않는지 검증합니다.</div>
+  </div>
+</div></section>
+
+<section id="qtpot"><div class="wrap">
+  <h2><small>대표 프로젝트 ③ · 1인 풀스택 · 2026.02 ~ 운영 중</small>QTPot — QT 인증 관리 앱</h2>
+  <p class="sub">카카오톡에 사진을 올리고 관리자가 개수를 세던 인증 방식을 앱으로 옮겼습니다. 가입 46명 중 32명이 인증했고 누적 인증은 956회입니다.</p>
+  <div class="flow">
+    <div class="node">React + TypeScript<br><small>PWA</small></div><span class="arr">→</span>
+    <div class="node">nginx <code>/api/</code> 프록시<br><small>EC2</small></div><span class="arr">→</span>
+    <div class="node hl">Spring Boot (Java 17)<br><small>JPA · Security · JWT</small></div><span class="arr">→</span>
+    <div class="node">MySQL</div><span class="arr">+</span>
+    <div class="node">S3 · FCM</div>
+  </div>
+  <ul>
+    <li>사진 업로드 시 자동 최적화, 관리자용 사용자별 인증 현황, 뱃지·랭킹, FCM 푸시 알림</li>
+    <li>데이터 로딩에 요청 ID로 레이스 컨디션을 막고, 실패 시 재시도 UI를 보여 주는 패턴을 통일</li>
+    <li>로컬 개발은 Docker Compose로 MySQL을 띄우고, 배포는 GitHub Actions로 EC2에 자동화</li>
+  </ul>
+  <div class="grid2">
+    <figure><img src="../assets/qtpot_dashboard.jpg" alt="QTPot 대시보드"><figcaption>사용자 화면</figcaption></figure>
+    <figure><img src="../assets/qtpot_admin.jpg" alt="QTPot 관리자"><figcaption>관리자 화면 — 사용자별 인증 현황</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="capd" class="alt"><div class="wrap">
+  <h2><small>팀 프로젝트 · 2인 팀 · 2026.04 ~ 06</small>CAPD — 백엔드·AI·인프라 담당</h2>
+  <p class="sub">서경대 SW인재양성 프로그램 산학과제. 복막투석 환자의 일일 기록을 의료진이 검토하고 AI가 후속 질문을 돕는 시스템입니다.</p>
+  <div class="callout"><b>역할 분담 (공식 기여도 50:50)</b><br>
+  팀원: 프런트엔드(React + Vite 전체 UI), DB 스키마, UI/UX 설계<br>
+  본인: 백엔드(FastAPI REST API 전체), AI 파이프라인, GCP 인프라(Cloud Run 3개·Cloud SQL·Secret Manager·CI/CD), 테스트 자동화</div>
+  <ul>
+    <li><b>구조를 다시 설계한 경험:</b> 처음에는 LLM 하나에 수치 계산과 해석을 모두 맡겼는데 계산 오류가 반복됐습니다. 계산은 Python이, 임상 해석은 Gemini가 맡도록 나누고 의학 가이드라인 RAG(1,012청크, pgvector)를 붙였습니다.</li>
+    <li><b>폴링 → SSE:</b> AI 질문 생성 시간과 화면의 확인 주기가 맞지 않아, 서버가 결과를 바로 보내는 SSE 스트리밍으로 바꾸고 팀원과 응답 형식을 다시 맞췄습니다.</li>
+    <li>10주간 기능 80건 이상 구현</li>
+  </ul>
+  <div class="grid2">
+    <figure><img src="../assets/capd_architecture.png" alt="CAPD 시스템 구조"><figcaption>시스템 구조 — Frontend(팀원) / Backend·AI(본인)</figcaption></figure>
+    <figure><img src="../assets/capd_infra.png" alt="CAPD 인프라"><figcaption>GCP 인프라 구성</figcaption></figure>
+  </div>
+</div></section>
+
+<section id="etc"><div class="wrap">
+  <h2><small>그 외 프로젝트</small>SyncAI · FireSpot · Readle</h2>
+  <div class="grid3">
+    <div class="card"><h4>SyncAI <span class="tag">1인 · 2026.05~10</span></h4>계획(Supervisor)과 실행(Worker) 에이전트를 나눈 AI 협업 도구. MCP로 서버와 로컬 PC를 연결해 채팅 명령으로 로컬 파일을 수정하고, 민감한 작업은 사용자 승인을 거치게 했습니다. 커밋 321개, Fly.io 배포까지 했지만 시장 출시와 사용자 확보는 하지 못했습니다.</div>
+    <div class="card"><h4>FireSpot <span class="tag">4인 팀 · 2026.03~04</span></h4>프런트엔드 전담(79커밋): 카카오맵 연동, 카테고리 필터, 반응형, 구글·카카오 소셜 로그인과 JWT 자동 로그인. 백엔드 CI/CD·CORS 설정(21커밋). 핵심 알고리즘은 팀원이 설계했습니다.</div>
+    <div class="card"><h4>Readle <span class="tag">6인 팀 PO · 대상</span></h4>교내 해커톤(2026 SKTHON·GovTech) 대상. 학생 문해력 학습 서비스를 기획하고 문제정의·사업모델·발표를 맡았습니다. 개발 직무에서는 요구사항을 정리하고 설명하는 역량의 근거입니다.</div>
+  </div>
+</div></section>
+
+<section id="ai" class="alt"><div class="wrap">
+  <h2><small>일하는 방식</small>AI 코딩 도구를 쓰는 방법</h2>
+  <p class="sub">Claude Code를 개발 파트너로 적극적으로 씁니다. 대신 결과를 그대로 받지 않습니다.</p>
+  <div class="grid3">
+    <div class="card"><h4>설계는 제가 정합니다</h4>권한 모델, 데이터 구조, 배포 방식처럼 되돌리기 어려운 결정은 직접 정하고 이유를 남깁니다.</div>
+    <div class="card"><h4>검증은 테스트와 실제 동작으로</h4>생성된 코드는 테스트(전교인 앱 273개)와 로컬·운영 환경에서 실제로 돌려 보고 확인합니다.</div>
+    <div class="card"><h4>문서로 남깁니다</h4>장애 원인과 운영 절차를 저장소 문서에 남겨, 같은 문제를 다시 겪지 않게 합니다.</div>
+  </div>
+</div></section>
+
+<section id="next"><div class="wrap">
+  <h2><small>정직하게</small>아직 해 보지 않은 것과 계획</h2>
+  <ul>
+    <li><b>전자정부 표준프레임워크, JSP·jQuery, Oracle</b>은 아직 써 보지 않았습니다. Spring 기반이라 지금까지의 구조와 비교하며 빠르게 익히겠습니다.</li>
+    <li><b>공공·금융 같은 대규모 프로젝트</b>와 고객사 환경에서의 개발 경험은 없습니다. 산출물 작성과 협업 방식부터 배우겠습니다.</li>
+    <li>SQLD를 취득했고(2026.03), 정보처리기사를 준비할 계획입니다.</li>
+  </ul>
+</div></section>
+
+<footer><div class="wrap">
+  김환희 · 서경대학교 소프트웨어학과 · <a href="mailto:rlaghskgml@gmail.com">rlaghskgml@gmail.com</a> · 전체 포트폴리오 <a href="../">smile5959.github.io/portfolio</a>
+</div></footer>
+
+<div id="lb"><img alt=""></div>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  /* reveal targets + stagger */
+  document.querySelectorAll('section h2, section .sub, section h3, section > .wrap > p, section .tbl, section .callout, section > .wrap > ul, section .flow, section figure').forEach(function(n){n.classList.add('rv')});
+  document.querySelectorAll('.stats, .grid2, .grid3').forEach(function(g){
+    [].forEach.call(g.children,function(c,i){c.classList.add('rv');c.style.setProperty('--d',(i*.12)+'s')});
+  });
+  document.querySelectorAll('.flow').forEach(function(f){
+    [].forEach.call(f.querySelectorAll('.node'),function(c,i){c.style.setProperty('--d',(.3+i*.15)+'s')});
+  });
+  document.querySelectorAll('.stats .rv').forEach(function(c,i){c.style.setProperty('--d',(.8+i*.12)+'s')});
+  document.querySelectorAll('section figure').forEach(function(f){f.classList.add('zm')});
+
+  function count(el){
+    var to=+el.dataset.to; if(reduce)return;
+    var t0=null,dur=1500;
+    function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('ko-KR');if(p<1)requestAnimationFrame(step)}
+    el.textContent='0';setTimeout(function(){requestAnimationFrame(step)},900);
+  }
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;e.target.classList.add('in');
+      e.target.querySelectorAll('.cnt').forEach(count);io.unobserve(e.target);
+    })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+  }else{
+    document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
+  }
+
+  /* scroll progress, image zoom, active nav */
+  var bar=document.getElementById('prog'),figs=[].slice.call(document.querySelectorAll('figure.zm img'));
+  var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var ticking=false;
+  function frame(){
+    ticking=false;
+    var h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?scrollY/h:0)+')';
+    if(!reduce)figs.forEach(function(im){
+      var r=im.getBoundingClientRect();if(r.bottom<0||r.top>innerHeight)return;
+      var p=Math.min(1,Math.max(0,(innerHeight-r.top)/(innerHeight*.75)));
+      im.style.setProperty('--s',(.92+.08*p).toFixed(3));
+    });
+    var cur=-1;secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<innerHeight*.35)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+  addEventListener('resize',frame);frame();
+})();
+</script>
+<script>
+(function(){
+  var lb=document.getElementById('lb'), im=lb.querySelector('img');
+  document.querySelectorAll('figure img').forEach(function(i){
+    i.addEventListener('click',function(){im.src=i.src;lb.style.display='flex';});
+  });
+  lb.addEventListener('click',function(){lb.style.display='none';});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.style.display='none';});
+})();
+</script>
+</body>
+</html>
