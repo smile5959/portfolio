@@ -124,8 +124,8 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;bac
 </div></header>
 
 <section id="fit"><div class="wrap">
-  <h2><small>공고를 옆에 두고</small>맡게 될 일과 제 근거</h2>
-  <p class="sub">공고의 담당 업무와 자격·우대 사항을 순서대로 놓고, 각각 어디서 해 봤는지 적었습니다. 해 보지 않은 것은 그렇게 적었습니다.</p>
+  <h2><small>공고 요건과 제 경험</small>맡게 될 일과 제 근거</h2>
+  <p class="sub">담당 업무와 자격·우대 사항별로 관련 경험을 정리했습니다.</p>
   <div class="tbl"><table>
     <tr><th style="width:26%">공고</th><th>제 근거</th><th style="width:13%">상태</th></tr>
     <tr><td class="k">IoT 플랫폼 개발·운영</td><td><a href="#maru">maru</a>: ESP32와 웹을 EC2의 MQTT 브로커로 양방향 연결, 명령·상태 토픽 분리, 연결 상태 표시 (개인 프로젝트 규모)</td><td><span class="tag">해 봄</span></td></tr>
@@ -200,7 +200,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;bac
 
 <section id="trouble" class="alt"><div class="wrap">
   <h2><small>기술지원 · 운영하며 고친 문제</small>증상이 아니라 원인을 찾았습니다</h2>
-  <p class="sub">사용자는 "안 돼요"라고만 말합니다. 가장 오래 붙잡았던 문제 하나를 자세히, 나머지는 짧게 적었습니다.</p>
+  <p class="sub">사용자는 "안 돼요"라고만 말합니다. 그 한마디에서 원인까지 좁혀 간 사례들입니다.</p>
   <div class="card ts"><h4>자동 로그인이 예고 없이 풀리는 문제 <span class="tag">JOYHILL · 인증</span></h4>
     <div class="row"><b>증상</b><span>로그인 유지를 켜 둔 사용자가 가끔, 규칙 없이 로그아웃됐습니다. 매번 재현되지도 않았습니다.</span></div>
     <div class="row"><b>추적</b><span>로그인 → 토큰 만료 → 갱신 요청 → 새 토큰 저장까지 흐름을 단계별로 따라갔습니다. 서버는 갱신 때마다 새 토큰을 주는데, 브라우저에 남은 토큰이 가끔 이전 값으로 되돌아가 있었습니다.</span></div>
@@ -218,7 +218,7 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;bac
 
 <section id="ai"><div class="wrap">
   <h2><small>LLM · 에이전트</small>AI를 서비스 안에서 쓰이게 만든 경험</h2>
-  <p class="sub">이삭엔지니어링이 AW 2026에서 공개한 AI 통합 관제와 Multi AI Agent 자동화를 보며, 제가 해 본 것과 닿는 지점을 정리했습니다.</p>
+  <p class="sub">LLM에 맡길 일을 나누고, 그 결과를 화면까지 전달해 본 경험입니다.</p>
   <div class="grid2">
     <div class="card"><h4>CAPD <span class="tag">산학과제 · 2인 팀 · 2026.04~06</span></h4>
       복막투석 환자의 일일 기록을 의료진이 검토하고 AI가 후속 질문을 돕는 시스템입니다. 저는 FastAPI 백엔드, AI 파이프라인, GCP 인프라(Cloud Run 3개)를, 팀원은 프런트엔드를 맡았습니다(기여도 50:50).
