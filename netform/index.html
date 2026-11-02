@@ -129,7 +129,8 @@ html.js .flow:not(.in) .node.hl{background:#fff;border-color:var(--line);transfo
 .stat,.card{transition:transform .4s,box-shadow .4s}
 .stat:hover,.card:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(13,40,32,.08)}
 @media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ln,html.js .hero .eyebrow,html.js .hero .lead,html.js .hero .me{opacity:1;transform:none;filter:none;animation:none;transition:none}html{scroll-behavior:auto}}
-@media print{nav,#prog{display:none}section{break-inside:avoid-page}html.js .rv{opacity:1;transform:none;filter:none}}
+@page{margin:12mm}
+@media print{nav,#prog{display:none}header.hero{padding:24px 0}header.hero::after{display:none}section{padding:28px 0}.psr,.ba,.card,figure,tr,.flow,.callout{break-inside:avoid}h2,h3{break-after:avoid;break-inside:avoid}footer{padding:12px 0}.phones figure img{height:260px}.grid3{grid-template-columns:repeat(3,1fr)!important}.grid2{grid-template-columns:1fr 1fr!important}.stats{grid-template-columns:repeat(3,1fr)!important}.psr{grid-template-columns:repeat(3,1fr)!important}.psr > div{border-right:1px solid var(--line)!important;border-bottom:none!important}.ba{grid-template-columns:1fr auto 1fr!important}.ba .mid{transform:none!important;height:auto!important}.wk-head{break-after:avoid}body{font-size:14px}.stat:hover,.card:hover{transform:none;box-shadow:none}html.js .rv,html.js .hero .ln,html.js .hero .eyebrow,html.js .hero .lead,html.js .hero .me{opacity:1;transform:none;filter:none;animation:none;transition:none}}
 </style>
 </head>
 <body>
@@ -326,6 +327,10 @@ html.js .flow:not(.in) .node.hl{background:#fff;border-color:var(--line);transfo
   }else{
     document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
   }
+
+  addEventListener('beforeprint',function(){
+    document.querySelectorAll('.cnt').forEach(function(el){el.textContent=(+el.dataset.to).toLocaleString('ko-KR')});
+  });
 
   var bar=document.getElementById('prog');
   var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
