@@ -303,7 +303,7 @@ html.js .flow:not(.in) .node.hl{background:#fff;border-color:var(--line);transfo
   <div class="wk-head"><div class="wk-no">05</div><div>
     <h2><small>IoT · 개인 · 2026.03 (3일) · 혼자 독학</small>maru — ESP32 조명을 웹으로 제어</h2>
     <div class="meta"><span class="tag">ESP32</span><span class="tag">Arduino(C++)</span><span class="tag">MQTT</span><span class="tag">Aedes 브로커</span><span class="tag">AWS EC2</span><span class="tag">Next.js</span></div>
-    <div class="links"><a href="https://github.com/smile5959/maru-web" target="_blank" rel="noopener">GitHub<span>웹 코드</span></a></div>
+    <div class="links"><a href="https://github.com/smile5959/maru" target="_blank" rel="noopener">GitHub<span>웹·펌웨어 코드</span></a></div>
   </div></div>
   <p class="sub">수업이 아니라 혼자 자료를 찾아 가며 ESP32 보드, MQTT 브로커, 웹 화면을 직접 연결해, 집 밖에서도 웹으로 방 안의 조명 2개를 켜고 끄고 밝기를 조절하게 만들었습니다. 세이프로보의 현장 장비처럼 기기와 서버가 데이터를 주고받는 구조를 직접 다뤄 본 경험입니다.</p>
   <div class="flow">
@@ -317,7 +317,7 @@ html.js .flow:not(.in) .node.hl{background:#fff;border-color:var(--line);transfo
     <div class="card"><h4>명령과 상태를 나눔</h4>웹은 명령 토픽으로 보내고, 기기가 실제로 바뀐 뒤 상태 토픽으로 돌려준 값으로 화면을 맞췄습니다. 브로커 연결 여부도 화면에 표시했습니다.</div>
     <div class="card"><h4>보안과 배포</h4>브로커에 MQTT 인증, 웹에 JWT 로그인을 붙이고, 웹은 GitHub Actions로 EC2에 자동 배포했습니다.</div>
   </div>
-  <div class="callout warn"><b>한계</b> · 제어와 상태 피드백까지였고, 센서 값을 모아 저장·분석해 보지는 않았습니다. 지금 남아 있는 것은 GitHub의 웹 코드뿐이고, ESP32 펌웨어와 브로커 코드는 보관하지 못했습니다.</div>
+  <div class="callout warn"><b>한계</b> · 제어와 상태 피드백까지였고, 센서 값을 모아 저장·분석해 보지는 않았습니다. 웹과 ESP32 펌웨어 코드는 GitHub 저장소 하나에 정리해 공개했고, 브로커 코드는 보관하지 못했습니다. 서버는 학습을 마친 뒤 내렸습니다.</div>
 </div></section>
 
 <section id="how"><div class="wrap">

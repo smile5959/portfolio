@@ -581,7 +581,7 @@ figcaption{font-size:13.5px;color:var(--ink3);margin-top:8px;text-align:center}
 <template id="t-maru">
 <div class="ko">
   <h2>maru — ESP32 IoT 조명 제어</h2>
-  <p>개인 프로젝트 · 2026.03 (3일) · 혼자 독학 · <a href="https://github.com/smile5959/maru-web" target="_blank" rel="noopener">GitHub · maru-web</a></p>
+  <p>개인 프로젝트 · 2026.03 (3일) · 혼자 독학 · <a href="https://github.com/smile5959/maru" target="_blank" rel="noopener">GitHub · maru</a></p>
   <p>수업이 아니라 혼자 자료를 찾아 가며 ESP32 보드, MQTT 브로커, 웹 화면을 직접 연결해, 집 밖에서도 웹으로 방 안의 조명 2개를 켜고 끄고 밝기를 조절하게 만들었습니다.</p>
   <figure><img src="assets/maru_flow.svg" alt="웹, AWS EC2의 MQTT 브로커, ESP32, 조명으로 이어지는 구조도"><figcaption>웹 ⇄ 브로커(EC2) ⇄ ESP32 → 조명</figcaption></figure>
   <ul>
@@ -589,11 +589,11 @@ figcaption{font-size:13.5px;color:var(--ink3);margin-top:8px;text-align:center}
     <li><b>명령과 상태를 나눔</b> · 웹은 명령 토픽으로 보내고, 기기가 실제로 바뀐 뒤 상태 토픽으로 돌려준 값으로 화면을 맞췄습니다. 브로커 연결 여부도 화면에 표시했습니다.</li>
     <li><b>보안과 배포</b> · 브로커에 MQTT 인증, 웹에 JWT 로그인을 붙이고, 웹은 GitHub Actions로 EC2에 자동 배포했습니다.</li>
   </ul>
-  <p style="font-size:14px;color:var(--ink3)">한계: 제어와 상태 피드백까지였고, 센서 값을 모아 저장·분석해 보지는 않았습니다. 지금 남아 있는 것은 GitHub의 웹 코드뿐이고, ESP32 펌웨어와 브로커 코드는 보관하지 못했습니다.</p>
+  <p style="font-size:14px;color:var(--ink3)">한계: 제어와 상태 피드백까지였고, 센서 값을 모아 저장·분석해 보지는 않았습니다. 웹과 ESP32 펌웨어 코드는 GitHub 저장소 하나에 정리해 공개했고, 브로커 코드는 보관하지 못했습니다. 서버는 학습을 마친 뒤 내렸습니다.</p>
 </div>
 <div class="en">
   <h2>maru — ESP32 IoT light control</h2>
-  <p>Solo · 2026.03 (3 days) · self-taught · <a href="https://github.com/smile5959/maru-web" target="_blank" rel="noopener">GitHub · maru-web</a></p>
+  <p>Solo · 2026.03 (3 days) · self-taught · <a href="https://github.com/smile5959/maru" target="_blank" rel="noopener">GitHub · maru</a></p>
   <p>Learning on my own, not in a class, I connected an ESP32 board, an MQTT broker and a web UI so two lights at home can be switched and dimmed from anywhere.</p>
   <figure><img src="assets/maru_flow.svg" alt="Diagram: web, MQTT broker on AWS EC2, ESP32, lights"><figcaption>Web ⇄ broker (EC2) ⇄ ESP32 → lights</figcaption></figure>
   <ul>
@@ -601,7 +601,7 @@ figcaption{font-size:13.5px;color:var(--ink3);margin-top:8px;text-align:center}
     <li><b>Commands vs. status</b> · The web publishes to a command topic, and the UI syncs to the value the device reports on a status topic after it actually changes. Broker connection state is shown on screen.</li>
     <li><b>Security and deploy</b> · MQTT auth on the broker, JWT login on the web, and GitHub Actions deploys the web app to EC2.</li>
   </ul>
-  <p style="font-size:14px;color:var(--ink3)">Limits: it covers control and status feedback only; I didn't collect or analyze sensor data. Only the web code on GitHub remains; the ESP32 firmware and broker code were not kept.</p>
+  <p style="font-size:14px;color:var(--ink3)">Limits: it covers control and status feedback only; I didn't collect or analyze sensor data. The web and ESP32 firmware code are public in one GitHub repo; the broker code was not kept. I shut the server down after the project.</p>
 </div>
 </template>
 
