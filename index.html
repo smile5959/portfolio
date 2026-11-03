@@ -104,7 +104,7 @@ h2{font-size:clamp(28px,4.4vw,52px);line-height:1.2;letter-spacing:-.035em;margi
 .more{font-weight:700;color:var(--accent);font-size:14.5px}
 @media(max-width:860px){.feat{grid-template-columns:1fr}.feat.rev .shot{order:0}.feat .shot{min-height:0}.feat .shot img{height:230px}}
 
-.others{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.others{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-top:40px}
 .oc{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;cursor:pointer;transition:transform .25s,border-color .25s;display:flex;flex-direction:column}
 .oc:hover{transform:translateY(-3px);border-color:var(--ink3)}
 .oc img{height:170px;width:100%;object-fit:cover;object-position:top;background:var(--bg2);border-bottom:1px solid var(--line)}
@@ -305,6 +305,7 @@ figcaption{font-size:13.5px;color:var(--ink3);margin-top:8px;text-align:center}
     <div class="oc rv" data-open="capd"><img src="assets/capd_doctor.png" alt=""><div class="b"><h4>CAPD</h4><div class="period">2026.04 — 06</div><p class="ko">복막투석 환자 기록 검토·AI 후속 질문 시스템. 백엔드·AI·인프라 담당(2인 팀).</p><p class="en">AI follow-up question system for peritoneal dialysis records. I owned backend, AI and infra (2-person team).</p><span class="chip">2-LLM + RAG</span> <span class="chip">GCP</span></div></div>
     <div class="oc rv" data-open="qtpot"><img src="assets/qtpot_dashboard.jpg" alt=""><div class="b"><h4>QTPot</h4><div class="period">2026.02 —</div><p class="ko">수동 QT 인증 확인을 앱으로 자동화. 누적 인증 956회.</p><p class="en">Automated manual QT check-in tracking. 956 check-ins so far.</p><span class="chip">Full-stack</span> <span class="chip">FCM</span></div></div>
     <div class="oc rv" data-open="firespot"><img src="assets/firespot_map.png" alt=""><div class="b"><h4>FireSpot</h4><div class="period">2026.03 — 04</div><p class="ko">데이터랩 트렌드 기반 핫플레이스 서비스. 프런트엔드 전담(4인 팀).</p><p class="en">Trend-based hot-place service. Sole frontend developer in a team of four.</p><span class="chip">React</span> <span class="chip">CI/CD</span></div></div>
+    <div class="oc rv" data-open="maru"><img src="assets/maru_flow.svg" alt=""><div class="b"><h4>maru</h4><div class="period">2026.03 (3일)</div><p class="ko">ESP32 조명을 웹으로 켜고 끄는 IoT 시스템. 보드부터 브로커·웹까지 혼자 독학으로 연결.</p><p class="en">IoT system that controls ESP32 lights from the web. Board, broker and web, self-taught and built solo.</p><span class="chip">IoT</span> <span class="chip">MQTT</span></div></div>
   </div>
 </div></section>
 
@@ -574,6 +575,33 @@ figcaption{font-size:13.5px;color:var(--ink3);margin-top:8px;text-align:center}
     <figure><img src="assets/firespot_premium.png" alt=""><figcaption>My page · Premium</figcaption></figure>
   </div>
   <p style="font-size:14px;color:var(--ink3)">Screens are from the Figma wireframes.</p>
+</div>
+</template>
+
+<template id="t-maru">
+<div class="ko">
+  <h2>maru — ESP32 IoT 조명 제어</h2>
+  <p>개인 프로젝트 · 2026.03 (3일) · 혼자 독학 · <a href="https://github.com/smile5959/maru-web" target="_blank" rel="noopener">GitHub · maru-web</a></p>
+  <p>수업이 아니라 혼자 자료를 찾아 가며 ESP32 보드, MQTT 브로커, 웹 화면을 직접 연결해, 집 밖에서도 웹으로 방 안의 조명 2개를 켜고 끄고 밝기를 조절하게 만들었습니다.</p>
+  <figure><img src="assets/maru_flow.svg" alt="웹, AWS EC2의 MQTT 브로커, ESP32, 조명으로 이어지는 구조도"><figcaption>웹 ⇄ 브로커(EC2) ⇄ ESP32 → 조명</figcaption></figure>
+  <ul>
+    <li><b>왜 MQTT였나</b> · 집 안 기기에는 밖에서 직접 요청을 보낼 수 없어, 기기가 먼저 브로커에 접속해 명령을 기다리게 했습니다. 브라우저는 WebSocket, ESP32는 MQTT로 같은 브로커에 붙였습니다.</li>
+    <li><b>명령과 상태를 나눔</b> · 웹은 명령 토픽으로 보내고, 기기가 실제로 바뀐 뒤 상태 토픽으로 돌려준 값으로 화면을 맞췄습니다. 브로커 연결 여부도 화면에 표시했습니다.</li>
+    <li><b>보안과 배포</b> · 브로커에 MQTT 인증, 웹에 JWT 로그인을 붙이고, 웹은 GitHub Actions로 EC2에 자동 배포했습니다.</li>
+  </ul>
+  <p style="font-size:14px;color:var(--ink3)">한계: 제어와 상태 피드백까지였고, 센서 값을 모아 저장·분석해 보지는 않았습니다. 지금 남아 있는 것은 GitHub의 웹 코드뿐이고, ESP32 펌웨어와 브로커 코드는 보관하지 못했습니다.</p>
+</div>
+<div class="en">
+  <h2>maru — ESP32 IoT light control</h2>
+  <p>Solo · 2026.03 (3 days) · self-taught · <a href="https://github.com/smile5959/maru-web" target="_blank" rel="noopener">GitHub · maru-web</a></p>
+  <p>Learning on my own, not in a class, I connected an ESP32 board, an MQTT broker and a web UI so two lights at home can be switched and dimmed from anywhere.</p>
+  <figure><img src="assets/maru_flow.svg" alt="Diagram: web, MQTT broker on AWS EC2, ESP32, lights"><figcaption>Web ⇄ broker (EC2) ⇄ ESP32 → lights</figcaption></figure>
+  <ul>
+    <li><b>Why MQTT</b> · Devices on a home network can't receive requests from outside, so the device connects to the broker first and waits for commands. The browser uses WebSocket and the ESP32 uses MQTT on the same broker.</li>
+    <li><b>Commands vs. status</b> · The web publishes to a command topic, and the UI syncs to the value the device reports on a status topic after it actually changes. Broker connection state is shown on screen.</li>
+    <li><b>Security and deploy</b> · MQTT auth on the broker, JWT login on the web, and GitHub Actions deploys the web app to EC2.</li>
+  </ul>
+  <p style="font-size:14px;color:var(--ink3)">Limits: it covers control and status feedback only; I didn't collect or analyze sensor data. Only the web code on GitHub remains; the ESP32 firmware and broker code were not kept.</p>
 </div>
 </template>
 
