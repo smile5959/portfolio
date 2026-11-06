@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="근거를 모으고 숫자를 확인해 판단을 돕는 이공계 기획자 김환희의 경영기획 포트폴리오">
+<meta name="robots" content="noindex">
+<title>김환희 · 경영기획 포트폴리오 (한화컴파운드 지원)</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f7f6f4; --ink:#17140f; --ink2:#4d4842; --ink3:#8a847c;
+  --line:#e8e3dc; --brand:#d4570f; --brand2:#f08a24; --brand-soft:#fff1e5; --warn:#9a3412;
+  --before:#f3f1ee; --radius:14px; --maxw:1000px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;line-height:1.68;font-size:15px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:var(--brand);text-decoration:none}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+header.hero{padding:56px 0 40px;background:radial-gradient(900px 420px at 88% -10%,#ffe0c4 0,transparent 60%),linear-gradient(180deg,var(--brand-soft),#fff 85%)}
+.eyebrow{font-size:13.5px;color:var(--brand);font-weight:700}
+h1{font-size:clamp(30px,5vw,44px);line-height:1.25;margin:12px 0 16px;letter-spacing:-.03em}
+.grad{background:linear-gradient(90deg,var(--brand),var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{font-size:16.5px;color:var(--ink2);max-width:780px}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:28px}
+.stat{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:16px 18px}
+.stat .n{font-size:26px;font-weight:800;color:var(--brand);letter-spacing:-.02em;line-height:1.3}
+.stat .t{font-size:13px;color:var(--ink2);margin-top:2px}
+.me{margin-top:20px;color:var(--ink2);font-size:14px}
+section{padding:48px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+h2{font-size:clamp(23px,3.2vw,30px);margin:0 0 6px;letter-spacing:-.025em;line-height:1.35}
+h2 small{display:block;font-size:13px;color:var(--brand);font-weight:700;margin-bottom:6px}
+h3{font-size:17.5px;margin:26px 0 8px;letter-spacing:-.01em}
+p{margin:6px 0}
+.sub{color:var(--ink2);margin-bottom:20px;max-width:820px}
+table{width:100%;border-collapse:collapse;font-size:14px;background:#fff;border:1px solid var(--line)}
+th,td{padding:10px 12px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg2);font-size:12.5px;color:var(--ink2);font-weight:600}
+tr:last-child td{border-bottom:none}
+.k{font-weight:700}
+.tag{display:inline-block;font-size:11.5px;font-weight:700;padding:2px 9px;border-radius:99px;background:var(--brand-soft);color:var(--brand);white-space:nowrap}
+.tag.learn{background:#f1f0ee;color:var(--ink2)}
+.wk-head{display:flex;gap:16px;align-items:flex-start}
+.wk-no{flex:none;font-size:14px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));width:42px;height:42px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0 2px}
+.psr{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;margin:16px 0}
+.psr > div{padding:18px;border-right:1px solid var(--line)}
+.psr > div:last-child{border-right:none}
+.psr .h{font-size:12px;font-weight:800;letter-spacing:.05em;color:var(--brand);margin-bottom:6px}
+.psr .big{font-size:21px;font-weight:800;letter-spacing:-.02em;line-height:1.3}
+.psr .big small{font-size:13px;font-weight:600;color:var(--ink2)}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:14px 0}
+.node{background:#fff;border:1px solid var(--line);border-radius:10px;padding:9px 13px;font-size:13.5px;text-align:center;line-height:1.45}
+.node small{color:var(--ink3)}
+.node.hl{border-color:var(--brand);background:var(--brand-soft);font-weight:600}
+.arr{color:var(--ink3);font-weight:700}
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:stretch;margin:16px 0}
+.ba .side{border-radius:var(--radius);padding:16px 18px;border:1px solid var(--line)}
+.ba .before{background:var(--before)}
+.ba .after{background:var(--brand-soft);border-color:#f6cfae}
+.ba .lbl{font-size:12px;font-weight:800;letter-spacing:.05em;margin-bottom:4px;color:var(--ink3)}
+.ba .after .lbl{color:var(--brand)}
+.ba .mid{display:flex;align-items:center;font-size:20px;color:var(--brand);font-weight:800}
+.grid2,.grid3{display:grid;gap:14px;margin:14px 0}
+.grid2{grid-template-columns:1fr 1fr}
+.grid3{grid-template-columns:repeat(3,1fr)}
+.split{display:grid;grid-template-columns:1fr 2fr;gap:18px;margin:14px 0;align-items:start}
+.ba.stack{grid-template-columns:1fr!important;margin-top:8px}
+.keep{break-inside:avoid}
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:18px}
+.card h4{margin:0 0 6px;font-size:15px}
+.card .when{display:inline-block;font-size:12px;font-weight:800;color:var(--brand);background:var(--brand-soft);padding:2px 10px;border-radius:99px;margin-bottom:8px}
+ul{padding-left:18px;margin:6px 0}
+li{margin:3px 0}
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:12px;background:#fff}
+.phone img{height:360px;object-fit:contain;background:var(--bg2)}
+figcaption{font-size:12.5px;color:var(--ink2);margin-top:6px;text-align:center}
+.callout{background:var(--brand-soft);border-left:4px solid var(--brand);padding:14px 16px;border-radius:10px;margin:16px 0;font-size:14.5px}
+.note{font-size:13px;color:var(--ink3)}
+footer{padding:28px 0 48px;color:var(--ink3);font-size:13px;border-top:1px solid var(--line)}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}.psr,.grid2,.grid3,.ba{grid-template-columns:1fr}.psr > div{border-right:none;border-bottom:1px solid var(--line)}}
+@page{size:A4;margin:11mm}
+@media print{
+  body{font-size:13px}
+  header.hero{padding:16px 0 18px}
+  h1{font-size:32px;margin:8px 0 10px}
+  .stats{margin-top:16px}.stat{padding:10px 14px}.stat .n{font-size:21px}
+  th,td{padding:7px 10px}
+  .split{grid-template-columns:1fr 2fr!important}
+  section{padding:22px 0}
+  .stats{grid-template-columns:repeat(4,1fr)!important}
+  .psr{grid-template-columns:repeat(3,1fr)!important}.psr > div{border-right:1px solid var(--line)!important;border-bottom:none!important}
+  .grid2{grid-template-columns:1fr 1fr!important}.grid3{grid-template-columns:repeat(3,1fr)!important}
+  .ba{grid-template-columns:1fr auto 1fr!important}
+  .psr,.ba,.card,figure,tr,.flow,.callout,.stat{break-inside:avoid}
+  h2,h3,.wk-head{break-after:avoid}
+  .phone img{height:250px}
+  .pb{break-before:page}
+  footer{padding:6px 0 0;border-top:0}
+  .bm img{max-height:255px;width:auto;margin:0 auto}
+  section{padding:16px 0}
+  .card{padding:12px 14px}
+  .callout{margin:10px 0;padding:10px 14px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero"><div class="wrap">
+  <div class="eyebrow">한화컴파운드 대졸 신입사원(기획) · 희망직무 경영기획 · 포트폴리오</div>
+  <h1>근거를 모으고 숫자를 확인해<br><span class="grad">판단을 돕는 이공계 기획자</span></h1>
+  <p class="lead">흩어진 자료를 모아 문제를 정리하고, 사람들이 같은 근거로 결정하도록 돕는 일을 해 왔습니다. 경영기획의 일인 <b>사업 방향을 근거로 세우는 일</b>, <b>숫자를 정확하게 관리하는 일</b>, <b>여러 사람의 의견을 모아 실행하는 일</b>에 맞춰 경험을 정리했습니다.</p>
+  <div class="stats">
+    <div class="stat"><div class="n">대상</div><div class="t">교내 해커톤 · 6인 팀 PO로 기획</div></div>
+    <div class="stat"><div class="n">217개</div><div class="t">직접 운영하는 서비스의 등록 계정</div></div>
+    <div class="stat"><div class="n">2회째</div><div class="t">처음 제안해 연 학과 연합 공모전</div></div>
+    <div class="stat"><div class="n">SQLD</div><div class="t">소프트웨어학과 · 데이터베이스·빅데이터 이수</div></div>
+  </div>
+  <p class="me">김환희 · 서경대학교 소프트웨어학과 (2027.02 졸업예정, 3.51/4.5) · 육군 병장 만기전역 · rlaghskgml@gmail.com</p>
+</div></header>
+
+<section id="fit"><div class="wrap">
+  <h2><small>경영기획 업무와 제 경험</small>맡게 될 일마다 해 본 근거</h2>
+  <p class="sub">경영기획에서 하는 일을 제가 이해한 대로 나누고, 관련 경험을 연결했습니다. 해 보지 않은 일은 「배울 것」으로 따로 표시했습니다.</p>
+  <table>
+    <tr><th style="width:24%">경영기획 업무</th><th>제 근거</th><th style="width:11%">상태</th></tr>
+    <tr><td class="k">사업 방향·전략 수립</td><td><b>01 Readle</b>: 문제의 크기 → 해결 방식의 근거 → 수익 구조 순서로 3단계 사업 모델을 설계해 대상 수상</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">시장·자료 조사</td><td><b>01 Readle</b>: OECD PISA 통계, 학술 메타분석, 관련 법령과 정부 계획을 찾아 근거로 사용</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">실적·데이터 관리</td><td><b>02 JOYHILL</b>: 출석 데이터를 DB로 옮기며 출석률 100% 초과 집계 오류를 찾아 원인부터 수정, 매일 자동 백업 · SQLD</td><td><span class="tag">운영 중</span></td></tr>
+    <tr><td class="k">유관 부서 조율·회의</td><td><b>02 JOYHILL</b>: 교인 전체 확장 쟁점을 정리해 회의를 직접 기획·진행 · <b>03 학생회장</b>: 두 학과 연합 공모전 제안·개최</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">보고·집계 업무 효율화</td><td><b>02 JOYHILL</b>: 손으로 모으던 출석 통계를 자동 집계·백업으로 전환 · <b>04 CAPD</b>: 계산은 코드, 해석은 AI로 분리</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">원가·손익 분석, 재무 지식</td><td>학생회 장부 관리 외에는 경험이 없습니다. 입사 후 회사의 실적 자료로 배우겠습니다</td><td><span class="tag learn">배울 것</span></td></tr>
+    <tr><td class="k">화학 소재·제조 공정 이해</td><td>전공 밖의 분야입니다. 제품과 공정 용어부터 익히겠습니다(아래 「입사 후」)</td><td><span class="tag learn">배울 것</span></td></tr>
+  </table>
+</div></section>
+
+<section id="w1" class="alt"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">01</div><div>
+    <h2>Readle · 근거의 순서로 설득한 기획</h2>
+    <div class="meta"><span class="tag">2026.09 교내 해커톤(SKTHON·GovTech)</span><span class="tag">6인 팀 PO</span><span class="tag">대상</span></div>
+  </div></div>
+  <p>학생 문해력 학습 서비스를 기획했습니다. 제가 맡은 일은 <b>문제 정의, 자료 조사, 사업 모델, 발표</b>입니다. 아이디어를 말로 설득하지 않고, 심사위원이 물을 질문 순서대로 근거를 쌓았습니다.</p>
+  <div class="psr">
+    <div><div class="h">1 · 문제는 얼마나 큰가</div><div class="big">PISA 읽기 501점<br><small>참여 이래 최저, 이전 515점 대비 14점 하락</small></div></div>
+    <div><div class="h">2 · 해결 방식은 효과가 있나</div><div class="big">효과크기 0.499<br><small>학생 48,478명 퀴즈 학습 메타분석, 읽기·어휘 0.644</small></div></div>
+    <div><div class="h">3 · 돈은 어디서 오나</div><div class="big">3단계 사업 모델<br><small>파일럿 효과 데이터 → 교육청·학교 도입</small></div></div>
+  </div>
+  <div class="grid2">
+    <figure><img src="../assets/readle_pisa.jpg" alt="PISA 읽기 점수 하락과 양극화 자료"><figcaption>문제 정의: 점수 하락, 하위권 증가와 상위권 감소, 현장 인식, 영상 시청 시간</figcaption></figure>
+    <figure><img src="../assets/readle_effect.jpg" alt="퀴즈 학습 효과 메타분석 자료"><figcaption>효과 근거: 효과를 키운 조건(즉시 피드백·반복·복습)을 서비스 구조에 그대로 반영</figcaption></figure>
+  </div>
+  <figure class="bm"><img src="../assets/readle_bm.jpg" alt="3단계 사업 모델"><figcaption>사업 모델: 고등학생 파일럿 → 학습자 확대 → 기초학력 보장법·정부 종합계획 재원과 연결한 교육청·학교 라이선스</figcaption></figure>
+  <div class="callout"><b>배운 점</b> · 좋은 기획은 아이디어보다 근거의 순서에서 나왔습니다. 사업계획이나 투자 검토 자료를 만들 때도 <b>문제의 크기 → 해결 방식의 근거 → 수익 구조</b> 순서로 정리하겠습니다.</div>
+  <p class="note">해커톤 기간 안에 실제 사용자 인터뷰는 하지 못했습니다. 발표에 쓴 사용자 페르소나는 조사 자료를 바탕으로 만든 가상 인물입니다.</p>
+</div></section>
+
+<section id="w2" class="pb"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">02</div><div>
+    <h2>JOYHILL · 숫자를 직접 관리하며 운영한 서비스</h2>
+    <div class="meta"><span class="tag">2026.03 ~ 운영 중</span><span class="tag">기획부터 운영까지 1인</span><span class="tag">등록 계정 217개</span></div>
+  </div></div>
+  <p>다니는 교회 청년부의 출석은 앱시트와 구글 스프레드시트로 관리했는데, 둘 사이의 동기화 오류가 반복되었습니다. 출석·공지·조직 관리를 하나로 묶은 웹 서비스를 AI 도구를 활용해 직접 기획하고 만들어 <b>2주 만에 실제 데이터로 운영을 시작</b>했습니다.</p>
+  <div class="split">
+    <figure class="phone"><img src="../assets/joyhill_attendance.jpg" alt="출석 체크 화면"><figcaption>출석 체크 화면(예시 데이터)</figcaption></figure>
+    <div>
+      <h3 style="margin-top:0">숫자가 틀린 것을 찾아 원인부터 고쳤습니다</h3>
+      <div class="ba stack">
+        <div class="side before"><div class="lbl">발견</div>시트 기록을 DB로 옮긴 뒤 <b>출석률이 100%를 넘는</b> 값이 나옴</div>
+        <div class="side after"><div class="lbl">원인과 조치</div>데이터가 어디서 들어와 어떻게 합쳐지는지 따라가, <b>같은 기간이 두 번 집계</b>되는 것을 확인. 원인을 고치고 집계 기준을 정해 남김</div>
+      </div>
+      <h3>쓰는 사람이 계속 쓸 수 있게 했습니다</h3>
+      <ul>
+        <li>운영진이 익숙한 스프레드시트를 계속 쓰도록 출석 통계를 <b>매일 새벽 자동으로 시트에 백업</b>. 실패가 성공처럼 보이지 않게 성공했을 때만 시각을 기록</li>
+        <li>백업이 낮 12시에 돌던 것을 발견해 서버 시간대 문제를 한국 시간으로 수정</li>
+        <li>역할마다 쓰는 기능이 달라 질문이 늘자 <b>역할별 10쪽 사용 가이드</b>를 만들어 공유</li>
+      </ul>
+    </div>
+  </div>
+  <div class="keep">
+  <h3>의견이 다른 사람들을 모아 결정하게 했습니다</h3>
+  <p>장년층에서도 같은 서비스를 쓰고 싶다는 요청이 와, 교인 전체(약 1,000명)로 넓히는 작업을 하고 있습니다. 권한과 조직 구조처럼 사람마다 생각이 다른 쟁점을 목록으로 정리해 <b>교회 회의를 직접 기획하고 진행</b>했고, 결정된 내용은 서비스 규칙으로 고정해 다시 흔들리지 않게 했습니다.</p>
+  <div class="flow">
+    <div class="node">요청 접수<br><small>장년층 사용 요청</small></div><span class="arr">→</span>
+    <div class="node hl">쟁점 정리<br><small>권한·조직 구조</small></div><span class="arr">→</span>
+    <div class="node hl">회의 기획·진행<br><small>본인</small></div><span class="arr">→</span>
+    <div class="node">결정 반영<br><small>서비스 규칙으로 고정</small></div>
+  </div>
+  </div>
+</div></section>
+
+<section id="w3" class="alt"><div class="wrap keep">
+  <div class="wk-head"><div class="wk-no">03</div><div>
+    <h2>소프트웨어학과 학생회장 · 처음 제안하고 이어지게 만든 일</h2>
+    <div class="meta"><span class="tag">2025.01 ~ 2025.12</span><span class="tag">학생회장</span></div>
+  </div></div>
+  <div class="grid3">
+    <div class="card"><h4>연합 공모전 제안·개최</h4><p>전자컴퓨터공학과와 함께하는 연합 공모전을 직접 제안해 제1회를 열었습니다. 2026년에 2회째로 이어지고 있습니다.</p></div>
+    <div class="card"><h4>장부 관리</h4><p>학생회 예산의 쓰임을 장부로 관리했습니다.</p></div>
+    <div class="card"><h4>대표자 회의</h4><p>매주 이공대학 회의와 전체학생대표자회의에 참석해 학과 의견을 전했습니다.</p></div>
+  </div>
+  <p>한 번 정한 일을 다음 해에도 이어지는 구조로 남기는 것이 실행의 끝이라는 것을 이때 배웠습니다.</p>
+</div></section>
+
+<section id="w4"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">04</div><div>
+    <h2>CAPD · 숫자가 틀리면 안 되는 일을 다루는 방식</h2>
+    <div class="meta"><span class="tag">2026.04 ~ 06 (10주)</span><span class="tag">기업 산학과제 · 2인 팀</span><span class="tag">백엔드·AI·인프라 담당</span></div>
+  </div></div>
+  <p>복막투석 환자의 기록을 바탕으로 AI가 의사에게 후속 질문을 제안하는 서비스를 만들었습니다.</p>
+  <div class="ba">
+    <div class="side before"><div class="lbl">처음</div>AI 한 번에 <b>수치 계산과 해석</b>을 함께 맡김 → 계산 오류가 반복</div>
+    <div class="mid">→</div>
+    <div class="side after"><div class="lbl">바꾼 구조</div><b>계산은 정해진 공식대로 코드가</b>, AI는 그 결과를 <b>해석만</b> 하도록 분리. 의학 가이드라인 1,012개 단위로 근거 자료를 정리해 AI가 출처를 찾아 답하게 함</div>
+  </div>
+  <div class="callout">경영기획에서 다루는 실적, 원가, 손익도 같은 원칙으로 다루겠습니다. <b>숫자는 검증된 기준으로 계산하고, 해석과 보고는 그 숫자를 근거로</b> 하겠습니다.</div>
+</div></section>
+
+<section id="plan" class="alt"><div class="wrap keep">
+  <h2><small>입사 후</small>먼저 회사의 숫자를 정확히 익히겠습니다</h2>
+  <div class="grid3">
+    <div class="card"><span class="when">처음 1개월</span><h4>숫자가 만들어지는 길 익히기</h4><p>제품군별 매출과 원가, 한화솔루션에 보고되는 경영 지표가 어떤 자료로 어떻게 만들어지는지 배우며 정리하겠습니다.</p></div>
+    <div class="card"><span class="when">3개월</span><h4>현장의 말을 숫자로</h4><p>반도전 컴파운드 등 주요 제품과 여수 공장의 생산 흐름, 용어를 익혀 현장의 이야기를 기획 자료로 옮길 수 있게 하겠습니다.</p></div>
+    <div class="card"><span class="when">6개월</span><h4>반복 업무를 줄이기</h4><p>매번 반복되는 집계와 보고 작업을 정리해 자동화하고, 아낀 시간을 분석과 판단 지원에 쓰겠습니다.</p></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  김환희 · rlaghskgml@gmail.com · 전체 작업물 https://smile5959.github.io/portfolio/ · GitHub smile5959
+</div></footer>
+</body>
+</html>
