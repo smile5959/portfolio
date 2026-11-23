@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="ko">
+<script>document.documentElement.classList.add('js')</script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김환희 · AX 추진 포트폴리오 (새솔다이아몬드공업 AX추진PM 지원)</title>
+<meta name="description" content="현업의 반복 업무를 찾아 AI로 바꾸고, 효과를 확인해 넓혀 가는 신입 AX 추진 담당자 김환희의 작업물">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f4f7fa; --ink:#0c1a2e; --ink2:#46546a; --ink3:#8691a3;
+  --line:#e1e7ee; --navy:#0b1a30; --navy2:#13294a;
+  --brand:#0a7ea4; --brand2:#22c1dc; --brand-soft:#e7f6fa; --brand-line:#b9e3ef;
+  --warn:#b45309; --warn-soft:#fff6ea; --before:#f5f2ec;
+  --radius:16px; --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+b{font-weight:700}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:18px;align-items:center;height:54px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav b{margin-right:auto;font-size:15px;display:flex;align-items:center;gap:8px}
+nav b i{display:inline-block;width:12px;height:12px;transform:rotate(45deg);background:linear-gradient(135deg,var(--brand),var(--brand2));border-radius:2px}
+nav a{color:var(--ink2);font-size:14px}
+nav a.on{color:var(--ink);font-weight:600}
+
+/* hero */
+header.hero{position:relative;overflow:hidden;padding:92px 0 60px;color:#eaf3fa;background:radial-gradient(900px 480px at 88% 0%,rgba(34,193,220,.22),transparent 60%),radial-gradient(700px 400px at 0% 100%,rgba(10,126,164,.25),transparent 60%),linear-gradient(160deg,var(--navy),var(--navy2))}
+header.hero svg.facet{position:absolute;right:-60px;top:24px;width:520px;height:520px;opacity:.55;pointer-events:none}
+@media(max-width:760px){header.hero svg.facet{width:340px;height:340px;right:-120px;top:10px;opacity:.3}}
+.eyebrow{font-size:14px;color:var(--brand2);font-weight:700;letter-spacing:.02em;position:relative}
+h1{font-size:clamp(32px,5.4vw,54px);line-height:1.22;margin:14px 0 20px;letter-spacing:-.03em;position:relative;color:#fff}
+.lead{font-size:clamp(16px,2vw,19px);color:#bfd0e0;max-width:780px;position:relative}
+.lead b{color:#fff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px;position:relative;z-index:1}
+.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:20px 22px;backdrop-filter:blur(4px)}
+.stat .n{font-size:30px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.3}
+.stat .n em{font-style:normal;color:var(--brand2)}
+.stat .t{font-size:14px;color:#a9bccd;margin-top:2px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.stats{grid-template-columns:1fr}}
+.me{margin-top:28px;color:#a9bccd;font-size:15px;position:relative}
+
+/* sections */
+section{padding:76px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+h2{font-size:clamp(25px,3.6vw,34px);margin:0 0 8px;letter-spacing:-.025em;line-height:1.35}
+h2 small{display:block;font-size:14px;color:var(--brand);font-weight:700;margin-bottom:8px;letter-spacing:.01em}
+h3{font-size:19px;margin:36px 0 10px;letter-spacing:-.01em}
+h4{font-size:16px;margin:0 0 8px}
+p{margin:8px 0}
+.sub{color:var(--ink2);margin-bottom:28px;max-width:840px}
+.note{font-size:14px;color:var(--ink3)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--bg2);padding:1px 6px;border-radius:5px;word-break:break-all}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+
+/* fit table */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg2);font-size:13px;color:var(--ink2);font-weight:600}
+tr:last-child td{border-bottom:none}
+tr.grp td{background:#fbfcfd;font-size:12.5px;font-weight:800;color:var(--brand);letter-spacing:.06em;padding:8px 14px}
+td.k{font-weight:700}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--brand-soft);color:var(--brand);margin:0 4px 4px 0;white-space:nowrap}
+.tag.learn{background:var(--warn-soft);color:var(--warn)}
+.tag.mid{background:#eef1f6;color:var(--ink2)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:-12px 0 18px;font-size:13.5px;color:var(--ink2)}
+
+/* cycle */
+.cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px;position:relative}
+.cycle::before{content:"";position:absolute;left:6%;right:6%;top:31px;height:2px;background:linear-gradient(90deg,var(--brand-line),var(--brand2),var(--brand-line));z-index:0}
+.step{position:relative;z-index:1;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:56px 20px 20px}
+.step .dia{position:absolute;top:14px;left:20px;width:34px;height:34px;transform:rotate(45deg);border-radius:7px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(10,126,164,.25)}
+.step .dia span{transform:rotate(-45deg);color:#fff;font-weight:800;font-size:14px}
+.step h4{margin-bottom:4px}
+.step .what{font-size:14.5px;color:var(--ink2);min-height:72px}
+.step .proof{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:14px}
+.step .proof .h{font-size:12px;font-weight:800;color:var(--brand);letter-spacing:.06em;margin-bottom:4px}
+@media(max-width:860px){.cycle{grid-template-columns:1fr 1fr}.cycle::before{display:none}.step .what{min-height:0}}
+@media(max-width:520px){.cycle{grid-template-columns:1fr}}
+
+/* work */
+.wk-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:6px}
+.wk-no{flex:none;font-size:15px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.links{margin-top:6px;font-size:13px;color:var(--ink3)}
+.links a{display:inline-block;font-weight:700;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:3px 10px;margin:0 6px 6px 0;text-decoration:none;background:#fff}
+.links a:hover{border-color:var(--brand);color:var(--brand)}
+.links a span{font-weight:400;color:var(--ink2);margin-left:4px}
+.maps{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.maps span{font-size:12.5px;color:var(--ink2);border:1px solid var(--brand-line);background:#fff;border-radius:8px;padding:2px 9px}
+.maps span::before{content:"공고 ▸ ";color:var(--brand);font-weight:700}
+
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:22px 0}
+.ba .side{border-radius:var(--radius);padding:20px 22px;border:1px solid var(--line)}
+.ba .before{background:var(--before)}
+.ba .after{background:var(--brand-soft);border-color:var(--brand-line)}
+.ba .lbl{font-size:12.5px;font-weight:800;letter-spacing:.06em;margin-bottom:6px;color:var(--ink3)}
+.ba .after .lbl{color:var(--brand)}
+.ba ul{margin:4px 0 0;padding-left:18px}
+.ba .mid{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--brand);font-weight:800}
+@media(max-width:760px){.ba{grid-template-columns:1fr}.ba .mid{transform:rotate(90deg);height:20px}}
+
+.psr{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;margin:18px 0}
+.psr > div{padding:22px;border-right:1px solid var(--line)}
+.psr > div:last-child{border-right:none}
+.psr .h{font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--brand);margin-bottom:8px}
+.psr .big{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.25}
+.psr .big small{font-size:14px;font-weight:600;color:var(--ink2)}
+@media(max-width:760px){.psr{grid-template-columns:1fr}.psr > div{border-right:none;border-bottom:1px solid var(--line)}.psr > div:last-child{border-bottom:none}}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}
+.node{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;text-align:center;line-height:1.45}
+.node small{color:var(--ink3)}
+.node.hl{border-color:var(--brand);background:var(--brand-soft);font-weight:600}
+.node.hu{border-color:var(--warn);background:var(--warn-soft);font-weight:600}
+.arr{color:var(--ink3);font-weight:700}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.grid2,.grid3{display:grid;gap:16px;margin:18px 0}
+.grid2{grid-template-columns:1fr 1fr}
+.grid3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:14px;background:#fff;cursor:zoom-in}
+.phones figure img{height:440px;object-fit:contain;background:var(--bg2)}
+figcaption{font-size:13.5px;color:var(--ink2);margin-top:8px;text-align:center}
+.callout{background:var(--brand-soft);border-left:4px solid var(--brand);padding:16px 18px;border-radius:10px;margin:18px 0;font-size:15px}
+.callout.warn{background:var(--warn-soft);border-color:var(--warn)}
+
+/* report sheet */
+.sheet{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 18px 40px rgba(12,26,46,.06);overflow:hidden;margin-top:22px}
+.sheet .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;padding:18px 24px;background:linear-gradient(90deg,var(--navy),var(--navy2));color:#fff}
+.sheet .top b{font-size:17px}
+.sheet .top span{font-size:13px;color:#a9bccd}
+.sheet .rows{display:grid;grid-template-columns:170px 1fr}
+.sheet .rows > div{padding:13px 24px;border-bottom:1px solid var(--line);font-size:15px}
+.sheet .rows > div:nth-child(odd){background:var(--bg2);font-size:13px;font-weight:700;color:var(--ink2)}
+.sheet .rows > div:nth-last-child(-n+2){border-bottom:none}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kpi .l{font-size:12px;color:var(--ink3);font-weight:700}
+.kpi .v{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.kpi.miss{border-style:dashed;background:var(--warn-soft)}
+.kpi.miss .v{font-size:14px;color:var(--warn)}
+.decide{display:flex;gap:8px;flex-wrap:wrap}
+.decide span{font-size:13px;font-weight:700;border-radius:99px;padding:3px 12px;border:1px solid var(--line);color:var(--ink3)}
+.decide span.on{background:var(--brand);border-color:var(--brand);color:#fff}
+@media(max-width:640px){.sheet .rows{grid-template-columns:1fr}.sheet .rows > div:nth-child(odd){border-bottom:none;padding-bottom:2px}.kpis{grid-template-columns:1fr}}
+
+/* plan */
+.plan{counter-reset:p}
+.plan .card{position:relative;padding-top:54px}
+.plan .card::before{counter-increment:p;content:counter(p) "개월차";position:absolute;top:18px;left:22px;font-size:13px;font-weight:800;color:var(--brand);background:var(--brand-soft);padding:2px 10px;border-radius:99px}
+.plan .card ul{padding-left:18px;font-size:15px}
+.plan .card .out{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:14px;color:var(--ink2)}
+.plan .card .out b{color:var(--brand)}
+
+footer{padding:40px 0 70px;color:var(--ink3);font-size:14px;border-top:1px solid var(--line)}
+#lb{position:fixed;inset:0;background:rgba(8,14,24,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:20px}
+#lb img{max-width:100%;max-height:100%;border-radius:8px}
+
+/* motion */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));transform-origin:0 50%;transform:scaleX(0);z-index:20}
+.grad{background:linear-gradient(90deg,#7fe3f3,var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+html.js .hero .ln{display:inline-block;opacity:0;transform:translateY(28px);filter:blur(8px);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards}
+html.js .hero .ln:nth-of-type(2){animation-delay:.18s}
+html.js .hero .eyebrow,html.js .hero .lead,html.js .hero .me{opacity:0;animation:fade .9s .45s ease forwards}
+html.js .hero .lead{animation-delay:.6s}
+html.js .facet path{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s .2s cubic-bezier(.4,.1,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes rise{to{opacity:1;transform:none;filter:none}}
+@keyframes fade{to{opacity:1}}
+html.js .rv{opacity:0;transform:translateY(32px);filter:blur(6px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s;transition-delay:var(--d,0s)}
+html.js .rv.in{opacity:1;transform:none;filter:none}
+html.js .node{transition:background .5s,border-color .5s,transform .5s;transition-delay:var(--d,0s)}
+html.js .flow:not(.in) .node.hl,html.js .flow:not(.in) .node.hu{background:#fff;border-color:var(--line);transform:scale(.96)}
+.stat,.card,.step{transition:transform .4s,box-shadow .4s}
+.stat:hover,.card:hover,.step:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(12,26,46,.09)}
+@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ln,html.js .hero .eyebrow,html.js .hero .lead,html.js .hero .me{opacity:1;transform:none;filter:none;animation:none;transition:none}html.js .facet path{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
+
+@page{margin:12mm}
+@media print{
+  nav,#prog,header.hero svg.facet{display:none}
+  header.hero{padding:24px 0;background:#fff!important;color:var(--ink)}
+  header.hero h1{color:var(--ink)}.grad{color:var(--brand);background:none;-webkit-background-clip:initial;background-clip:initial}
+  .lead,.me,.stat .t{color:var(--ink2)!important}.lead b,.stat .n{color:var(--ink)!important}.eyebrow{color:var(--brand)}
+  .stat{background:#fff;border-color:var(--line)}
+  section{padding:28px 0}.psr,.ba,.card,figure,tr,.flow,.callout,.step,.sheet{break-inside:avoid}h2,h3{break-after:avoid;break-inside:avoid}
+  footer{padding:12px 0}.phones figure img{height:260px}
+  .grid3{grid-template-columns:repeat(3,1fr)!important}.grid2{grid-template-columns:1fr 1fr!important}.stats{grid-template-columns:repeat(3,1fr)!important}
+  .cycle{grid-template-columns:repeat(4,1fr)!important}.psr{grid-template-columns:repeat(3,1fr)!important}.psr > div{border-right:1px solid var(--line)!important;border-bottom:none!important}
+  .ba{grid-template-columns:1fr auto 1fr!important}.ba .mid{transform:none!important;height:auto!important}.wk-head{break-after:avoid}
+  body{font-size:14px}.stat:hover,.card:hover,.step:hover{transform:none;box-shadow:none}
+  html.js .rv,html.js .hero .ln,html.js .hero .eyebrow,html.js .hero .lead,html.js .hero .me{opacity:1;transform:none;filter:none;animation:none;transition:none}
+  table{min-width:0}
+  #cycle .wrap,#report .wrap,#plan .wrap{break-inside:avoid}.sub{break-after:avoid}
+  .step{padding:50px 14px 14px}.step .what{min-height:0}
+}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<nav><div class="wrap">
+  <b><i></i>김환희</b>
+  <a href="#fit">공고와 근거</a><a href="#cycle">AX 추진 방식</a><a href="#w1">01 JOYHILL</a><a href="#w2">02 QTPot</a><a href="#w3">03 CAPD</a><a href="#w4">04 SyncAI</a><a href="#report">보고 양식</a><a href="#plan">첫 3개월</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <svg class="facet" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <g stroke="#7fe3f3" stroke-width="1.1" stroke-linejoin="round">
+      <path d="M200 40 L330 150 L200 360 L70 150 Z"/>
+      <path d="M70 150 L330 150"/>
+      <path d="M135 95 L200 150 L265 95"/>
+      <path d="M200 40 L135 95 L70 150"/>
+      <path d="M200 40 L265 95 L330 150"/>
+      <path d="M135 150 L200 360 L265 150"/>
+      <path d="M200 150 L200 360"/>
+    </g>
+    <g stroke="#22c1dc" stroke-width=".6" opacity=".5">
+      <path d="M200 10 L360 150 L200 390 L40 150 Z"/>
+    </g>
+  </svg>
+  <div class="eyebrow">새솔다이아몬드공업 AX 전담조직 · AX추진PM (신입) 지원 포트폴리오</div>
+  <h1><span class="ln">현장의 반복 업무를</span><br><span class="ln grad">확인된 자동화로</span></h1>
+  <p class="lead">반복되는 일을 찾아 AI 코딩 도구로 직접 만들고, 실제 사용자에게 배포해 <b>쓰이는지 기록으로 확인</b>하고, 가이드와 회의로 정착시켜 왔습니다. 새로 만드는 AX 조직에서 <b>진단 → 파일럿 → 검증 → 확산</b>을 맡을 수 있다는 근거를 공고 항목 순서대로 정리했습니다.</p>
+  <div class="stats">
+    <div class="stat"><div class="n"><span class="cnt" data-to="217">217</span>개</div><div class="t">JOYHILL 등록 계정 · 2026.03부터 운영 중</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="956">956</span>회</div><div class="t">QTPot 누적 인증 · 수기 집계를 앱으로</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="1012">1,012</span>청크</div><div class="t">CAPD 의학 가이드라인 RAG · pgvector</div></div>
+    <div class="stat"><div class="n"><em>2</em>주</div><div class="t">JOYHILL 첫 커밋부터 실데이터 운영까지</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="10">10</span>쪽</div><div class="t">역할별 사용 가이드 · 현업 배포용</div></div>
+    <div class="stat"><div class="n">공용 1개 <em>→</em> 개인</div><div class="t">운영진 5~6명이 같이 쓰던 계정을 개인 계정·역할별 권한으로</div></div>
+  </div>
+  <p class="me">김환희 · 서경대학교 소프트웨어학과 (2027.02 졸업예정) · SQL 개발자(SQLD) · 안산 거주 · 즉시 근무 가능</p>
+</div></header>
+
+<!-- 공고와 근거 -->
+<section id="fit"><div class="wrap">
+  <h2><small>공고 요건과 제 경험</small>맡게 될 일마다 해 본 근거</h2>
+  <p class="sub">공고의 담당 업무·자격 요건·우대 사항을 그대로 옮기고, 각각에 해당하는 작업을 붙였습니다. 회사 규모로는 해 보지 않은 일과 아직 경험이 없는 분야는 그렇게 표시했습니다.</p>
+  <div class="legend"><span><span class="tag">운영 중 · 해 봄</span>직접 해 봤고 결과가 있음</span><span><span class="tag mid">작은 규모</span>같은 일을 작은 조직에서 해 봄</span><span><span class="tag learn">배울 것</span>경험 없음, 입사 후 익힐 것</span></div>
+  <div class="tbl"><table>
+    <tr><th style="width:29%">공고</th><th>제 근거</th><th style="width:13%">상태</th></tr>
+    <tr class="grp"><td colspan="3">담당 업무</td></tr>
+    <tr><td class="k">전사 업무 프로세스 진단, AI·자동화 적용 기회 발굴, ROI 기준 로드맵</td><td><a href="#w1">JOYHILL</a>: 공용 계정 공유·느린 스크립트 동기화라는 기존 방식의 불편을 정리해 개선 대상으로 삼고, 개인 계정·역할별 권한과 DB 직접 기록으로 전환 / <a href="#w2">QTPot</a>: 관리자가 손으로 세던 인증 집계를 자동화 대상으로 발견</td><td><span class="tag mid">작은 규모</span></td></tr>
+    <tr><td class="k">협업 부서와 파일럿 과제 설계·실행·성과 검증</td><td><a href="#w2">QTPot</a>: 한 모임에 먼저 적용하고 실제 사용 기록(가입 46명 중 32명 인증, 누적 956회)으로 효과 확인 / <a href="#w1">JOYHILL</a>: 첫 커밋 2주 만에 실데이터 운영</td><td><span class="tag">운영 중</span></td></tr>
+    <tr><td class="k">LLM·RAG·에이전트 기반 사내 업무 자동화(문서·보고·검색), RPA, 데이터 분석 도구</td><td><a href="#w3">CAPD</a>: 가이드라인 1,012청크 RAG, 계산은 코드·해석은 LLM / <a href="#w4">SyncAI</a>: 계획·실행 에이전트 / <a href="#w1">JOYHILL</a>: DB → 구글시트 매일 자동 백업. RPA 전용 도구는 써 보지 않았고, 같은 종류의 일은 코드와 스케줄러로 만들어 왔습니다.</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">데이터 수집·정제·분석 체계</td><td><a href="#w3">CAPD</a>: 환자 기록 → 지표 계산(Python) → LLM 해석으로 이어지는 파이프라인(2인 팀, 백엔드·AI 파이프라인 담당) / <a href="#w1">JOYHILL</a>: 출석이 두 번 집계되던 오류를 데이터 흐름을 따라가 수정 / SQLD</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">외부 솔루션 연계, PoC 관리, MES·ERP 연동</td><td>Google Sheets API(JOYHILL), Composio로 Notion 등 외부 앱 연동(SyncAI), Vertex AI·Gemini API(CAPD), AWS S3. MES·ERP와 연동해 본 적은 없습니다.</td><td><span class="tag">해 봄</span><span class="tag learn">MES·ERP</span></td></tr>
+    <tr><td class="k">임직원 AI 교육·내재화, 활용 가이드라인, 보안·정보관리 정책</td><td><a href="#w1">JOYHILL</a>: 역할별 사용 가이드 10쪽, 교인 전체 확장 회의 기획·진행, 5단계 역할별 권한, 개인정보가 있어 로그인 전용·저장소 비공개 / <a href="#w4">SyncAI</a>: 민감한 작업은 실행 전 사용자 승인</td><td><span class="tag mid">작은 규모</span></td></tr>
+    <tr><td class="k">도입 성과 지표화, 경영진 정기 보고</td><td>사용 기록을 지표로 정리해 왔지만(<a href="#w2">QTPot</a>), 정기 보고를 해 본 적은 없습니다. 쓸 양식을 <a href="#report">아래</a>에 미리 만들어 두었습니다.</td><td><span class="tag learn">배울 것</span></td></tr>
+    <tr class="grp"><td colspan="3">자격 요건</td></tr>
+    <tr><td class="k">AI·데이터·자동화 프로젝트 (실무 3년 이상)</td><td>신입입니다. 2026년에 직접 배포해 운영 중인 서비스 2개(JOYHILL·QTPot)와 AI 프로젝트 2개(CAPD·SyncAI)가 근거입니다.</td><td><span class="tag mid">신입</span></td></tr>
+    <tr><td class="k">데이터 분석·업무 자동화 스크립트·LLM 애플리케이션 개발</td><td>자동 백업·정해진 시각 실행(JOYHILL·QTPot), RAG 기반 LLM 서비스(CAPD), 에이전트(SyncAI)</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">현업 문제를 기술 언어로 번역, 비기술 부서 협업</td><td>개발자가 아닌 운영진·교역자의 요구를 회의로 모아 권한 구조로 옮김(JOYHILL) / 6인 팀 PO로 문제 정의·사업 모델 설계(Readle, 교내 해커톤 대상)</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">새 도구를 학습해 실제 업무에 적용하는 실행력</td><td>처음 써 보는 기술로 2주 만에 실데이터 운영(JOYHILL), 10주 동안 기능 80건 이상 구현(CAPD)</td><td><span class="tag">해 봄</span></td></tr>
+    <tr class="grp"><td colspan="3">우대 사항</td></tr>
+    <tr><td class="k">Cursor, Claude Code 등으로 생산성 극대화</td><td>위 작업물 모두 Claude Code로 기획부터 배포까지 진행. 구조 설계·결과 검증·오류 원인 분석은 직접 합니다.</td><td><span class="tag">매일 씀</span></td></tr>
+    <tr><td class="k">에이전트 프레임워크, Vector DB 이해</td><td>pgvector로 RAG 구성(CAPD), 계획·실행 에이전트 구조를 프레임워크 없이 직접 설계(SyncAI)</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">제조·반도체 밸류체인 업무 경험</td><td>없습니다. 생산·품질·공정 데이터는 현업 담당자께 배우며 정리하는 것부터 시작하겠습니다(<a href="#plan">첫 3개월</a>).</td><td><span class="tag learn">배울 것</span></td></tr>
+    <tr><td class="k">비전·예지보전, MES·ERP 연동 프로젝트</td><td>없습니다. 연동해 본 외부 API와 DB 경험을 바탕으로 사내 시스템 구조부터 익히겠습니다.</td><td><span class="tag learn">배울 것</span></td></tr>
+  </table></div>
+</div></section>
+
+<!-- AX 추진 방식 -->
+<section id="cycle" class="alt"><div class="wrap">
+  <h2><small>AX 추진 방식</small>작게 바꾸고, 확인하고, 넓힙니다</h2>
+  <p class="sub">아래 작업물은 모두 <b>문제 → 개선 → 성과 → 확산</b> 순서로 정리했습니다. 공고에 적힌 일을 순서대로 놓으면 네 단계가 됩니다. 단계마다 제가 실제로 해 본 일을 붙였습니다. 새솔에서는 같은 순서를 생산·품질·R&amp;D 부서의 업무에 적용하겠습니다.</p>
+  <div class="cycle">
+    <div class="step"><div class="dia"><span>1</span></div><h4>진단</h4><div class="what">업무 흐름을 듣고 반복되는 일을 찾아, 빈도·소요 시간·오류 가능성·자동화 난이도로 순서를 정합니다.</div><div class="proof"><div class="h">해 본 일</div>공용 계정·느린 동기화라는 기존 방식의 불편을 짚어 개선 대상으로 삼음 <a href="#w1">JOYHILL</a></div></div>
+    <div class="step"><div class="dia"><span>2</span></div><h4>파일럿</h4><div class="what">효과가 빨리 보이는 업무 하나를 협업 부서와 골라 작게 바꿉니다.</div><div class="proof"><div class="h">해 본 일</div>한 모임의 인증 집계부터 앱으로 전환 <a href="#w2">QTPot</a></div></div>
+    <div class="step"><div class="dia"><span>3</span></div><h4>검증</h4><div class="what">도입 전후의 처리 시간·오류·사용 빈도를 비교하고, AI 결과는 근거와 사람의 확인을 거칩니다.</div><div class="proof"><div class="h">해 본 일</div>계산은 코드·해석은 LLM, 의사 검토 단계 <a href="#w3">CAPD</a> · 사용 기록 956회 <a href="#w2">QTPot</a></div></div>
+    <div class="step"><div class="dia"><span>4</span></div><h4>확산 · 내재화</h4><div class="what">효과가 확인된 방식만 넓히고, 가이드와 교육으로 현업이 직접 쓰게 만듭니다.</div><div class="proof"><div class="h">해 본 일</div>역할별 가이드 10쪽, 사용자 회의로 권한 재설계 <a href="#w1">JOYHILL</a></div></div>
+  </div>
+</div></section>
+
+<!-- 01 JOYHILL -->
+<section id="w1"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">01</div><div>
+    <h2><small>시스템 전환 · 자동화 · 현업 정착 · 1인 · 2026.03 ~ 운영 중</small>JOYHILL — 공용 계정과 시트 스크립트에서, 사람마다 쓰는 서비스로</h2>
+    <div class="meta"><span class="tag">React</span><span class="tag">Spring Boot</span><span class="tag">PostgreSQL</span><span class="tag">Google Sheets API</span><span class="tag">AWS EC2·S3</span><span class="tag">GitHub Actions</span></div>
+    <div class="links"><a href="https://www.figma.com/design/ili8PmHx95czOCTOhj6Dsz/joyhill-extensions" target="_blank" rel="noopener">Figma<span>전교인 앱 와이어프레임</span></a> 서비스는 교인 개인정보가 있어 로그인 전용이고, 저장소는 비공개입니다.</div>
+    <div class="maps"><span>프로세스 진단</span><span>사내 업무 자동화</span><span>임직원 교육·가이드라인</span><span>비기술 부서 협업</span></div>
+  </div></div>
+
+  <div class="ba">
+    <div class="side before"><div class="lbl">BEFORE</div>교회 청년부 출석·조직 정보를 앱시트와 구글시트로 관리했습니다.
+      <ul><li>앱과 시트가 <b>스크립트 하나로 동기화</b>돼 반영되기까지 시간이 꽤 걸림</li><li>운영진 <b>5~6명이 공용 계정 하나</b>를 같이 써서 로그인 문제가 반복되고 불편이 큼</li><li>출석·공지·기도제목·새가족 관리가 여러 곳에 흩어짐</li></ul></div>
+    <div class="mid">→</div>
+    <div class="side after"><div class="lbl">AFTER</div>자체 DB 기반 웹 서비스로 옮겼습니다.
+      <ul><li><b>사람마다 개인 계정</b>, 5단계 역할별로 쓸 수 있는 기능과 범위를 나눔</li><li>출석은 앱에서 <b>바로 DB에 기록</b>, 동기화를 기다리지 않음</li><li>운영진이 익숙한 구글시트는 <b>매일 자동으로 채워지는 사본</b>으로 유지</li></ul></div>
+  </div>
+
+  <h3>쓰던 시트를 그대로 살린 자동 백업</h3>
+  <div class="flow">
+    <div class="node">PostgreSQL<br><small>회원 · 출석</small></div><span class="arr">→</span>
+    <div class="node hl">스케줄러<br><small>매일 새벽 · Asia/Seoul</small></div><span class="arr">→</span>
+    <div class="node">Google Sheets API<br><small>서비스 계정</small></div><span class="arr">→</span>
+    <div class="node">운영진 시트<br><small>회원 탭 · 출석 탭</small></div>
+    <span class="arr">+</span>
+    <div class="node">관리자 수동 실행<br><small>필요할 때 버튼으로</small></div>
+    <span class="arr">+</span>
+    <div class="node">S3 비공개 버킷<br><small>DB 백업 이중 보관</small></div>
+  </div>
+  <div class="grid3">
+    <div class="card"><h4>실패가 성공처럼 보이지 않게</h4>마지막 백업 시각은 시트 쓰기에 <b>성공했을 때만</b> 기록합니다. 자동 작업은 조용히 실패하기 쉬워서, 화면에 보이는 시각이 곧 마지막 성공 시각이 되게 했습니다.</div>
+    <div class="card"><h4>운영하다 발견한 시간대 오류</h4>새벽에 돌아야 할 백업이 <b>낮 12시</b>에 돌고 있었습니다. 서버 시간대가 UTC인데 스케줄에 시간대를 지정하지 않은 것이 원인이어서 <code>Asia/Seoul</code>을 명시해 고쳤습니다.</div>
+    <div class="card"><h4>숫자가 이상하면 끝까지 따라감</h4>출석률이 100%를 넘는 달이 있었습니다. 데이터 흐름을 따라가 보니 예전 기록과 새 기록이 <b>두 번 집계</b>되고 있어, 원인을 고치고 집계 기준을 정리했습니다.</div>
+  </div>
+
+  <h3>현업이 실제로 쓰게 만드는 일</h3>
+  <div class="psr">
+    <div><div class="h">문제</div>공용 계정 공유로 반복되던 로그인 문제, 느린 동기화, 흩어진 관리 업무.</div>
+    <div><div class="h">개선 · 본인 역할</div>기획·설계·프론트엔드·백엔드·배포·운영. 개인 계정과 5단계 역할별 권한, 자동 백업, 배포 자동화, <b>역할별 사용 가이드 10쪽</b>, 확장 회의 기획·진행.</div>
+    <div><div class="h">성과</div><div class="big">217개 <small>등록 계정</small></div>2026년 3월 첫 커밋 2주 만에 실데이터로 배포했고 지금도 운영 중입니다. 운영진은 동기화를 기다리거나 계정을 돌려 쓰지 않습니다.</div>
+  </div>
+  <div class="grid3">
+    <figure><img src="../assets/joyhill_guide_p1.jpg" alt="JOYHILL 사용 가이드 표지"><figcaption>사용 가이드 · 리더·마을장·교역자용</figcaption></figure>
+    <figure><img src="../assets/joyhill_guide_p4.jpg" alt="JOYHILL 사용 가이드 출석 체크 페이지"><figcaption>순서대로 따라 하는 출석 체크</figcaption></figure>
+    <figure><img src="../assets/joyhill_guide_p10.jpg" alt="JOYHILL 사용 가이드 기능 요약 페이지"><figcaption>역할별 기능 요약</figcaption></figure>
+  </div>
+  <div class="grid3 phones">
+    <figure><img src="../assets/joyhill_attendance.jpg" alt="JOYHILL 출석 체크 화면"><figcaption>리더의 출석 체크</figcaption></figure>
+    <figure><img src="../assets/joyhill_home_admin.jpg" alt="JOYHILL 관리자 홈"><figcaption>관리자 홈: 한 화면에서 현황 파악</figcaption></figure>
+    <figure><img src="../assets/figma_joyhill_mobile_home.png" alt="JOYHILL 전교인 앱 Figma 와이어프레임"><figcaption>전교인 앱 와이어프레임 (AI 초안 → 직접 정리)</figcaption></figure>
+  </div>
+  <div class="callout"><b>확산 · 정착</b> · 역할마다 쓸 기능과 접근 범위를 처음부터 나눠 설계했고, 배포할 때 역할별로 직접 설명하며 가이드를 함께 나눠 사용자들이 필요한 기능만 골라 바로 쓰게 했습니다. 장년층이 교인 전체용 앱을 요청했을 때는 권한과 조직 구조를 두고 회의를 직접 기획·진행했고, 받은 답에 맞춰 권한 구조를 다시 설계했습니다. 교인 전체용 앱은 별도 저장소에서 개발 중이며 아직 배포 전입니다.</div>
+</div></section>
+
+<!-- 02 QTPot -->
+<section id="w2" class="alt"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">02</div><div>
+    <h2><small>파일럿 · 사용 기록으로 검증 · 1인 · 2026.02 ~ 운영 중</small>QTPot — 손으로 세던 인증 확인을 앱으로</h2>
+    <div class="meta"><span class="tag">React(PWA)</span><span class="tag">Spring Boot</span><span class="tag">MySQL</span><span class="tag">AWS EC2</span><span class="tag">FCM 푸시</span><span class="tag">GitHub Actions</span></div>
+    <div class="links"><a href="https://github.com/smile5959/QTPot-FE" target="_blank" rel="noopener">GitHub<span>프론트엔드</span></a><a href="https://github.com/smile5959/QTPot-BE" target="_blank" rel="noopener">GitHub<span>백엔드</span></a></div>
+    <div class="maps"><span>파일럿 설계·실행</span><span>성과 검증</span><span>성과 지표화</span></div>
+  </div></div>
+
+  <div class="ba">
+    <div class="side before"><div class="lbl">BEFORE</div>회원이 단체 대화방에 묵상 사진을 올리면, 관리자가 <b>대화방을 넘기며 누가 올렸는지 직접 세어</b> 확인했습니다. 기록이 대화방에 흩어져 있어 현황을 볼 때마다 같은 작업이 반복됐습니다.</div>
+    <div class="mid">→</div>
+    <div class="side after"><div class="lbl">AFTER</div>회원은 앱에서 사진으로 인증하고, 기록은 자동으로 쌓입니다. 관리자는 <b>한 화면에서 사람별·날짜별 인증 현황</b>을 봅니다. 인증을 잊지 않도록 정해진 시각에 푸시 알림을 보냅니다.</div>
+  </div>
+
+  <div class="psr">
+    <div><div class="h">문제</div>관리자가 매번 손으로 하던 인증 집계. 확인 누락과 기간별 조회의 어려움.</div>
+    <div><div class="h">개선 · 본인 역할</div>기획, 화면, 프론트엔드, 백엔드, 배포·운영 전부. 사진 자동 최적화, 관리자 현황 화면, 정해진 시각 푸시 알림, 성장 뱃지와 월간 랭킹.</div>
+    <div><div class="h">성과</div><div class="big">956회 <small>누적 인증</small></div>가입 46명 중 32명이 인증했고, 올해 10회 이상 인증한 회원은 19명, 30회 이상은 7명입니다.</div>
+  </div>
+
+  <div class="grid3 phones">
+    <figure><img src="../assets/qtpot_dashboard.jpg" alt="QTPot 오늘의 인증 화면"><figcaption>회원: 오늘의 인증</figcaption></figure>
+    <figure><img src="../assets/qtpot_admin.jpg" alt="QTPot 관리자 현황 화면"><figcaption>관리자: 사람별 인증 현황</figcaption></figure>
+    <figure><img src="../assets/qtpot_ranking.jpg" alt="QTPot 월간 랭킹 화면"><figcaption>습관 유지: 월간 랭킹</figcaption></figure>
+  </div>
+  <div class="callout"><b>정착 · 운영하며 고친 것</b> · 세션이 만료된 사용자가 빈 화면에 갇히는 문제가 있었습니다. 서버가 인증 실패를 모두 403으로 돌려줘서, 401일 때 로그인 화면으로 보내는 처리가 한 번도 동작하지 않았던 것이 원인이었습니다. 두 응답을 분리해 고쳤습니다.</div>
+</div></section>
+
+<!-- 03 CAPD -->
+<section id="w3"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">03</div><div>
+    <h2><small>RAG · 데이터 파이프라인 · 사람의 검토 · 2인 팀 · 2026.04 ~ 06</small>CAPD — 근거를 찾아 답하고, 사람이 확인하는 AI</h2>
+    <div class="meta"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Gemini(Vertex AI)</span><span class="tag">pgvector</span><span class="tag">GCP Cloud Run</span><span class="tag">Cloud Scheduler</span></div>
+    <div class="links">서경대 SW인재양성 산학과제 · 복막투석 환자 기록 기반 AI 후속 질문 생성 · 본인 담당: 백엔드, AI 파이프라인, GCP 인프라 (기여도 50:50)</div>
+    <div class="maps"><span>LLM·RAG 기반 문서·검색</span><span>데이터 수집·정제·분석</span><span>AI 결과 검증</span><span>Vector DB</span></div>
+  </div></div>
+
+  <div class="flow">
+    <div class="node">환자 기록<br><small>교환·일일 기록</small></div><span class="arr">→</span>
+    <div class="node hl">Python 계산<br><small>추세 · 이상치 · 상관</small></div><span class="arr">→</span>
+    <div class="node">LLM 1<br><small>검색 질의 생성</small></div><span class="arr">→</span>
+    <div class="node hl">RAG 검색<br><small>가이드라인 1,012청크</small></div><span class="arr">→</span>
+    <div class="node">LLM 2<br><small>환자 질문 생성</small></div><span class="arr">→</span>
+    <div class="node hu">의사 검토<br><small>확인 · 숨김 · 거절</small></div>
+  </div>
+
+  <div class="psr">
+    <div><div class="h">문제</div>LLM에 계산과 해석을 한 번에 맡기자 <b>수치 계산 오류가 반복</b>됐고, 답의 근거를 확인하기 어려웠습니다.</div>
+    <div><div class="h">개선 · 본인 역할</div>백엔드, AI 파이프라인, GCP 인프라. 가이드라인 RAG 구성, 외부 의학 자료를 Cloud Scheduler로 매주 자동 갱신, Cloud Run 서비스 3개 배포.</div>
+    <div><div class="h">성과</div><div class="big">계산 · 해석 <small>역할 분리</small></div>수치는 Python 코드가, 해석은 Gemini가 맡도록 나눠 반복되던 계산 오류를 없앴습니다. 10주간 기능 80건 이상 구현.</div>
+  </div>
+  <div class="grid2">
+    <figure><img src="../assets/capd_pipeline.png" alt="CAPD AI 질문 생성 파이프라인"><figcaption>계산(Python)과 해석(LLM)을 나눈 파이프라인</figcaption></figure>
+    <figure><img src="../assets/capd_review_soap.png" alt="CAPD 의사 검토와 SOAP 요약 화면"><figcaption>AI가 만든 질문은 의사가 확인한 뒤에만 쓰임</figcaption></figure>
+  </div>
+  <div class="callout"><b>새솔로 확산한다면 · 사내 문서·검색 자동화</b> · 답에 쓰인 근거 문서를 함께 보여 주고, 숫자는 정해진 규칙으로 계산하고, 중요한 결과는 사람이 확인하고 넘기는 구조가 필요하다고 배웠습니다. 품질·공정 문서처럼 정확성이 중요한 자료에도 같은 원칙을 적용하겠습니다.</div>
+</div></section>
+
+<!-- 04 SyncAI -->
+<section id="w4" class="alt"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">04</div><div>
+    <h2><small>AI 에이전트 · 외부 서비스 연동 · 개인 · 2026.05 ~ 10</small>SyncAI — 채팅 한 줄로 파일과 외부 앱을 다루는 에이전트</h2>
+    <div class="meta"><span class="tag">FastAPI</span><span class="tag">Gemini</span><span class="tag">Function Calling</span><span class="tag">MCP</span><span class="tag">Composio</span><span class="tag">Fly.io</span></div>
+    <div class="links"><a href="https://github.com/smile5959/syncai" target="_blank" rel="noopener">GitHub<span>저장소</span></a><a href="https://www.figma.com/design/jtrZRMhusdfaC9LsuxoQno/syncAi" target="_blank" rel="noopener">Figma<span>와이어프레임·ERD</span></a></div>
+    <div class="maps"><span>에이전트 기반 자동화</span><span>외부 솔루션 연계</span><span>보안·정보관리</span></div>
+  </div></div>
+
+  <div class="flow">
+    <div class="node">채팅 명령<br><small>/ai</small></div><span class="arr">→</span>
+    <div class="node hl">Supervisor 에이전트<br><small>작업 계획</small></div><span class="arr">→</span>
+    <div class="node hu">사용자 승인<br><small>민감한 작업은 실행 전 확인</small></div><span class="arr">→</span>
+    <div class="node hl">Worker 에이전트<br><small>Function Calling으로 실행</small></div><span class="arr">→</span>
+    <div class="node">로컬 PC 파일<br><small>MCP 연결</small></div><span class="arr">+</span>
+    <div class="node">Notion 등 외부 앱<br><small>Composio</small></div>
+  </div>
+
+  <div class="psr">
+    <div><div class="h">문제</div>팀 프로젝트에서 팀원마다 AI를 다르게 써서 코드와 API 명세가 엇갈리고 충돌이 반복되던 일.</div>
+    <div><div class="h">개선 · 본인 역할</div>에이전트 구조 설계, 서버와 사용자 PC를 잇는 MCP 연결, 외부 앱 연동, 실행 전 승인 단계, 플랜별 사용량 제한, 배포까지 전부.</div>
+    <div><div class="h">성과</div><div class="big">승인 후 실행 <small>민감한 작업 통제</small></div>동작하는 상태까지 배포했지만, 시장에 출시해 사용자를 모으지는 못했습니다. 이 구조는 사내 AI 도입 때 실행 권한·승인 절차를 정하는 기준이 됩니다.</div>
+  </div>
+  <div class="grid2">
+    <figure><img src="../assets/syncai_chat.jpg" alt="SyncAI 채팅 화면"><figcaption>SyncAI 채팅 화면</figcaption></figure>
+    <figure><img src="../assets/figma_syncai_chat.png" alt="SyncAI Figma 와이어프레임"><figcaption>Figma 와이어프레임 (AI 초안 → 직접 정리)</figcaption></figure>
+  </div>
+  <div class="callout warn"><b>새솔로 확산한다면 · 실행 권한과 승인</b> · AI에게 파일 수정이나 외부 앱 작업을 맡길수록 무엇을 사람이 확인하고 넘어갈지가 중요했습니다. 사내 자동화에서도 되돌리기 어려운 작업과 민감한 자료에는 확인 단계와 접근 범위를 먼저 정하겠습니다.</div>
+</div></section>
+
+<!-- 보고 양식 -->
+<section id="report"><div class="wrap">
+  <h2><small>성과 지표화 · 경영진 보고</small>파일럿 하나를 한 장으로</h2>
+  <p class="sub">파일럿이 끝날 때마다 아래 한 장으로 정리해 보고하겠습니다. 형식을 보여 드리려고 QTPot을 직접 채워 봤습니다. 채워 보니 <b>도입 전 처리 시간을 재 두지 않아</b> 전후 시간을 숫자로 비교할 수 없었습니다. 새솔에서는 바꾸기 전에 먼저 측정하겠습니다.</p>
+  <div class="sheet">
+    <div class="top"><b>파일럿 결과 보고 · 인증 집계 자동화 (QTPot)</b><span>예시 · 실제 데이터로 작성</span></div>
+    <div class="rows">
+      <div>대상 업무 · 부서</div><div>QT 모임 관리자의 인증 여부 집계</div>
+      <div>문제 (전)</div><div>단체 대화방 사진을 넘기며 사람별 인증 여부를 손으로 셈. 현황을 볼 때마다 반복, 누락 발생</div>
+      <div>바꾼 것 (후)</div><div>앱에 인증 기록이 자동으로 쌓이고, 관리자는 한 화면에서 사람별·날짜별 현황 확인. 정해진 시각 알림</div>
+      <div>측정 지표</div><div><div class="kpis">
+        <div class="kpi"><div class="l">실제 사용</div><div class="v">46명 중 32명</div></div>
+        <div class="kpi"><div class="l">누적 사용</div><div class="v">956회</div></div>
+        <div class="kpi miss"><div class="l">처리 시간 (전 → 후)</div><div class="v">도입 전 미측정</div></div>
+      </div></div>
+      <div>든 비용</div><div>1인 개발·운영, AWS EC2 서버</div>
+      <div>다음 결정</div><div><div class="decide"><span class="on">유지 · 확대</span><span>보완 후 재검토</span><span>중단</span></div></div>
+    </div>
+  </div>
+  <p class="note" style="margin-top:12px">새솔에서 쓸 지표의 예: 처리 시간, 오류·재작업 건수, 실제 사용자 수와 사용 빈도, 들인 비용. 무엇을 잴지는 파일럿을 시작하기 전에 협업 부서와 함께 정하겠습니다.</p>
+</div></section>
+
+<!-- 첫 3개월 -->
+<section id="plan" class="alt"><div class="wrap">
+  <h2><small>입사 후</small>인턴 3개월 동안 보여 드릴 것</h2>
+  <p class="sub">새솔다이아몬드공업은 반도체 CMP 공정용 패드 컨디셔너에서 국내외 점유율 1위(회사 소개 기준)를 지켜 온 소재·부품·장비 으뜸기업이고, 이번에 AX 전담 조직을 새로 만듭니다. 무엇을 먼저 바꿀지는 현업의 이야기를 듣고 기준을 세워 정하겠습니다.</p>
+  <div class="grid3 plan">
+    <div class="card"><h4>배우고 진단하기</h4><ul><li>생산·품질·R&amp;D 업무 흐름과 MES·ERP에 쌓이는 데이터를 담당자께 배우며 정리</li><li>공정·품질 용어부터 익히기</li><li>반복 업무 목록을 빈도·소요 시간·오류 가능성·난이도로 점수화</li></ul><div class="out"><b>결과물</b> · 업무 진단표와 파일럿 후보 3개</div></div>
+    <div class="card"><h4>파일럿 하나 실행</h4><ul><li>협업 부서와 효과가 빨리 보이는 업무 하나 선정</li><li>바꾸기 전 처리 시간·오류를 먼저 측정</li><li>문서·보고·검색 업무라면 근거를 보여 주는 RAG 검색이나 정해진 시각 자동 취합부터 시범 적용</li></ul><div class="out"><b>결과물</b> · 현업이 실제로 쓰는 시범 도구 1개</div></div>
+    <div class="card"><h4>검증하고 넘기기</h4><ul><li>도입 전후 지표 비교, 위의 한 장 보고서로 정리</li><li>사용 가이드와 오류 대응 방법을 함께 작성</li><li>효과가 확인되면 다음 과제와 로드맵 제안</li></ul><div class="out"><b>결과물</b> · 파일럿 결과 보고서와 다음 로드맵 초안</div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  김환희 · 서경대학교 소프트웨어학과 · <a href="mailto:rlaghskgml@gmail.com">rlaghskgml@gmail.com</a> · 전체 포트폴리오 <a href="../">smile5959.github.io/portfolio</a>
+</div></footer>
+
+<div id="lb"><img alt=""></div>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('section h2, section .sub, section h3, section .meta, section .maps, section .tbl, section .callout, section .flow, section .ba, section .psr, section .sheet').forEach(function(n){n.classList.add('rv')});
+  document.querySelectorAll('.stats, .grid2, .grid3, .cycle').forEach(function(g){
+    [].forEach.call(g.children,function(c,i){c.classList.add('rv');c.style.setProperty('--d',(i*.12)+'s')});
+  });
+  document.querySelectorAll('.flow').forEach(function(f){
+    [].forEach.call(f.querySelectorAll('.node'),function(c,i){c.style.setProperty('--d',(.3+i*.15)+'s')});
+  });
+  document.querySelectorAll('.stats .rv').forEach(function(c,i){c.style.setProperty('--d',(.8+i*.12)+'s')});
+
+  function count(el){
+    var to=+el.dataset.to; if(reduce)return;
+    var t0=null,dur=1500;
+    function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('ko-KR');if(p<1)requestAnimationFrame(step)}
+    el.textContent='0';setTimeout(function(){requestAnimationFrame(step)},900);
+  }
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;e.target.classList.add('in');
+      e.target.querySelectorAll('.cnt').forEach(count);io.unobserve(e.target);
+    })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+  }else{
+    document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
+  }
+
+  addEventListener('beforeprint',function(){
+    document.querySelectorAll('.cnt').forEach(function(el){el.textContent=(+el.dataset.to).toLocaleString('ko-KR')});
+    document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
+  });
+
+  var bar=document.getElementById('prog');
+  var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var ticking=false;
+  function frame(){
+    ticking=false;
+    var h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?scrollY/h:0)+')';
+    var cur=-1;secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<innerHeight*.35)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+    if(cur>=0){var a=links[cur],nb=a.parentNode;if(a.offsetLeft<nb.scrollLeft||a.offsetLeft+a.offsetWidth>nb.scrollLeft+nb.clientWidth)nb.scrollLeft=a.offsetLeft-20}
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+  addEventListener('resize',frame);frame();
+
+  var lb=document.getElementById('lb'), im=lb.querySelector('img');
+  document.querySelectorAll('figure img').forEach(function(i){
+    i.addEventListener('click',function(){im.src=i.src;lb.style.display='flex';});
+  });
+  lb.addEventListener('click',function(){lb.style.display='none';});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.style.display='none';});
+})();
+</script>
+</body>
+</html>
