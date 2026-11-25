@@ -253,9 +253,9 @@ html.js .flow:not(.in) .node.hl{background:#fff;border-color:var(--line);transfo
   </div></div>
 
   <div class="ba">
-    <div class="side before"><div class="lbl">BEFORE</div>처음에는 LLM 하나에 환자 기록의 <b>수치 계산과 임상 해석을 모두</b> 맡겼습니다. 수치 오류와 근거 없는 답이 반복됐습니다.</div>
+    <div class="side before"><div class="lbl">문제</div>LLM에 환자 기록의 <b>수치 계산과 임상 해석을 모두</b> 맡기면 틀린 수치나 근거 없는 답이 나올 수 있었습니다.</div>
     <div class="mid">→</div>
-    <div class="side after"><div class="lbl">AFTER</div><b>계산은 Python 코드</b>가 하고, AI는 그 결과를 해석만 하도록 나눴습니다. 의학 근거는 가이드라인을 잘게 나눠 AI가 찾아 쓰게(RAG) 했습니다.</div>
+    <div class="side after"><div class="lbl">설계</div>설계 단계부터 <b>계산은 Python 코드</b>가 하고, AI는 그 결과를 해석만 하도록 나눴습니다. 의학 근거는 가이드라인을 잘게 나눠 AI가 찾아 쓰게(RAG) 했습니다.</div>
   </div>
   <div class="flow">
     <div class="node">투석 기록</div><span class="arr">→</span>

@@ -163,8 +163,8 @@ code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;bac
     <div class="node">SSE로 화면에 전달</div>
   </div>
 
-  <div class="callout warn"><b>정확도를 올린 방법: 실패에서 나온 구조</b><br>
-  처음에는 LLM 하나에 수치 계산과 해석을 모두 맡겼더니 <b>계산 오류와 환각</b>이 반복됐습니다. 계산은 Python 코드가, 임상 해석은 Gemini가 맡도록 나누고, 해석에 필요한 의학 근거는 검색으로 넣어 주는 구조로 다시 설계했습니다. 이전 기록이 없거나 LLM 1이 실패하면 단일 LLM 경로로 자동 전환되게 해서 서비스가 멈추지 않게 했습니다.</div>
+  <div class="callout warn"><b>정확도를 지킨 방법: 계산과 해석을 나눈 구조</b><br>
+  LLM이 수치를 직접 계산하면 <b>그럴듯하지만 틀린 값</b>을 낼 수 있다고 보고, 설계 단계부터 계산은 Python 코드가, 임상 해석은 Gemini가 맡도록 나눴습니다. 해석에 필요한 의학 근거는 검색으로 넣어 주고, 매일 테스트 환자 14명의 기록을 자동 생성해 파이프라인 전체를 점검했습니다. 이전 기록이 없거나 LLM 1이 실패하면 단일 LLM 경로로 자동 전환되게 해서 서비스가 멈추지 않게 했습니다.</div>
 
   <div class="grid3">
     <div class="card"><h4>검색 품질</h4>환자 기록을 그대로 검색하지 않고, 여러 주제의 영어 임상 쿼리로 바꿔 각각 찾는 멀티쿼리 방식으로 영어 가이드라인과의 거리를 줄였습니다.</div>

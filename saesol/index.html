@@ -388,9 +388,9 @@ html.js .flow:not(.in) .node.hl,html.js .flow:not(.in) .node.hu{background:#fff;
   </div>
 
   <div class="psr">
-    <div><div class="h">문제</div>LLM에 계산과 해석을 한 번에 맡기자 <b>수치 계산 오류가 반복</b>됐고, 답의 근거를 확인하기 어려웠습니다.</div>
+    <div><div class="h">문제</div>LLM이 수치를 직접 계산하면 <b>그럴듯하지만 틀린 값</b>을 낼 수 있고, 추세 분석은 기록이 쌓여야만 검증할 수 있었습니다.</div>
     <div><div class="h">개선 · 본인 역할</div>백엔드, AI 파이프라인, GCP 인프라. 가이드라인 RAG 구성, 외부 의학 자료를 Cloud Scheduler로 매주 자동 갱신, Cloud Run 서비스 3개 배포.</div>
-    <div><div class="h">성과</div><div class="big">계산 · 해석 <small>역할 분리</small></div>수치는 Python 코드가, 해석은 Gemini가 맡도록 나눠 반복되던 계산 오류를 없앴습니다. 10주간 기능 80건 이상 구현.</div>
+    <div><div class="h">성과</div><div class="big">계산 · 해석 <small>역할 분리</small></div>설계부터 수치는 Python 코드가, 해석은 Gemini가 맡도록 나눴고, 매일 테스트 환자 14명의 기록을 자동 생성해 파이프라인을 점검했습니다. 10주간 기능 80건 이상 구현.</div>
   </div>
   <div class="grid2">
     <figure><img src="../assets/capd_pipeline.png" alt="CAPD AI 질문 생성 파이프라인"><figcaption>계산(Python)과 해석(LLM)을 나눈 파이프라인</figcaption></figure>
