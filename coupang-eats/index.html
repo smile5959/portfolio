@@ -1,0 +1,533 @@
+<!doctype html>
+<html lang="ko">
+<script>document.documentElement.classList.add('js')</script>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>김환희 · 운영개선 포트폴리오 (쿠팡이츠 카탈로그 데이터 분석·운영개선 지원)</title>
+<meta name="description" content="운영 요청이 막히는 구간을 SQL로 찾고, Python과 자동화로 줄여 정착시키는 신입 김환희의 작업물">
+<meta name="robots" content="noindex">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/static/pretendard.min.css">
+<style>
+:root{
+  --bg:#ffffff; --bg2:#f4f7fb; --ink:#0d1b2a; --ink2:#46546a; --ink3:#8691a3;
+  --line:#e1e7ee; --navy:#0b1530; --navy2:#16254d;
+  --brand:#1f5fd1; --brand2:#3fc79a; --brand-soft:#ecf2fd; --brand-line:#c3d5f6;
+  --warn:#b45309; --warn-soft:#fff6ea; --before:#f5f2ec;
+  --radius:16px; --maxw:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Pretendard,-apple-system,"Apple SD Gothic Neo",sans-serif;line-height:1.7;font-size:16px;-webkit-font-smoothing:antialiased;word-break:keep-all}
+a{color:var(--brand);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
+b{font-weight:700}
+
+/* nav */
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;gap:18px;align-items:center;height:54px;overflow-x:auto;white-space:nowrap;scrollbar-width:none}
+nav .wrap::-webkit-scrollbar{display:none}
+nav b{margin-right:auto;font-size:15px;display:flex;align-items:center;gap:8px}
+nav b i{display:inline-block;width:12px;height:12px;background:linear-gradient(135deg,var(--brand),var(--brand2));border-radius:3px}
+nav a{color:var(--ink2);font-size:14px}
+nav a.on{color:var(--ink);font-weight:600}
+
+/* hero */
+header.hero{position:relative;overflow:hidden;padding:92px 0 60px;color:#eaf3fa;background:radial-gradient(900px 480px at 88% 0%,rgba(63,199,154,.20),transparent 60%),radial-gradient(700px 400px at 0% 100%,rgba(31,95,209,.32),transparent 60%),linear-gradient(160deg,var(--navy),var(--navy2))}
+header.hero svg.facet{position:absolute;right:-60px;top:24px;width:520px;height:520px;opacity:.55;pointer-events:none}
+@media(max-width:760px){header.hero svg.facet{width:340px;height:340px;right:-120px;top:10px;opacity:.3}}
+.eyebrow{font-size:14px;color:var(--brand2);font-weight:700;letter-spacing:.02em;position:relative}
+h1{font-size:clamp(32px,5.4vw,54px);line-height:1.22;margin:14px 0 20px;letter-spacing:-.03em;position:relative;color:#fff}
+.lead{font-size:clamp(16px,2vw,19px);color:#bfd0e0;max-width:780px;position:relative}
+.lead b{color:#fff}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:40px;position:relative;z-index:1}
+.stat{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:20px 22px;backdrop-filter:blur(4px)}
+.stat .n{font-size:30px;font-weight:800;color:#fff;letter-spacing:-.02em;line-height:1.3}
+.stat .n em{font-style:normal;color:var(--brand2)}
+.stat .t{font-size:14px;color:#a9bccd;margin-top:2px}
+@media(max-width:760px){.stats{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:460px){.stats{grid-template-columns:1fr}}
+.me{margin-top:28px;color:#a9bccd;font-size:15px;position:relative}
+
+/* sections */
+section{padding:76px 0;border-top:1px solid var(--line)}
+section.alt{background:var(--bg2)}
+h2{font-size:clamp(25px,3.6vw,34px);margin:0 0 8px;letter-spacing:-.025em;line-height:1.35}
+h2 small{display:block;font-size:14px;color:var(--brand);font-weight:700;margin-bottom:8px;letter-spacing:.01em}
+h3{font-size:19px;margin:36px 0 10px;letter-spacing:-.01em}
+h4{font-size:16px;margin:0 0 8px}
+p{margin:8px 0}
+.sub{color:var(--ink2);margin-bottom:28px;max-width:840px}
+.note{font-size:14px;color:var(--ink3)}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:.86em;background:var(--bg2);padding:1px 6px;border-radius:5px;word-break:break-all}
+ul,ol{padding-left:20px;margin:8px 0}
+li{margin:4px 0}
+
+/* fit table */
+.tbl{overflow-x:auto;border:1px solid var(--line);border-radius:var(--radius);background:#fff}
+table{width:100%;border-collapse:collapse;font-size:15px;min-width:640px}
+th,td{padding:12px 14px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+th{background:var(--bg2);font-size:13px;color:var(--ink2);font-weight:600}
+tr:last-child td{border-bottom:none}
+tr.grp td{background:#fbfcfd;font-size:12.5px;font-weight:800;color:var(--brand);letter-spacing:.06em;padding:8px 14px}
+td.k{font-weight:700}
+.tag{display:inline-block;font-size:12px;font-weight:700;padding:2px 10px;border-radius:99px;background:var(--brand-soft);color:var(--brand);margin:0 4px 4px 0;white-space:nowrap}
+.tag.learn{background:var(--warn-soft);color:var(--warn)}
+.tag.mid{background:#eef1f6;color:var(--ink2)}
+.legend{display:flex;flex-wrap:wrap;gap:6px 14px;margin:-12px 0 18px;font-size:13.5px;color:var(--ink2)}
+
+/* cycle */
+.cycle{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:26px 0 8px;position:relative}
+.cycle::before{content:"";position:absolute;left:6%;right:6%;top:31px;height:2px;background:linear-gradient(90deg,var(--brand-line),var(--brand2),var(--brand-line));z-index:0}
+.step{position:relative;z-index:1;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:56px 20px 20px}
+.step .dia{position:absolute;top:14px;left:20px;width:34px;height:34px;border-radius:10px;background:linear-gradient(135deg,var(--brand),var(--brand2));display:flex;align-items:center;justify-content:center;box-shadow:0 6px 16px rgba(31,95,209,.32)}
+.step .dia span{color:#fff;font-weight:800;font-size:14px}
+.step h4{margin-bottom:4px}
+.step .what{font-size:14.5px;color:var(--ink2);min-height:72px}
+.step .proof{margin-top:12px;padding-top:12px;border-top:1px dashed var(--line);font-size:14px}
+.step .proof .h{font-size:12px;font-weight:800;color:var(--brand);letter-spacing:.06em;margin-bottom:4px}
+@media(max-width:860px){.cycle{grid-template-columns:1fr 1fr}.cycle::before{display:none}.step .what{min-height:0}}
+@media(max-width:520px){.cycle{grid-template-columns:1fr}}
+
+/* work */
+.wk-head{display:flex;gap:18px;align-items:flex-start;margin-bottom:6px}
+.wk-no{flex:none;font-size:15px;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--brand),var(--brand2));width:46px;height:46px;border-radius:14px;display:flex;align-items:center;justify-content:center;margin-top:4px}
+.meta{display:flex;flex-wrap:wrap;gap:6px;margin:10px 0 4px}
+.links{margin-top:6px;font-size:13px;color:var(--ink3)}
+.links a{display:inline-block;font-weight:700;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:3px 10px;margin:0 6px 6px 0;text-decoration:none;background:#fff}
+.links a:hover{border-color:var(--brand);color:var(--brand)}
+.links a span{font-weight:400;color:var(--ink2);margin-left:4px}
+.maps{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0 0}
+.maps span{font-size:12.5px;color:var(--ink2);border:1px solid var(--brand-line);background:#fff;border-radius:8px;padding:2px 9px}
+.maps span::before{content:"공고 ▸ ";color:var(--brand);font-weight:700}
+
+.ba{display:grid;grid-template-columns:1fr auto 1fr;gap:14px;align-items:stretch;margin:22px 0}
+.ba .side{border-radius:var(--radius);padding:20px 22px;border:1px solid var(--line)}
+.ba .before{background:var(--before)}
+.ba .after{background:var(--brand-soft);border-color:var(--brand-line)}
+.ba .lbl{font-size:12.5px;font-weight:800;letter-spacing:.06em;margin-bottom:6px;color:var(--ink3)}
+.ba .after .lbl{color:var(--brand)}
+.ba ul{margin:4px 0 0;padding-left:18px}
+.ba .mid{display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--brand);font-weight:800}
+@media(max-width:760px){.ba{grid-template-columns:1fr}.ba .mid{transform:rotate(90deg);height:20px}}
+
+.psr{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;background:#fff;margin:18px 0}
+.psr > div{padding:22px;border-right:1px solid var(--line)}
+.psr > div:last-child{border-right:none}
+.psr .h{font-size:12.5px;font-weight:800;letter-spacing:.06em;color:var(--brand);margin-bottom:8px}
+.psr .big{font-size:26px;font-weight:800;letter-spacing:-.02em;color:var(--ink);line-height:1.25}
+.psr .big small{font-size:14px;font-weight:600;color:var(--ink2)}
+@media(max-width:760px){.psr{grid-template-columns:1fr}.psr > div{border-right:none;border-bottom:1px solid var(--line)}.psr > div:last-child{border-bottom:none}}
+
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:18px 0}
+.node{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:14px;text-align:center;line-height:1.45}
+.node small{color:var(--ink3)}
+.node.hl{border-color:var(--brand);background:var(--brand-soft);font-weight:600}
+.node.hu{border-color:var(--warn);background:var(--warn-soft);font-weight:600}
+.arr{color:var(--ink3);font-weight:700}
+
+.card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:22px}
+.grid2,.grid3{display:grid;gap:16px;margin:18px 0}
+.grid2{grid-template-columns:1fr 1fr}
+.grid3{grid-template-columns:repeat(3,1fr)}
+@media(max-width:760px){.grid2,.grid3{grid-template-columns:1fr}}
+
+figure{margin:0}
+figure img{width:100%;height:auto;display:block;border:1px solid var(--line);border-radius:14px;background:#fff;cursor:zoom-in}
+.phones figure img{height:440px;object-fit:contain;background:var(--bg2)}
+figcaption{font-size:13.5px;color:var(--ink2);margin-top:8px;text-align:center}
+.callout{background:var(--brand-soft);border-left:4px solid var(--brand);padding:16px 18px;border-radius:10px;margin:18px 0;font-size:15px}
+.callout.warn{background:var(--warn-soft);border-color:var(--warn)}
+
+/* report sheet */
+.sheet{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:0 18px 40px rgba(12,26,46,.06);overflow:hidden;margin-top:22px}
+.sheet .top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline;padding:18px 24px;background:linear-gradient(90deg,var(--navy),var(--navy2));color:#fff}
+.sheet .top b{font-size:17px}
+.sheet .top span{font-size:13px;color:#a9bccd}
+.sheet .rows{display:grid;grid-template-columns:170px 1fr}
+.sheet .rows > div{padding:13px 24px;border-bottom:1px solid var(--line);font-size:15px}
+.sheet .rows > div:nth-child(odd){background:var(--bg2);font-size:13px;font-weight:700;color:var(--ink2)}
+.sheet .rows > div:nth-last-child(-n+2){border-bottom:none}
+.kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.kpi{border:1px solid var(--line);border-radius:10px;padding:10px 12px}
+.kpi .l{font-size:12px;color:var(--ink3);font-weight:700}
+.kpi .v{font-size:18px;font-weight:800;letter-spacing:-.01em}
+.kpi.miss{border-style:dashed;background:var(--warn-soft)}
+.kpi.miss .v{font-size:14px;color:var(--warn)}
+.decide{display:flex;gap:8px;flex-wrap:wrap}
+.decide span{font-size:13px;font-weight:700;border-radius:99px;padding:3px 12px;border:1px solid var(--line);color:var(--ink3)}
+.decide span.on{background:var(--brand);border-color:var(--brand);color:#fff}
+@media(max-width:640px){.sheet .rows{grid-template-columns:1fr}.sheet .rows > div:nth-child(odd){border-bottom:none;padding-bottom:2px}.kpis{grid-template-columns:1fr}}
+
+/* plan */
+.plan{counter-reset:p}
+.plan .card{position:relative;padding-top:54px}
+.plan .card::before{counter-increment:p;content:counter(p) "개월차";position:absolute;top:18px;left:22px;font-size:13px;font-weight:800;color:var(--brand);background:var(--brand-soft);padding:2px 10px;border-radius:99px}
+.plan .card ul{padding-left:18px;font-size:15px}
+.plan .card .out{margin-top:12px;padding-top:10px;border-top:1px dashed var(--line);font-size:14px;color:var(--ink2)}
+.plan .card .out b{color:var(--brand)}
+
+footer{padding:40px 0 70px;color:var(--ink3);font-size:14px;border-top:1px solid var(--line)}
+#lb{position:fixed;inset:0;background:rgba(8,14,24,.9);display:none;align-items:center;justify-content:center;z-index:50;cursor:zoom-out;padding:20px}
+#lb img{max-width:100%;max-height:100%;border-radius:8px}
+
+/* motion */
+#prog{position:fixed;top:0;left:0;height:3px;width:100%;background:linear-gradient(90deg,var(--brand),var(--brand2));transform-origin:0 50%;transform:scaleX(0);z-index:20}
+.grad{background:linear-gradient(90deg,#9fd8ff,var(--brand2));-webkit-background-clip:text;background-clip:text;color:transparent}
+html.js .hero .ln{display:inline-block;opacity:0;transform:translateY(28px);filter:blur(8px);animation:rise 1s cubic-bezier(.2,.7,.2,1) forwards}
+html.js .hero .ln:nth-of-type(2){animation-delay:.18s}
+html.js .hero .eyebrow,html.js .hero .lead,html.js .hero .me{opacity:0;animation:fade .9s .45s ease forwards}
+html.js .hero .lead{animation-delay:.6s}
+html.js .facet path{stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s .2s cubic-bezier(.4,.1,.2,1) forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+@keyframes rise{to{opacity:1;transform:none;filter:none}}
+@keyframes fade{to{opacity:1}}
+html.js .rv{opacity:0;transform:translateY(32px);filter:blur(6px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1),filter .9s;transition-delay:var(--d,0s)}
+html.js .rv.in{opacity:1;transform:none;filter:none}
+html.js .node{transition:background .5s,border-color .5s,transform .5s;transition-delay:var(--d,0s)}
+html.js .flow:not(.in) .node.hl,html.js .flow:not(.in) .node.hu{background:#fff;border-color:var(--line);transform:scale(.96)}
+.stat,.card,.step{transition:transform .4s,box-shadow .4s}
+.stat:hover,.card:hover,.step:hover{transform:translateY(-4px);box-shadow:0 14px 34px rgba(12,26,46,.09)}
+@media(prefers-reduced-motion:reduce){html.js .rv,html.js .hero .ln,html.js .hero .eyebrow,html.js .hero .lead,html.js .hero .me{opacity:1;transform:none;filter:none;animation:none;transition:none}html.js .facet path{animation:none;stroke-dashoffset:0}html{scroll-behavior:auto}}
+
+@page{margin:12mm}
+@media print{
+  nav,#prog,header.hero svg.facet{display:none}
+  header.hero{padding:24px 0;background:#fff!important;color:var(--ink)}
+  header.hero h1{color:var(--ink)}.grad{color:var(--brand);background:none;-webkit-background-clip:initial;background-clip:initial}
+  .lead,.me,.stat .t{color:var(--ink2)!important}.lead b,.stat .n{color:var(--ink)!important}.eyebrow{color:var(--brand)}
+  .stat{background:#fff;border-color:var(--line)}
+  section{padding:28px 0}.psr,.ba,.card,figure,tr,.flow,.callout,.step,.sheet{break-inside:avoid}h2,h3{break-after:avoid;break-inside:avoid}
+  footer{padding:12px 0}.phones figure img{height:260px}
+  .grid3{grid-template-columns:repeat(3,1fr)!important}.grid2{grid-template-columns:1fr 1fr!important}.stats{grid-template-columns:repeat(3,1fr)!important}
+  .cycle{grid-template-columns:repeat(4,1fr)!important}.psr{grid-template-columns:repeat(3,1fr)!important}.psr > div{border-right:1px solid var(--line)!important;border-bottom:none!important}
+  .ba{grid-template-columns:1fr auto 1fr!important}.ba .mid{transform:none!important;height:auto!important}.wk-head{break-after:avoid}
+  body{font-size:14px}.stat:hover,.card:hover,.step:hover{transform:none;box-shadow:none}
+  html.js .rv,html.js .hero .ln,html.js .hero .eyebrow,html.js .hero .lead,html.js .hero .me{opacity:1;transform:none;filter:none;animation:none;transition:none}
+  table{min-width:0}
+  #cycle .wrap,#plan .wrap{break-inside:avoid}.sub{break-after:avoid}
+  .step{padding:50px 14px 14px}.step .what{min-height:0}
+}
+.sql{margin:0;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:13px;line-height:1.6;background:var(--navy);color:#dbe7ff;border-radius:10px;padding:14px 16px;overflow-x:auto;white-space:pre}
+.sql .c{color:#7f93b8}
+.grid2 > *,.grid3 > *{min-width:0}
+@media print{.sql{white-space:pre-wrap;font-size:11px}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<nav><div class="wrap">
+  <b><i></i>김환희</b>
+  <a href="#fit">공고와 근거</a><a href="#cycle">개선 방식</a><a href="#w1">01 JOYHILL</a><a href="#w2">02 QTPot</a><a href="#w3">03 CAPD</a><a href="#w4">04 SyncAI</a><a href="#sql">SQL로 보는 법</a><a href="#plan">수습 12주</a>
+</div></nav>
+
+<header class="hero"><div class="wrap">
+  <svg class="facet" viewBox="0 0 400 400" fill="none" aria-hidden="true">
+    <g stroke="#9fd8ff" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round">
+      <path d="M40 340 L360 340"/>
+      <path d="M40 340 L40 60"/>
+      <path d="M80 340 L80 250 L120 250 L120 340"/>
+      <path d="M150 340 L150 170 L190 170 L190 340"/>
+      <path d="M220 340 L220 110 L260 110 L260 340"/>
+      <path d="M290 340 L290 200 L330 200 L330 340"/>
+      <path d="M60 230 L130 200 L200 140 L240 90 L310 170 L350 120"/>
+    </g>
+    <g stroke="#4fd1a5" stroke-width=".7" opacity=".6">
+      <path d="M40 300 L360 300"/><path d="M40 220 L360 220"/><path d="M40 140 L360 140"/>
+    </g>
+  </svg>
+  <div class="eyebrow">쿠팡이츠 · 이츠 카탈로그 데이터 분석 및 운영개선 담당자 (SQL/자동화) 주니어 지원 포트폴리오</div>
+  <h1><span class="ln">요청이 막히는 구간을</span><br><span class="ln grad">데이터로 찾아 줄입니다</span></h1>
+  <p class="lead">손으로 하던 운영 업무를 프로세스로 정리해 시스템으로 옮기고, 실제 사용자에게 배포해 <b>쓰이는지 기록으로 확인</b>해 왔습니다. 머천트 요청을 받아 처리 완료하기까지의 흐름을 <b>측정 → 작은 자동화 → 전후 비교 → 확산</b> 순서로 개선할 수 있다는 근거를 공고 항목 순서대로 정리했습니다.</p>
+  <div class="stats">
+    <div class="stat"><div class="n"><span class="cnt" data-to="217">217</span>개</div><div class="t">JOYHILL 등록 계정 · 2026.03부터 운영 중</div></div>
+    <div class="stat"><div class="n"><span class="cnt" data-to="956">956</span>회</div><div class="t">QTPot 누적 인증 · 손으로 세던 집계를 앱으로</div></div>
+    <div class="stat"><div class="n">공용 1개 <em>→</em> 개인</div><div class="t">운영진 5~6명이 같이 쓰던 계정을 개인 계정·역할별 권한으로</div></div>
+    <div class="stat"><div class="n">100% <em>초과</em></div><div class="t">이상한 출석률을 계산 로직까지 따라가 중복 합산 원인 수정</div></div>
+    <div class="stat"><div class="n">매일 <em>자동</em></div><div class="t">DB → Google Sheets 백업 · 성공했을 때만 시각 기록</div></div>
+    <div class="stat"><div class="n"><em>SQLD</em></div><div class="t">SQL 개발자 · 2026.03 취득</div></div>
+  </div>
+  <p class="me">김환희 · 서경대학교 소프트웨어학과 (2027.02 졸업예정) · SQL 개발자(SQLD) · 즉시 근무 가능</p>
+</div></header>
+
+<!-- 공고와 근거 -->
+<section id="fit"><div class="wrap">
+  <h2><small>공고 요건과 제 경험</small>맡게 될 일마다 해 본 근거</h2>
+  <p class="sub">공고의 업무 내용·자격 요건·우대 사항을 그대로 옮기고, 각각에 해당하는 작업을 붙였습니다. 쿠팡이츠 규모로는 해 보지 않은 일과 아직 경험이 없는 분야는 그렇게 표시했습니다.</p>
+  <div class="legend"><span><span class="tag">운영 중 · 해 봄</span>직접 해 봤고 결과가 있음</span><span><span class="tag mid">작은 규모</span>같은 일을 작은 서비스에서 해 봄</span><span><span class="tag learn">배울 것</span>경험 없음, 입사 후 익힐 것</span></div>
+  <div class="tbl"><table>
+    <tr><th style="width:29%">공고</th><th>제 근거</th><th style="width:13%">상태</th></tr>
+    <tr class="grp"><td colspan="3">업무 내용</td></tr>
+    <tr><td class="k">머천트 요청을 받고 처리 완료할 때까지 운영 프로세스 분석 및 구조 개선</td><td><a href="#w1">JOYHILL</a>: 공용 계정 공유·느린 스크립트 동기화라는 기존 흐름의 불편을 짚고, 개인 계정·역할별 권한과 DB 직접 기록으로 구조를 바꿈. 쓰던 Google Sheets는 매일 자동 백업으로 유지</td><td><span class="tag mid">작은 규모</span></td></tr>
+    <tr><td class="k">반복 및 비효율 업무 정의 후 데이터 기반 개선안 도출 및 실행</td><td><a href="#w2">QTPot</a>: 관리자가 대화방을 넘기며 세던 인증 집계를 반복 업무로 정의하고 앱으로 전환, 실제 사용 기록(가입 46명 중 32명 인증, 누적 956회)으로 확인</td><td><span class="tag">운영 중</span></td></tr>
+    <tr><td class="k">SQL 및 AI 툴을 활용한 운영 데이터 조회, 분석, 핵심 지표 관리</td><td><a href="#w1">JOYHILL</a>: 출석률 100% 초과 이상값을 계산 로직과 데이터 기간까지 따라가 중복 합산 원인 수정 / SQLD / Claude Code로 매일 개발·분석. 요청 처리 지표를 어떻게 볼지는 <a href="#sql">아래 SQL 예시</a>로 정리했습니다.</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">RPA, Python 등을 활용한 반복 업무 자동화 및 시스템화</td><td><a href="#w3">CAPD</a>: Python으로 지표 계산 파이프라인, Cloud Scheduler로 테스트 기록 매일 자동 생성·점검과 외부 자료 매주 자동 갱신 / <a href="#w1">JOYHILL</a>: 매일 자동 백업. RPA 전용 도구는 써 보지 않았고, 같은 종류의 일은 코드와 스케줄러로 만들어 왔습니다.</td><td><span class="tag">해 봄</span><span class="tag learn">RPA 도구</span></td></tr>
+    <tr class="grp"><td colspan="3">자격 요건</td></tr>
+    <tr><td class="k">Excel, Google Sheets 등 오피스 프로그램</td><td>Google Sheets API로 DB 데이터를 매일 시트에 채우는 자동화를 만들어 운영 중(<a href="#w1">JOYHILL</a>)</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">SQL 활용</td><td>SQL 개발자(SQLD, 2026.03). PostgreSQL·MySQL로 서비스 DB를 직접 설계·운영(JOYHILL·QTPot·CAPD)</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">대용량 데이터에 대한 높은 이해도</td><td>등록 계정 217개 규모의 실제 운영 데이터는 다뤄 봤지만, 쿠팡이츠 규모의 대용량 데이터는 아직 다뤄 보지 못했습니다. 입사 초기에 테이블 구조와 지표 정의, 대용량 조회 성능부터 익히겠습니다(<a href="#plan">수습 12주</a>).</td><td><span class="tag learn">배울 것</span></td></tr>
+    <tr><td class="k">데이터 분석 및 문제 해결 능력</td><td>숫자가 이상하면 계산 로직과 데이터가 덮는 기간부터 확인(<a href="#w1">JOYHILL</a>), LLM이 숫자를 틀릴 수 있다고 보고 계산은 코드·해석은 LLM으로 처음부터 나눔(<a href="#w3">CAPD</a>)</td><td><span class="tag">해 봄</span></td></tr>
+    <tr class="grp"><td colspan="3">우대 사항</td></tr>
+    <tr><td class="k">Python 활용</td><td>FastAPI 서버와 지표 계산 파이프라인(<a href="#w3">CAPD</a>), MCP 서버·클라이언트(<a href="#w4">SyncAI</a>, GitHub 공개)</td><td><span class="tag">해 봄</span></td></tr>
+    <tr><td class="k">이커머스 상품 및 관련 업무 경험</td><td>없습니다. 카탈로그 등록·수정 기준과 요청 유형은 입사 후 팀의 운영 문서와 데이터로 배우겠습니다.</td><td><span class="tag learn">배울 것</span></td></tr>
+    <tr><td class="k">운영 프로세스 개선 또는 자동화 업무 참여</td><td>직접 배포해 운영 중인 서비스 2개(<a href="#w1">JOYHILL</a>·<a href="#w2">QTPot</a>)에서 수작업을 시스템으로 옮기고, 운영 중 발견한 오류를 고쳐 왔습니다.</td><td><span class="tag">운영 중</span></td></tr>
+    <tr><td class="k">쿠팡이츠 등 배달앱 이용 경험</td><td>쿠팡이츠로 주문하며 메뉴·사진·상점 정보를 보고 가게를 골라 왔습니다.</td><td><span class="tag">있음</span></td></tr>
+  </table></div>
+</div></section>
+
+<!-- 개선 방식 -->
+<section id="cycle" class="alt"><div class="wrap">
+  <h2><small>운영 개선 방식</small>재고, 작게 바꾸고, 비교하고, 넓힙니다</h2>
+  <p class="sub">아래 작업물은 모두 <b>문제 → 개선 → 성과</b> 순서로 정리했습니다. 쿠팡이츠에서는 같은 순서를 머천트 요청 처리 흐름에 적용하겠습니다.</p>
+  <div class="cycle">
+    <div class="step"><div class="dia"><span>1</span></div><h4>측정</h4><div class="what">요청이 접수돼 처리 완료되기까지 단계별 건수·소요 시간·재처리를 SQL로 뽑아 병목 구간을 찾습니다.</div><div class="proof"><div class="h">해 본 일</div>출석률 이상값을 데이터 기간까지 따라가 원인 확인 <a href="#w1">JOYHILL</a></div></div>
+    <div class="step"><div class="dia"><span>2</span></div><h4>작은 자동화</h4><div class="what">효과가 빨리 보이는 반복 작업 하나를 Python·API로 반자동화하고, 결과를 사람이 확인하는 단계를 남깁니다.</div><div class="proof"><div class="h">해 본 일</div>손으로 세던 인증 집계를 앱으로 <a href="#w2">QTPot</a> · 매일 자동 백업 <a href="#w1">JOYHILL</a></div></div>
+    <div class="step"><div class="dia"><span>3</span></div><h4>전후 비교</h4><div class="what">바꾸기 전에 먼저 재 두고, 처리 시간·재처리 건수·실제 사용률을 전후로 비교합니다.</div><div class="proof"><div class="h">해 본 일</div>사용 기록 956회로 정착 확인 <a href="#w2">QTPot</a> · 실패를 숨기지 않는 백업 시각 <a href="#w1">JOYHILL</a></div></div>
+    <div class="step"><div class="dia"><span>4</span></div><h4>확산</h4><div class="what">효과가 확인된 방식만 다른 요청 유형으로 넓히고, 매뉴얼로 누구나 같은 방식으로 처리하게 합니다.</div><div class="proof"><div class="h">해 본 일</div>역할별 사용 가이드 10쪽, 사용자 회의로 권한 재설계 <a href="#w1">JOYHILL</a></div></div>
+  </div>
+</div></section>
+
+<!-- 01 JOYHILL -->
+<section id="w1"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">01</div><div>
+    <h2><small>운영 프로세스 개선 · 자동화 · 이상값 추적 · 1인 · 2026.03 ~ 운영 중</small>JOYHILL — 공용 계정과 시트 스크립트에서, 사람마다 쓰는 서비스로</h2>
+    <div class="meta"><span class="tag">PostgreSQL</span><span class="tag">Google Sheets API</span><span class="tag">Spring Boot</span><span class="tag">React</span><span class="tag">AWS EC2·S3</span><span class="tag">GitHub Actions</span></div>
+    <div class="links">서비스는 교인 개인정보가 있어 로그인 전용이고, 저장소는 비공개입니다.</div>
+    <div class="maps"><span>운영 프로세스 분석·구조 개선</span><span>운영 데이터 조회·분석</span><span>반복 업무 자동화</span><span>Google Sheets</span></div>
+  </div></div>
+
+  <div class="ba">
+    <div class="side before"><div class="lbl">BEFORE</div>교회 청년부 출석·조직 정보를 앱시트와 구글시트로 관리했습니다.
+      <ul><li>앱과 시트가 <b>스크립트 하나로 동기화</b>돼 반영되기까지 시간이 꽤 걸림</li><li>운영진 <b>5~6명이 공용 계정 하나</b>를 같이 써서 로그인 문제가 반복되고 불편이 큼</li><li>출석·공지·기도제목·새가족 관리가 여러 곳에 흩어짐</li></ul></div>
+    <div class="mid">→</div>
+    <div class="side after"><div class="lbl">AFTER</div>자체 DB 기반 웹 서비스로 옮겼습니다.
+      <ul><li><b>사람마다 개인 계정</b>, 5단계 역할별로 쓸 수 있는 기능과 범위를 나눔</li><li>출석은 앱에서 <b>바로 DB에 기록</b>, 동기화를 기다리지 않음</li><li>운영진이 익숙한 구글시트는 <b>매일 자동으로 채워지는 사본</b>으로 유지</li></ul></div>
+  </div>
+
+  <h3>쓰던 시트를 그대로 살린 자동 백업</h3>
+  <div class="flow">
+    <div class="node">PostgreSQL<br><small>회원 · 출석</small></div><span class="arr">→</span>
+    <div class="node hl">스케줄러<br><small>매일 새벽 · Asia/Seoul</small></div><span class="arr">→</span>
+    <div class="node">Google Sheets API<br><small>서비스 계정</small></div><span class="arr">→</span>
+    <div class="node">운영진 시트<br><small>회원 탭 · 출석 탭</small></div>
+    <span class="arr">+</span>
+    <div class="node">관리자 수동 실행<br><small>필요할 때 버튼으로</small></div>
+    <span class="arr">+</span>
+    <div class="node">S3 비공개 버킷<br><small>DB 백업 이중 보관</small></div>
+  </div>
+  <div class="grid3">
+    <div class="card"><h4>숫자가 이상하면 끝까지 따라감</h4>출석률이 100%를 넘는 인원이 있었습니다. 날짜별 기록이 없던 시기를 대신 채우던 <b>집계 값과 새로 쌓인 날짜별 기록이 단순 합산</b>돼 같은 기간이 두 번 세어지고 있었습니다. 날짜별 기록은 보존하고 겹치는 집계 값만 정리했습니다.</div>
+    <div class="card"><h4>실패가 성공처럼 보이지 않게</h4>마지막 백업 시각은 시트 쓰기에 <b>성공했을 때만</b> 기록합니다. 자동 작업은 조용히 실패하기 쉬워서, 화면에 보이는 시각이 곧 마지막 성공 시각이 되게 했습니다.</div>
+    <div class="card"><h4>운영하다 발견한 시간대 오류</h4>새벽에 돌아야 할 백업이 <b>낮 12시</b>에 돌고 있었습니다. 서버 시간대가 UTC인데 스케줄에 시간대를 지정하지 않은 것이 원인이어서 <code>Asia/Seoul</code>을 명시해 고쳤습니다.</div>
+  </div>
+
+  <div class="psr">
+    <div><div class="h">문제</div>공용 계정 공유로 반복되던 로그인 문제, 느린 동기화, 흩어진 관리 업무.</div>
+    <div><div class="h">개선 · 본인 역할</div>기획·설계·프론트엔드·백엔드·배포·운영. 개인 계정과 5단계 역할별 권한, 자동 백업, 배포 자동화, <b>역할별 사용 가이드 10쪽</b>, 확장 회의 기획·진행.</div>
+    <div><div class="h">성과</div><div class="big">217개 <small>등록 계정</small></div>2026년 3월 첫 커밋 2주 만에 실데이터로 배포했고 지금도 운영 중입니다. 운영진은 동기화를 기다리거나 계정을 돌려 쓰지 않습니다.</div>
+  </div>
+  <div class="grid3 phones">
+    <figure><img src="../assets/joyhill_attendance.jpg" alt="JOYHILL 출석 체크 화면"><figcaption>리더의 출석 체크</figcaption></figure>
+    <figure><img src="../assets/joyhill_home_admin.jpg" alt="JOYHILL 관리자 홈"><figcaption>관리자 홈: 한 화면에서 현황 파악</figcaption></figure>
+    <figure><img src="../assets/joyhill_guide_p4.jpg" alt="JOYHILL 사용 가이드 출석 체크 페이지"><figcaption>사용 가이드: 순서대로 따라 하는 출석 체크</figcaption></figure>
+  </div>
+  <div class="callout"><b>쿠팡이츠에 적용한다면 · 기존 도구를 지키며 바꾸기</b> · 현장이 익숙한 시트를 없애지 않고 자동으로 채워지는 사본으로 남겼기 때문에, 운영진이 새 서비스로 옮겨 오는 동안에도 일이 멈추지 않았습니다. 요청 처리 흐름을 바꿀 때도 담당자가 쓰던 도구와 보고 방식을 먼저 확인하고, 그 위에서 바꾸겠습니다.</div>
+</div></section>
+
+<!-- 02 QTPot -->
+<section id="w2" class="alt"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">02</div><div>
+    <h2><small>반복 업무 정의 · 지표를 한 화면에 · 1인 · 2026.02 ~ 운영 중</small>QTPot — 손으로 세던 인증 집계를 앱으로</h2>
+    <div class="meta"><span class="tag">MySQL</span><span class="tag">Spring Boot</span><span class="tag">React(PWA)</span><span class="tag">AWS EC2</span><span class="tag">FCM 푸시</span><span class="tag">GitHub Actions</span></div>
+    <div class="links"><a href="https://github.com/smile5959/QTPot-FE" target="_blank" rel="noopener">GitHub<span>프론트엔드</span></a><a href="https://github.com/smile5959/QTPot-BE" target="_blank" rel="noopener">GitHub<span>백엔드</span></a></div>
+    <div class="maps"><span>반복·비효율 업무 정의</span><span>핵심 지표 관리</span><span>시스템화</span></div>
+  </div></div>
+
+  <div class="ba">
+    <div class="side before"><div class="lbl">BEFORE</div>회원이 단체 대화방에 묵상 사진을 올리면, 관리자가 <b>대화방을 넘기며 누가 올렸는지 직접 세어</b> 확인했습니다. 기록이 대화방에 흩어져 있어 현황을 볼 때마다 같은 작업이 반복됐습니다.</div>
+    <div class="mid">→</div>
+    <div class="side after"><div class="lbl">AFTER</div>회원은 앱에서 사진으로 인증하고, 기록은 자동으로 쌓입니다. 관리자는 <b>한 화면에서 사람별·날짜별 인증 현황</b>을 봅니다. 인증을 잊지 않도록 정해진 시각에 푸시 알림을 보냅니다.</div>
+  </div>
+
+  <div class="psr">
+    <div><div class="h">문제</div>관리자가 매번 손으로 하던 인증 집계. 확인 누락과 기간별 조회의 어려움.</div>
+    <div><div class="h">개선 · 본인 역할</div>기획, 화면, 프론트엔드, 백엔드, 배포·운영 전부. 사진 자동 최적화, 관리자 현황 화면, 정해진 시각 푸시 알림, 성장 뱃지와 월간 랭킹.</div>
+    <div><div class="h">성과</div><div class="big">956회 <small>누적 인증</small></div>가입 46명 중 32명이 인증했고, 올해 10회 이상 인증한 회원은 19명, 30회 이상은 7명입니다.</div>
+  </div>
+
+  <div class="grid3 phones">
+    <figure><img src="../assets/qtpot_dashboard.jpg" alt="QTPot 오늘의 인증 화면"><figcaption>회원: 오늘의 인증</figcaption></figure>
+    <figure><img src="../assets/qtpot_admin.jpg" alt="QTPot 관리자 현황 화면"><figcaption>관리자: 사람별 인증 현황</figcaption></figure>
+    <figure><img src="../assets/qtpot_ranking.jpg" alt="QTPot 월간 랭킹 화면"><figcaption>습관 유지: 월간 랭킹</figcaption></figure>
+  </div>
+  <div class="callout warn"><b>아쉬운 점 · 바꾸기 전에 먼저 재기</b> · 도입 전 관리자가 집계에 쓰던 시간을 재 두지 않아, 시간이 얼마나 줄었는지는 숫자로 말할 수 없습니다. 쿠팡이츠에서는 개선 전에 처리 시간과 재처리 건수부터 측정하겠습니다.</div>
+</div></section>
+
+<!-- 03 CAPD -->
+<section id="w3"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">03</div><div>
+    <h2><small>Python 데이터 파이프라인 · 자동 갱신 · 2인 팀 · 2026.04 ~ 06</small>CAPD — 계산은 코드가, 해석은 AI가</h2>
+    <div class="meta"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Gemini(Vertex AI)</span><span class="tag">pgvector</span><span class="tag">GCP Cloud Run</span><span class="tag">Cloud Scheduler</span></div>
+    <div class="links">서경대 SW인재양성 산학과제 · 복막투석 환자 기록 기반 AI 후속 질문 생성 · 본인 담당: 백엔드, AI 파이프라인, GCP 인프라 (기여도 50:50)</div>
+    <div class="maps"><span>Python 자동화</span><span>데이터 분석</span><span>AI 툴 활용</span></div>
+  </div></div>
+
+  <div class="flow">
+    <div class="node">환자 기록<br><small>교환·일일 기록</small></div><span class="arr">→</span>
+    <div class="node hl">Python 계산<br><small>추세 · 이상치 · 상관</small></div><span class="arr">→</span>
+    <div class="node">LLM 1<br><small>검색 질의 생성</small></div><span class="arr">→</span>
+    <div class="node hl">RAG 검색<br><small>가이드라인 1,012청크</small></div><span class="arr">→</span>
+    <div class="node">LLM 2<br><small>환자 질문 생성</small></div><span class="arr">→</span>
+    <div class="node hu">의사 검토<br><small>확인 · 숨김 · 거절</small></div>
+  </div>
+
+  <div class="psr">
+    <div><div class="h">문제</div>LLM이 수치를 직접 계산하면 <b>그럴듯하지만 틀린 값</b>을 낼 수 있고, 추세 분석은 기록이 쌓여야만 검증할 수 있었습니다.</div>
+    <div><div class="h">개선 · 본인 역할</div>백엔드, AI 파이프라인, GCP 인프라. 가이드라인 RAG 구성, Cloud Scheduler로 <b>매일 테스트 환자 14명의 기록을 자동 생성·제출하고 AI 응답까지 받아 전체 점검</b>, 외부 의학 자료 매주 자동 갱신, Cloud Run 서비스 3개 배포.</div>
+    <div><div class="h">성과</div><div class="big">계산 · 해석 <small>역할 분리</small></div>설계부터 수치는 Python 코드가, 해석은 Gemini가 맡도록 나눴고, 매일 자동 점검으로 파이프라인을 검증했습니다. 10주간 기능 80건 이상 구현.</div>
+  </div>
+  <div class="grid2">
+    <figure><img src="../assets/capd_pipeline.png" alt="CAPD AI 질문 생성 파이프라인"><figcaption>계산(Python)과 해석(LLM)을 나눈 파이프라인</figcaption></figure>
+    <figure><img src="../assets/capd_review_soap.png" alt="CAPD 의사 검토와 SOAP 요약 화면"><figcaption>AI가 만든 결과는 사람이 확인한 뒤에만 쓰임</figcaption></figure>
+  </div>
+  <div class="callout"><b>쿠팡이츠에 적용한다면 · AI 툴과 코드의 역할 나누기</b> · 지표 숫자는 SQL과 Python으로 정해진 규칙대로 계산하고, AI 툴은 요청 내용 분류나 요약처럼 해석이 필요한 곳에 쓰겠습니다. AI가 낸 결과는 사람이 확인하는 단계를 남겨 운영 품질을 지키겠습니다.</div>
+</div></section>
+
+<!-- 04 SyncAI -->
+<section id="w4" class="alt"><div class="wrap">
+  <div class="wk-head"><div class="wk-no">04</div><div>
+    <h2><small>AI 에이전트 · Python · 외부 서비스 연동 · 개인 · 2026.05 ~ 10</small>SyncAI — 채팅 한 줄로 파일과 외부 앱을 다루는 에이전트</h2>
+    <div class="meta"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Gemini</span><span class="tag">Function Calling</span><span class="tag">MCP</span><span class="tag">Composio</span></div>
+    <div class="links"><a href="https://github.com/smile5959/syncai" target="_blank" rel="noopener">GitHub<span>저장소 공개</span></a></div>
+    <div class="maps"><span>Python 자동화</span><span>시스템화</span><span>AI 툴 활용</span></div>
+  </div></div>
+
+  <div class="flow">
+    <div class="node">채팅 명령<br><small>/ai</small></div><span class="arr">→</span>
+    <div class="node hl">Supervisor 에이전트<br><small>작업 계획</small></div><span class="arr">→</span>
+    <div class="node hu">사용자 승인<br><small>민감한 작업은 실행 전 확인</small></div><span class="arr">→</span>
+    <div class="node hl">Worker 에이전트<br><small>Function Calling으로 실행</small></div><span class="arr">→</span>
+    <div class="node">로컬 PC 파일<br><small>MCP 연결</small></div><span class="arr">+</span>
+    <div class="node">Notion 등 외부 앱<br><small>Composio</small></div>
+  </div>
+
+  <div class="psr">
+    <div><div class="h">문제</div>팀 프로젝트에서 팀원마다 AI를 다르게 써서 코드와 API 명세가 엇갈리고 충돌이 반복되던 일.</div>
+    <div><div class="h">개선 · 본인 역할</div>에이전트 구조 설계, 서버와 사용자 PC를 잇는 MCP 연결, Mac·Windows 자동 설치, 외부 앱 연동, 실행 전 승인 단계, 배포까지 전부.</div>
+    <div><div class="h">성과</div><div class="big">승인 후 실행 <small>민감한 작업 통제</small></div>동작하는 상태까지 배포하고 코드를 공개했지만, 시장에 출시해 사용자를 모으지는 못했습니다.</div>
+  </div>
+  <div class="grid2">
+    <figure><img src="../assets/syncai_chat.jpg" alt="SyncAI 채팅 화면"><figcaption>SyncAI 채팅 화면</figcaption></figure>
+    <figure><img src="../assets/figma_syncai_chat.png" alt="SyncAI Figma 와이어프레임"><figcaption>Figma 와이어프레임 (AI 초안 → 직접 정리)</figcaption></figure>
+  </div>
+</div></section>
+
+<!-- SQL -->
+<section id="sql"><div class="wrap">
+  <h2><small>SQL로 운영 데이터 보기</small>요청 처리 흐름을 이렇게 재겠습니다</h2>
+  <p class="sub">쿠팡이츠의 실제 테이블 구조는 알지 못합니다. 아래는 <b>머천트 요청 한 건이 접수 → 검토 → 반영 → 완료 단계를 지난다고 가정한 가상 테이블</b>로, 입사 후 첫 주에 무엇부터 뽑아 볼지를 보여 드리려고 만든 예시입니다.</p>
+  <div class="grid2">
+    <div class="card"><h4>가정한 테이블</h4>
+      <p class="note" style="margin:0 0 8px">merchant_request (요청 1건 = 1행)</p>
+      <pre class="sql"><span class="c">-- 가상 예시</span>
+request_id     요청 번호
+request_type   메뉴 추가 · 가격 수정 · 이미지 교체 …
+created_at     접수 시각
+completed_at   처리 완료 시각
+reopened       재요청·재처리 여부</pre>
+      <p class="note" style="margin-top:10px">실제로는 단계별 이력 테이블이 따로 있을 가능성이 크고, 그러면 단계마다 머문 시간까지 나눠 볼 수 있습니다.</p>
+    </div>
+    <div class="card"><h4>요청 유형별 처리 시간과 재처리율</h4>
+      <pre class="sql">SELECT request_type,
+       COUNT(*)                                   AS 요청수,
+       PERCENTILE_CONT(0.5) WITHIN GROUP (
+         ORDER BY completed_at - created_at)      AS 처리시간_중앙값,
+       ROUND(AVG(CASE WHEN reopened
+                 THEN 1.0 ELSE 0 END) * 100, 1)   AS 재처리율_pct
+FROM   merchant_request
+WHERE  created_at &gt;= CURRENT_DATE - INTERVAL '28 days'
+  AND  completed_at IS NOT NULL
+GROUP  BY request_type
+ORDER  BY 요청수 DESC;</pre>
+    </div>
+  </div>
+  <div class="grid3">
+    <div class="card"><h4>평균 말고 중앙값</h4>처리 시간은 몇 건만 오래 걸려도 평균이 크게 흔들립니다. 중앙값과 상위 10% 시간을 함께 보고, 오래 걸린 건은 따로 뽑아 원인을 보겠습니다.</div>
+    <div class="card"><h4>완료 안 된 건도 따로</h4>위 쿼리는 완료된 요청만 셉니다. 처리 중인 건을 빼면 막힌 요청이 지표에서 사라지기 때문에, 미완료 건수와 대기 시간을 별도 지표로 둡니다.</div>
+    <div class="card"><h4>지표가 실제 일을 세는지부터</h4>JOYHILL에서 같은 기간이 두 번 집계된 일을 겪은 뒤로, 새 지표를 만들면 몇 건을 원본 기록과 직접 대조해 숫자가 맞는지부터 확인하겠습니다.</div>
+  </div>
+</div></section>
+
+<!-- 수습 12주 -->
+<section id="plan" class="alt"><div class="wrap">
+  <h2><small>입사 후</small>수습 12주 동안 보여 드릴 것</h2>
+  <p class="sub">Eats Merchant Catalog Advancement 팀은 상점의 메뉴·이미지와 상점 정보 등록·수정을 지원하고, 그 과정의 병목을 찾아 운영 프로세스를 개선하는 팀입니다(공고 기준). 무엇을 먼저 바꿀지는 데이터와 담당자의 이야기를 함께 보고 정하겠습니다.</p>
+  <div class="grid3 plan">
+    <div class="card"><h4>흐름과 데이터 익히기</h4><ul><li>요청 유형별 처리 단계와 담당자가 쓰는 도구 정리</li><li>테이블 구조·지표 정의를 익히고, 대용량 조회에서 성능을 해치지 않는 쿼리 작성법 익히기</li><li>단계별 처리 건수·시간·재처리를 SQL로 뽑아 병목 후보 정리</li></ul><div class="out"><b>결과물</b> · 요청 처리 흐름도와 병목 후보 3개</div></div>
+    <div class="card"><h4>작은 자동화 하나</h4><ul><li>효과가 빨리 보이는 반복 작업 하나 선정</li><li>바꾸기 전 처리 시간과 재처리 건수를 먼저 측정</li><li>Python 스크립트·API 연동으로 반자동화, 처음 쓰는 RPA 도구도 빠르게 익혀 활용</li></ul><div class="out"><b>결과물</b> · 담당자가 실제로 쓰는 개선 1건</div></div>
+    <div class="card"><h4>비교하고 넓히기</h4><ul><li>도입 전후 처리 시간·재처리 건수·사용률 비교 보고</li><li>매뉴얼과 오류 대응 방법을 함께 작성</li><li>효과가 확인되면 다른 요청 유형으로 확대 제안</li></ul><div class="out"><b>결과물</b> · 전후 비교 보고와 다음 개선 후보</div></div>
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  김환희 · 서경대학교 소프트웨어학과 · <a href="mailto:rlaghskgml@gmail.com">rlaghskgml@gmail.com</a> · 전체 포트폴리오 <a href="../">smile5959.github.io/portfolio</a>
+</div></footer>
+
+<div id="lb"><img alt=""></div>
+<script>
+(function(){
+  var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.querySelectorAll('section h2, section .sub, section h3, section .meta, section .maps, section .tbl, section .callout, section .flow, section .ba, section .psr').forEach(function(n){n.classList.add('rv')});
+  document.querySelectorAll('.stats, .grid2, .grid3, .cycle').forEach(function(g){
+    [].forEach.call(g.children,function(c,i){c.classList.add('rv');c.style.setProperty('--d',(i*.12)+'s')});
+  });
+  document.querySelectorAll('.flow').forEach(function(f){
+    [].forEach.call(f.querySelectorAll('.node'),function(c,i){c.style.setProperty('--d',(.3+i*.15)+'s')});
+  });
+  document.querySelectorAll('.stats .rv').forEach(function(c,i){c.style.setProperty('--d',(.8+i*.12)+'s')});
+
+  function count(el){
+    var to=+el.dataset.to; if(reduce)return;
+    var t0=null,dur=1500;
+    function step(t){if(!t0)t0=t;var p=Math.min(1,(t-t0)/dur);el.textContent=Math.round(to*(1-Math.pow(1-p,3))).toLocaleString('ko-KR');if(p<1)requestAnimationFrame(step)}
+    el.textContent='0';setTimeout(function(){requestAnimationFrame(step)},900);
+  }
+  if('IntersectionObserver' in window&&!reduce){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){
+      if(!e.isIntersecting)return;e.target.classList.add('in');
+      e.target.querySelectorAll('.cnt').forEach(count);io.unobserve(e.target);
+    })},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+    document.querySelectorAll('.rv').forEach(function(n){io.observe(n)});
+  }else{
+    document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
+  }
+
+  addEventListener('beforeprint',function(){
+    document.querySelectorAll('.cnt').forEach(function(el){el.textContent=(+el.dataset.to).toLocaleString('ko-KR')});
+    document.querySelectorAll('.rv').forEach(function(n){n.classList.add('in')});
+  });
+
+  var bar=document.getElementById('prog');
+  var links=[].slice.call(document.querySelectorAll('nav a')),secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  var ticking=false;
+  function frame(){
+    ticking=false;
+    var h=document.documentElement.scrollHeight-innerHeight;bar.style.transform='scaleX('+(h>0?scrollY/h:0)+')';
+    var cur=-1;secs.forEach(function(s,i){if(s&&s.getBoundingClientRect().top<innerHeight*.35)cur=i});
+    links.forEach(function(a,i){a.classList.toggle('on',i===cur)});
+    if(cur>=0){var a=links[cur],nb=a.parentNode;if(a.offsetLeft<nb.scrollLeft||a.offsetLeft+a.offsetWidth>nb.scrollLeft+nb.clientWidth)nb.scrollLeft=a.offsetLeft-20}
+  }
+  addEventListener('scroll',function(){if(!ticking){ticking=true;requestAnimationFrame(frame)}},{passive:true});
+  addEventListener('resize',frame);frame();
+
+  var lb=document.getElementById('lb'), im=lb.querySelector('img');
+  document.querySelectorAll('figure img').forEach(function(i){
+    i.addEventListener('click',function(){im.src=i.src;lb.style.display='flex';});
+  });
+  lb.addEventListener('click',function(){lb.style.display='none';});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.style.display='none';});
+})();
+</script>
+</body>
+</html>
